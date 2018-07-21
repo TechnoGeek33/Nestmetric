@@ -1,16 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600);
 @import url(https://fonts.googleapis.com/css?family=Rubik:400);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:400);
-@font-face {
+/* @font-face {
     font-family: typicons;
-    /* src: url(typicons-1e0c866c90ad2cc41cf86fd5d4f1e493.eot);
+    src: url(typicons-1e0c866c90ad2cc41cf86fd5d4f1e493.eot);
     src: url(typicons-1e0c866c90ad2cc41cf86fd5d4f1e493.eot?#iefix) format("embedded-opentype"), 
     url(typicons-dd1d3e957a5fe07973d4a7542683e1f9.woff) format("woff"), 
     url(typicons-08f521293b6f25e77be39d9ad0335e90.ttf) format("truetype"), 
-    url(typicons-8ac95e3a1a5f42383ccac844258c4444.svg#typicons) format("svg"); */
+    url(typicons-8ac95e3a1a5f42383ccac844258c4444.svg#typicons) format("svg");
     font-weight: 400;
     font-style: normal
-}
+} */
 
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
@@ -11585,8 +11585,8 @@ li.sample-categories {
 .samples-table th input,
 .samples-table th select {
     display: inline;
-    width: inherit;
-    height: inherit
+    /* width: inherit;
+    height: inherit */
 }
 
 .samples-table th input {
@@ -12053,15 +12053,15 @@ html.tabs body.not-loading {
     background-color: #e64f47
 }
 
-@font-face {
+/* @font-face {
     font-family: Glyphicons Halflings;
-    /* src: url(glyphicons-halflings-regular-f4769f9bdb7466be65088239c12046d1.eot); */
-    /* src: url(glyphicons-halflings-regular-f4769f9bdb7466be65088239c12046d1.eot?#iefix) format("embedded-opentype"),  */
-    /* url(glyphicons-halflings-regular-448c34a56d699c29117adc64c43affeb.woff2) format("woff2"),  */
-    /* url(glyphicons-halflings-regular-fa2772327f55d8198301fdb8bcfc8158.woff) format("woff"),  */
-    /* url(glyphicons-halflings-regular-e18bbf611f2a2e43afc071aa2f4e1512.ttf) format("truetype"),  */
-    /* url(glyphicons-halflings-regular-89889688147bd7575d6327160d64e760.svg#glyphicons_halflingsregular) format("svg") */
-}
+    src: url(glyphicons-halflings-regular-f4769f9bdb7466be65088239c12046d1.eot);
+    src: url(glyphicons-halflings-regular-f4769f9bdb7466be65088239c12046d1.eot?#iefix) format("embedded-opentype"), 
+    url(glyphicons-halflings-regular-448c34a56d699c29117adc64c43affeb.woff2) format("woff2"), 
+    url(glyphicons-halflings-regular-fa2772327f55d8198301fdb8bcfc8158.woff) format("woff"), 
+    url(glyphicons-halflings-regular-e18bbf611f2a2e43afc071aa2f4e1512.ttf) format("truetype"), 
+    url(glyphicons-halflings-regular-89889688147bd7575d6327160d64e760.svg#glyphicons_halflingsregular) format("svg")
+} */
 
 .flatten-train .confirm-count {
     opacity: .6;
