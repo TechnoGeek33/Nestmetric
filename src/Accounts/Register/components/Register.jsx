@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { withRouter} from 'react-router-dom';
 
-class LoginUi extends Component {
+class RegisterUi extends Component {
 
     render() {
         return (
@@ -46,44 +47,20 @@ class LoginUi extends Component {
                               <span>My company</span>
                             </label>
                           </div>
-                          <div className="registration-captcha">
-                            <div className="form-group">
-                              <div className="g-recaptcha" data-sitekey="6LfyWRIUAAAAAHgaKUp8IPzWw-MTLcFs-g8OXgRq" />
-                              <noscript>
-                                &lt;div style="width: 302px; height: 352px;"&gt;
-                                &lt;div style="width: 302px; height: 352px; position: relative;"&gt;
-                                &lt;div style="width: 302px; height: 352px; position: absolute;"&gt;
-                                &lt;iframe src="https://www.google.com/recaptcha/api/fallback?k=6LfyWRIUAAAAAHgaKUp8IPzWw-MTLcFs-g8OXgRq"
-                                frameborder="0" scrolling="no"
-                                style="width: 302px; height:352px; border-style: none;"&gt;
-                                &lt;/iframe&gt;
-                                &lt;/div&gt;
-                                &lt;div style="width: 250px; height: 80px; position: absolute; border-style: none;
-                                bottom: 21px; left: 25px; margin: 0px; padding: 0px; right: 25px;"&gt;
-                                &lt;textarea id="g-recaptcha-response" name="g-recaptcha-response"
-                                class="recaptcha_challenge_field"
-                                style="width: 250px; height: 80px; border: 1px solid #c1c1c1;
-                                margin: 0px; padding: 0px; resize: none;" value=""&gt;
-                                &lt;/textarea&gt;
-                                &lt;input type='hidden' name='recaptcha_response_field' value='manual_challenge' /&gt;
-                                &lt;/div&gt;
-                                &lt;/div&gt;
-                                &lt;/div&gt;
-                              </noscript>
-                            </div>
-                          </div>
+                          
                           <input className="btn btn-primary" type="submit" defaultValue="Next" />
                           <div className="text-center">
                             <label className="form-footer">
                               Signing up signifies you have read and agree to our<br />
-                              <a href="http://www.monkeylearn.com/terms">Terms of Service</a>
-                              and <a href="http://www.monkeylearn.com/privacy">Privacy Policy</a>.
+                              <a href="#">Terms of Service</a>
+                              and <a href="#">Privacy Policy</a>.
                             </label>
                           </div>
                         </form>
                       </div>
                       <p className="page-footer">
-                        Already a member? <a href="https://app.monkeylearn.com/accounts/login/">Log in</a>
+                        Already a member? <a onClick={ () => { 
+                            this.props.history.push({ pathname: "/accounts/register"  }) }}>Log in</a>
                       </p>
                     </div>
         
@@ -91,4 +68,4 @@ class LoginUi extends Component {
     }
 }
 
-export default LoginUi;
+export default withRouter(RegisterUi);

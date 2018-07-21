@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter} from 'react-router-dom';
 
 class LoginUi extends Component {
 
@@ -36,9 +37,7 @@ class LoginUi extends Component {
                     <p className="page-footer">
                         Don’t have an account?
                         <a style={{ marginLeft: "6px" }} onClick={ () => { 
-                            this.props.history.push({ pathname: "/accounts/register"  })
-
-                        }}
+                            this.props.history.push({ pathname: "/accounts/register"  }) }}
                             >Sign Up for Free</a>
                     </p>
                 </div>
@@ -46,4 +45,4 @@ class LoginUi extends Component {
     }
 }
 
-export default LoginUi;
+export default withRouter(LoginUi);
