@@ -4,13 +4,38 @@ import { inject, observer } from 'mobx-react';
 
 class LoginUi extends Component {
 
-    HandleLogin = () => {
-        // console.log(input.id.id_username.value)
+    constructor(props) {
+        super(props);
+        this.store = this.props.store;
+        this.state = {
+            Alert: ''
+        }
     }
 
-    handelInput= (event) =>{
-        console.log(event.target.value)
-        
+    HandleLogin = () => {
+        if(this.store.LoginEmail.length !== 0 && this.store.LoginPassword.length !== 0 ){
+            if (this.store.LoginCheck() === true) {
+                this.props.history.push({ pathname: "/accounts/register" })
+            }
+            else {
+                this.setState({
+                    Alert: <div class="alert alert-warning">
+                        Your username and password didn't match. Please try again.
+                            </div>
+                })
+            }
+        }
+        else {
+            this.setState({
+                Alert: <div class="alert alert-warning">
+                    Your username and password can't Be Empty.
+                        </div>
+            })
+        }
+    }
+
+    handelInput(event, state) {
+        this.store[state] = event.target.value
     }
 
     render() {
@@ -21,18 +46,17 @@ class LoginUi extends Component {
                 <div className="minipanel">
                     <h1>Login</h1>
 
-                    <div class="alert alert-warning">
-                        Your username and password didn't match. Please try again.
-                    </div>
+                    {this.state.Alert}
 
-                    <form className="form float-label">
+
+                    <form onClick={(e) => { e.preventDefault(); }} className="form float-label">
                         <div className="form-group">
-                            <input onChange={(event) => this.handelInput(event)} className="form-control" id="id_username" maxLength="254" name="username" placeholder="Email address" type="text" required />
+                            <input onChange={(event) => this.handelInput(event, "LoginEmail")} className="form-control" id="id_username"  placeholder="Email address" type="text"  />
                             <label htmlFor="id_username" className="control-label">Email address</label>
                         </div>
                         <div className="form-group">
 
-                            <input className=" form-control" id="id_password" name="password" placeholder="Password" type="password" required />
+                            <input onChange={(event) => this.handelInput(event, "LoginPassword")} className=" form-control" id="id_password"  placeholder="Password" type="password"  />
                             <label htmlFor="id_password" className="control-label">Password</label>
                         </div>
                         <input type="hidden" name="next" value="" />
@@ -42,6 +66,7 @@ class LoginUi extends Component {
                         <input onClick={() => this.HandleLogin()} className="btn btn-primary" type="submit" value="Login" />
                     </form>
                 </div>
+
                 <p className="page-footer">
                     Don’t have an account?
                         <a style={{ marginLeft: "6px" }} onClick={() => {

@@ -3,6 +3,10 @@ import { withRouter} from 'react-router-dom';
 
 class RegisterUi extends Component {
 
+  handelInput(event, state) {
+    this.store[state] = event.target.value
+}
+
     render() {
         return (
            
@@ -11,28 +15,28 @@ class RegisterUi extends Component {
                       <a href="" className="brand" />
                       <div className="minipanel">
                         <h1>Sign Up</h1>
-                        <form method="POST" action="#" className="registration float-label">
-                          <input type="hidden" name="csrfmiddlewaretoken" defaultValue="1XArxaC1q8cPKsMAEXn1ELenRG2Z3BeBnfxFBRjSIspcX7Qwy55vdtq6UH1ByTff" />
+                        <form className="registration float-label">
+                          
                           <div className="form-group">
-                            <input className=" form-control" id="id_email" maxLength={254} name="email" placeholder="E-mail" type="email" required />
+                            <input onChange={(event) => this.handelInput(event, "RegEmail")} className=" form-control" id="id_email"  placeholder="E-mail" type="email"  />
                             <label htmlFor="id_email" className="control-label">E-mail</label>
                           </div>
                           <div className="row">
                             <div className="col-md-6">
                               <div className="form-group">
-                                <input className=" form-control" id="id_first_name" maxLength={30} name="first_name" placeholder="First Name" type="text" required />
+                                <input onChange={(event) => this.handelInput(event, "RegFirstName")} className=" form-control" id="id_first_name"  placeholder="First Name" type="text"  />
                                 <label htmlFor="id_first_name" className="control-label">First Name</label>
                               </div>
                             </div>
                             <div className="col-md-6">
                               <div className="form-group">
-                                <input className=" form-control" id="id_last_name" maxLength={30} name="last_name" placeholder="Last Name" required type="text" />
+                                <input onChange={(event) => this.handelInput(event, "RegLastName")} className=" form-control" id="id_last_name"  placeholder="Last Name" required type="text" />
                                 <label htmlFor="id_last_name" className="control-label">Last Name</label>
                               </div>
                             </div>
                           </div>
                           <div className="form-group">
-                            <input className=" form-control" id="id_password" maxLength={128} name="password" placeholder="Password" type="password" required />
+                            <input  onChange={(event) => this.handelInput(event, "RegPassword")} className=" form-control" id="id_password" placeholder="Password" type="password" />
                             <label htmlFor="id_password" className="control-label">Password</label>
                           </div>
                           <div className="form-group registation-account-type">
@@ -60,7 +64,7 @@ class RegisterUi extends Component {
                       </div>
                       <p className="page-footer">
                         Already a member? <a onClick={ () => { 
-                            this.props.history.push({ pathname: "/accounts/register"  }) }}>Log in</a>
+                            this.props.history.push({ pathname: "/accounts/login"}) }}>Log in</a>
                       </p>
                     </div>
         

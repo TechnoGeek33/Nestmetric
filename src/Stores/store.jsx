@@ -1,5 +1,5 @@
 import {
-    observable , decorate, action
+    observable, decorate, action
 } from 'mobx';
 // import axios from 'axios'
 // import {
@@ -7,20 +7,49 @@ import {
 // } from '../Services'
 class Store {
 
- Email = '';
- Password = '';
+    // Login values
+    LoginEmail = '';
+    LoginPassword = '';
 
- change() {
-    
- }
+    //  Registration Values
+    RegEmail = '';
+    RegPassword = '';
+    RegFirstName = '';
+    RegLastName = '';
+
+
+    LoginCheck() {
+        const email = "admin";
+        const password = 'admin';
+        if (this.LoginEmail === email) {
+            if (this.LoginPassword === password) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        else {
+            return false
+        }
+    }
+
+    RegistrationCheck() {
+
+    }
 
 }
 
 decorate(Store, {
-    Email : observable,
-    Password : observable,
-    change : action.bound
-  });
+    Email: observable,
+    Password: observable,
+    RegEmail : observable,
+    RegPassword : observable,
+    RegFirstName : observable,
+    RegLastName : observable,
+    LoginCheck: action.bound,
+    RegistrationCheck : action.bound,
+});
 
 const store = new Store();
 
