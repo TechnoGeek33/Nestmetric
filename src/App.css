@@ -10473,29 +10473,29 @@ li.sample-categories {
     margin-bottom: 15px
 }
 
-/* .cell-avatar.extractor {
-    background-image: url(extractor-e63ae8e45e1545a4714d96a35e39f1e0.svg)
+.cell-avatar.extractor {
+    background-image: url('/images/extractor-e63ae8e45e1545a4714d96a35e39f1e0.svg')
 }
 
 .cell-avatar.topic {
-    background-image: url(topic-d244d84738e80b9cca950c2cc6127971.svg)
+    background-image: url('/images/topic-d244d84738e80b9cca950c2cc6127971.svg')
 }
 
 .cell-avatar.sentiment {
-    background-image: url(sentiment-c6456ad4f14377dad8d51e1f0e9a4679.svg)
+    background-image: url('/images/sentiment-c6456ad4f14377dad8d51e1f0e9a4679.svg')
 }
 
 .cell-avatar.intent {
-    background-image: url(intent-8aeb28fb1eea4fefd0a084439e6937a3.svg)
+    background-image: url('/images/intent-8aeb28fb1eea4fefd0a084439e6937a3.svg')
 }
 
 .cell-avatar.twitter {
-    background-image: url(twitter-f58c861dd52d2f65724437bffb686654.svg)
+    background-image: url('/images/twitter-f58c861dd52d2f65724437bffb686654.svg')
 }
 
 .cell-avatar.news {
-    background-image: url(news-c6499bbd55d22c2d4533c9b826256ae8.svg)
-} */
+    background-image: url('/images/news-c6499bbd55d22c2d4533c9b826256ae8.svg')
+}
 
 .module-options {
     float: right;
@@ -14471,7 +14471,7 @@ h4.tree-template-name {
 
 .module-create-flatten .module-type {
     margin: auto;
-    width: 578px
+    width: 21.5%;
 }
 
 .module-create-flatten .module-type .panel-body {
