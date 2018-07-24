@@ -5,7 +5,9 @@ import { inject, observer } from 'mobx-react';
 import Login from './Accounts/Login';
 import Register from './Accounts/Register';
 import Test from './sample';
-import Explorer from './Main/Explorer';
+import Explore from './Main/Explore';
+import Dashboard from './Main/Dashboard';
+
 
 
 class App extends Component {
@@ -17,7 +19,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/accounts/login" render={(props) => { return <Login  {...props} /> }} />
               <Route exact path="/accounts/register" render={(props) => { return <Register  {...props} /> }} />
-              <Route exact path="/main/explorer" render={(props) => { return <Explorer  {...props} /> }} />
+              <Route exact path="/main/explore" render={(props) => { return <Explore  {...props} /> }} />
+              <Route exact path="/main/dashboard" render={(props) => { return <Dashboard  {...props} /> }} />
               <Route exact path="/test" render={(props) => { return <Test  {...props} /> }} />
               <Route exact path="/" render={() => { return <Redirect to="/accounts/login" /> }} />
             </Switch>

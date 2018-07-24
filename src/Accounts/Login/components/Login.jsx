@@ -15,7 +15,7 @@ class LoginUi extends Component {
     HandleLogin = () => {
         if(this.store.LoginEmail.length !== 0 && this.store.LoginPassword.length !== 0 ){
             if (this.store.LoginCheck() === true) {
-                this.props.history.push({ pathname: "/accounts/register" })
+                this.props.history.push({ pathname: "/main/explorer" })
             }
             else {
                 this.setState({
@@ -74,6 +74,7 @@ class LoginUi extends Component {
                     }}
                     >Sign Up for Free</a>
                 </p>
+
             </div>
         )
     }

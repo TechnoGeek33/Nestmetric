@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 
-
-
 class NavBar extends Component {
 
     render() {
 
         return (
-            <navbar params="user: user,
-            showShortcutsTrigger: showShortcutsTrigger">
-<div id="header-wrapper" data-bind="visible: appState.navbarVisible">
-<nav class="navbar navbar-default" role="navigation" data-bind="css: { 'with-notification': user() &amp;&amp; user().apiQueryLimitExceeded() }">
+          <div>
+          
+            <navbar>
+ {/* <div className="tail-spinner" /> */}
+
+
+<div id="header-wrapper">
+<nav class="navbar navbar-default">
 <div class="container-fluid">
 
 
 <div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#monkeylearn-navbar-collapse-1">
+<button type="button" class="navbar-toggle">
 <span class="sr-only">Toggle navigation</span>
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
@@ -28,18 +30,18 @@ class NavBar extends Component {
 </div>
 
 
-<div class="collapse navbar-collapse" id="monkeylearn-navbar-collapse-1">
+<div class="collapse navbar-collapse" >
 <ul class="nav navbar-nav navbar-right">
 
 
 <li class="create-model">
-<button type="button" class="btn btn-primary" data-bind="click: createModule">
+<button type="button" class="btn btn-primary">
   <span class="plus-white">+</span> Create Model
 </button>
 </li>
 
-<li class="dropdown" id="dlDropDown">
-<a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle user-dropdown" >
 <span class="typcn typcn-user-outline" aria-hidden="true"></span>
 </a>
 <ul class="dropdown-menu">
@@ -62,8 +64,6 @@ class NavBar extends Component {
 </li>
 
 </ul>
-
-
 <ul class="nav navbar-nav navigation-menu">
 <li data-bind="css: {active: currentPathObservable() === '/main/dashboard/'}" class="">
 <a href="/main/dashboard/">Dashboard</a>
@@ -79,15 +79,15 @@ class NavBar extends Component {
 </div>
 </div>
 </nav>
+</div>
+</navbar>
+
+<div className="container container-body">
+
 <div className="container-wrapper">
-<div className="main-content" data-bind="if: dataReady">
-{/* ko if: !user().emailIsVerified() && user().daysPendingForVerification() <= 0 */}{/* /ko */}
-{/* ko if: user().emailIsVerified() || user().daysPendingForVerification() > 0 */}
-<div className="tail-spinner" data-bind="visible: loading" style={{display: 'none'}} />
-{/* ko if: currentComponent() === 'explore' */}
-<explore params="user: user,
-                     loading: loading,
-                     isMyModules: false" data-bind="visible: !loading()" style={{}}>
+<div className="main-content">
+
+<explore >
 <div className="row margin-top-20">
 <div className="col-xs-6 col-xs-offset-3">
   <div className="right-inner-addon">
@@ -100,8 +100,7 @@ class NavBar extends Component {
 <div className="row module-categories" data-bind="foreach: $data">
   <div className="col-md-2 col-sm-4 col-xs-6">
     <div className="panel panel-default" data-bind="css: {selected: $component.selectedIndustry().indexOf(id) > -1}">
-      <div className="panel-body" data-bind="text: name,
-                 click: $component.selectIndustry.bind($component, id)">Classification</div>
+      <div className="panel-body" >Classification</div>
     </div>
   </div>
   <div className="col-md-2 col-sm-4 col-xs-6">
@@ -1167,25 +1166,7 @@ Results for "<span className="text-primary" data-bind="text: currentSearch()" />
 </div>
 </div>
 </div>
-
-{/* <upgrade-your-plan params="modalId: 'upgrade-your-plan-create-module',
-             text: upgradePlanText">
-<div class="modal fade upgrade-modal" data-bind="attr: {id: modalId}" tabindex="-1" role="dialog" aria-hidden="true" id="upgrade-your-plan-create-module">
-<div class="modal-dialog">
-<form method="POST" action="">
-<div class="modal-content">
-<div class="modal-body space-rocket" data-bind="css: {'space-rocket': useSpaceRocket}">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-<h1 class="upgrade-title">Upgrade your Plan</h1>
-<p class="description" data-bind="html: text"></p>
-<button data-bind="click: goToPricing" class="btn btn-primary">See Plans and Pricing</button>
 </div>
-</div>
-</form>
-</div>
-</div>
-</upgrade-your-plan> */}
-</navbar>
         )
     }
 }
