@@ -15,7 +15,7 @@ class LoginUi extends Component {
     HandleLogin = () => {
         if(this.store.LoginEmail.length !== 0 && this.store.LoginPassword.length !== 0 ){
             if (this.store.LoginCheck() === true) {
-                this.props.history.push({ pathname: "/accounts/register" })
+                this.props.history.push({ pathname: "/main/dashboard" })
             }
             else {
                 this.setState({

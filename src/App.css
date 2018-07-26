@@ -4705,10 +4705,6 @@ input[type=submit].btn-block {
     content: "\E05B"
 }
 
-.typcn-document-add:before {
-    content: "\E05C"
-}
-
 .typcn-document-delete:before {
     content: "\E05D"
 }
@@ -5381,10 +5377,6 @@ input[type=submit].btn-block {
     content: "\E104"
 }
 
-.typcn-tick:before {
-    content: "\E105"
-}
-
 .typcn-ticket:before {
     content: "\E106"
 }
@@ -5395,10 +5387,6 @@ input[type=submit].btn-block {
 
 .typcn-times-outline:before {
     content: "\E108"
-}
-
-.typcn-times:before {
-    content: "\E109"
 }
 
 .typcn-trash:before {

@@ -2,43 +2,30 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
 class Explorer extends Component {
+    // state = {
+    //     toggle = false
+    // }
+
+    handleDropdown() {
+        // if(this.state.toggle === false){
+        document.getElementsByClassName("dropdown-menu")[0].style.display = "block"
+        // }
+    }
 
     render() {
-        console.log(this.props)
+        
 
         return (
             <div>
 
-                <navbar>
-                    {/* <div classNameName="tail-spinner" /> */}
-
-
                     <div id="header-wrapper">
                         <nav className="navbar navbar-default">
                             <div className="container-fluid">
-
-
                                 <div className="navbar-header">
-                                    <button type="button" className="navbar-toggle">
-                                        <span className="sr-only">Toggle navigation</span>
-                                        <span className="icon-bar"></span>
-                                        <span className="icon-bar"></span>
-                                        <span className="icon-bar"></span>
-                                    </button>
-
-
-
-
-
-                                    <a className="navbar-brand" href="/main/dashboard/"></a>
-
+                                    <a className="navbar-brand" href="/main/dashboard/" style={{ height: "45px" }}></a>
                                 </div>
-
-
                                 <div className="collapse navbar-collapse" >
                                     <ul className="nav navbar-nav navbar-right">
-
-
                                         <li className="create-model">
                                             <button type="button" className="btn btn-primary"
                                                 onClick={() => {
@@ -50,7 +37,7 @@ class Explorer extends Component {
                                         </li>
 
                                         <li className="dropdown">
-                                            <a href="#" className="dropdown-toggle user-dropdown" >
+                                            <a className="dropdown-toggle user-dropdown" onClick={() => { this.handleDropdown()}} >
                                                 <span className="typcn typcn-user-outline" aria-hidden="true"></span>
                                             </a>
                                             <ul className="dropdown-menu">
@@ -81,51 +68,51 @@ class Explorer extends Component {
                             </div>
                         </nav>
                     </div>
-                </navbar>
+               
 
                 <div className="container container-body">
                     <div className="container-wrapper">
                         <div className="main-content">
 
                             <h3 className="margin-bottom-20">Recently Used</h3>
-                            <div data-bind="fastForEach: $data" class="row projects-grid">
+                            <div data-bind="fastForEach: $data" className="row projects-grid">
 
 
-                                <div class="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
+                                <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
                                     <div id="module-cl_KFXhoTdt">
-                                        <div class="panel panel-default" >
-                                            <div class="panel-body">
+                                        <div className="panel panel-default" >
+                                            <div className="panel-body">
 
-                                                <div class="cell-avatar topic">
+                                                <div className="cell-avatar topic">
                                                 </div>
-                                                <span class="btn-group module-options" >
-                                                    <span class="glyphicon glyphicon-option-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="options-WmPw5xm8O6h2PN" style={{display: "none"}}></span>
-                                                    <ul class="dropdown-menu">
+                                                <span className="btn-group module-options" >
+                                                    <span className="glyphicon glyphicon-option-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="options-WmPw5xm8O6h2PN" style={{ display: "none" }}></span>
+                                                    <ul className="dropdown-menu">
                                                         <li><a >Delete</a></li>
                                                     </ul>
                                                 </span>
                                                 <h3 data-bind="text: name">Profanity &amp; Abuse Detection</h3>
-                                                <p class="description">Identify profanity or abuse in user generated content....</p>
-                           
+                                                <p className="description">Identify profanity or abuse in user generated content....</p>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
+                                <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
                                     <div id="module-cl_sGdE8hD9">
-                                        <div class="panel panel-default" >
-                                            <div class="panel-body">
-                                                <div class="cell-avatar topic">
+                                        <div className="panel panel-default" >
+                                            <div className="panel-body">
+                                                <div className="cell-avatar topic">
                                                 </div>
-                                                <span class="btn-group module-options" >
-                                                    <span class="glyphicon glyphicon-option-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="options-ZWf0f3oeY4DJKq" style={{display: "none"}}></span>
-                                                    <ul class="dropdown-menu">
+                                                <span className="btn-group module-options" >
+                                                    <span className="glyphicon glyphicon-option-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="options-ZWf0f3oeY4DJKq" style={{ display: "none" }}></span>
+                                                    <ul className="dropdown-menu">
                                                         <li><a >Delete</a></li>
                                                     </ul>
                                                 </span>
                                                 <h3 data-bind="text: name">NPS SaaS Feedback Classifier</h3>
-                                                <p class="description" >Classify NPS comments for SaaS products into tags such as Ease of Use, Features, Pricing and more....</p>
-                                               
+                                                <p className="description" >Classify NPS comments for SaaS products into tags such as Ease of Use, Features, Pricing and more....</p>
+
                                             </div>
                                         </div>
                                     </div>
@@ -139,7 +126,7 @@ class Explorer extends Component {
                                     <h3 className="margin-bottom-20">My Models</h3>
                                 </div>
                                 <div className="col-xs-4">
-                                    <div className="data-search-bar module-search" style={{display: "none"}}>
+                                    <div className="data-search-bar module-search" style={{ display: "none" }}>
                                         <i className="glyphicon glyphicon-search"></i>
                                         <input type="search" id="filter-input" className="form-control" placeholder="Search..." />
                                     </div>
@@ -147,14 +134,14 @@ class Explorer extends Component {
                             </div>
 
                             <div className="alert alert-info alert-compact">
-                                You don't own any models. You can <a 
-                                 onClick={() => {
-                                    this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
-                                }}
+                                You don't own any models. You can <a
+                                    onClick={() => {
+                                        this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
+                                    }}
                                 >create one</a>.
                             </div>
 
-                            <div className="row text-center api-loading-gif" data-bind="visible: searching" style={{display: "none"}}>
+                            <div className="row text-center api-loading-gif" data-bind="visible: searching" style={{ display: "none" }}>
                                 <div className="logo-loader"></div>
                             </div>
                         </div>
