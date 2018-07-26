@@ -10,7 +10,7 @@ class RegisterUi extends Component {
     render() {
         return (
            
-              
+          <div className="unauth">
                     <div className="page-wrapper-wide">
                       <a href="" className="brand" />
                       <div className="minipanel">
@@ -66,6 +66,7 @@ class RegisterUi extends Component {
                         Already a member? <a onClick={ () => { 
                             this.props.history.push({ pathname: "/accounts/login"}) }}>Log in</a>
                       </p>
+                    </div>
                     </div>
         
         )

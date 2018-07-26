@@ -6561,6 +6561,8 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .navbar-brand {
+    background-image: url(/images/logo-4079ab3e00541e812b6ad0489fbdc6f9523fc1e190151ea3f592d669803fc495.png);
+    background-repeat: no-repeat;
     float: left;
     padding: 15px;
     font-size: 18px;
@@ -7004,7 +7006,6 @@ textarea.input-group-sm>.input-group-btn>.btn {
 .navbar-default .navbar-brand {
     width: 165px;
     height: 37px;
-    /* background: url(`{process.env.PUBLIC_URL}$'/images/logo-4079ab3e00541e812b6ad0489fbdc6f9523fc1e190151ea3f592d669803fc495.png'`) no-repeat; */
     background-size: contain;
     margin-top: 8px
 }
@@ -14684,13 +14685,13 @@ h4.tree-template-name {
     margin-left: 60px
 }
 
-/* .module-create-flatten .data-source .panel-body .excel {
-    background-image: url(xls-ba471f1aa7084c1087c36c90a06b955b.svg)
+.module-create-flatten .data-source .panel-body .excel {
+    background-image: url(/images/xls-ba471f1aa7084c1087c36c90a06b955b.svg)
 }
 
 .module-create-flatten .data-source .panel-body .csv {
-    background-image: url(csv-418ff64338c2a7776ccd5e1135b83b1f.svg)
-} */
+    background-image: url(/images/csv-418ff64338c2a7776ccd5e1135b83b1f.svg)
+}
 
 .module-create-flatten .choose-file {
     width: 488px;

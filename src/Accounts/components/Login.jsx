@@ -40,6 +40,7 @@ class LoginUi extends Component {
 
     render() {
         return (
+            <div className="unauth">
             <div className="page-wrapper">
                 <a href="" className="brand"></a>
 
@@ -74,6 +75,7 @@ class LoginUi extends Component {
                     }}
                     >Sign Up for Free</a>
                 </p>
+            </div>
             </div>
         )
     }

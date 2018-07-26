@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-
+import {withRouter} from 'react-router-dom'
 
 
 class ModelType extends Component {
 
     render() {
-
         return (
             <div>
             <h5 class="wizard-category-subtitle">New Model</h5>
             <h1 class="wizard-category-title">
-              Choose a Model Type
+              Create a Model
             </h1>
             <div class="row module-type">
               <div class="col-md-12">
@@ -22,9 +21,13 @@ class ModelType extends Component {
                     <div class="cell-avatar topic" data-bind="css: 'topic'">
                     </div>
                     <h1>Classifier</h1>
-                    <p>Classify texts into the tags that you define.</p>
+                    <p>Classify churn , purchase or credit score.</p>
                     <div class="text-center">
-                      <button type="button" class="btn btn-primary">Create Classifier</button>
+                      <button type="button" class="btn btn-primary"
+                      onClick={()=> {
+                        this.props.history.push({pathname : '/main/module-create/wizard/data-source/'})
+                      }}
+                      >Create Classifier</button>
                     </div>
                   </div>
                 </div>
@@ -36,4 +39,4 @@ class ModelType extends Component {
     }
 }
 
-export default ModelType;
+export default withRouter(ModelType);
