@@ -15,7 +15,7 @@ class LoginUi extends Component {
     HandleLogin = () => {
         if(this.store.LoginEmail.length !== 0 && this.store.LoginPassword.length !== 0 ){
             if (this.store.LoginCheck() === true) {
-                this.props.history.push({ pathname: "/main/explorer" })
+                this.props.history.push({ pathname: "/main/dashboard" })
             }
             else {
                 this.setState({
@@ -40,6 +40,7 @@ class LoginUi extends Component {
 
     render() {
         return (
+            <div className="unauth">
             <div className="page-wrapper">
                 <a href="" className="brand"></a>
 
@@ -74,7 +75,7 @@ class LoginUi extends Component {
                     }}
                     >Sign Up for Free</a>
                 </p>
-
+            </div>
             </div>
         )
     }
