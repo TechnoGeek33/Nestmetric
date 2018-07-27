@@ -7,15 +7,17 @@ import {
 
 class ChooseFile extends Component {
 state = {
-    filename : 'No file selected'
+    filename : 'No file selected',
+    uploadName : 'myfile'
 }
 
     handleSubmit(e) {
         e.preventDefault()
         var formData = new FormData();
         var imagefile = document.querySelector('#newfile');
+        formData.append(this.state.uploadName, imagefile.files[0]);
     this.setState({filename:imagefile.files[0].name})
-    
+     this.props.store.getExtractedData()
       this.props.history.push({pathname: '/main/module-create/wizard/preview/'})
     }
     render() {

@@ -1,6 +1,7 @@
 import {
     observable, decorate, action
 } from 'mobx';
+import SampleData from './SampleData'
 // import axios from 'axios'
 // import {
 //     getCookie
@@ -10,6 +11,7 @@ class Store {
     // Login values
     LoginEmail = '';
     LoginPassword = '';
+    ExtractedData = []
 
     //  Registration Values
     RegEmail = '';
@@ -38,6 +40,12 @@ class Store {
 
     }
 
+    getExtractedData () {
+        this.ExtractedData = SampleData;
+
+       
+    }
+
 }
 
 decorate(Store, {
@@ -47,6 +55,7 @@ decorate(Store, {
     RegPassword : observable,
     RegFirstName : observable,
     RegLastName : observable,
+    ExtractedData : observable,
     LoginCheck: action.bound,
     RegistrationCheck : action.bound,
 });

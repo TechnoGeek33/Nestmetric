@@ -8,7 +8,14 @@ class Explorer extends Component {
 
     handleDropdown() {
         // if(this.state.toggle === false){
-        document.getElementsByClassName("dropdown-menu")[0].style.display = "block"
+           
+            if ( document.getElementById('dlDropDown').className === "dropdown") {
+                document.getElementById('dlDropDown').className = "dropdown open"
+            }
+
+            else {
+                document.getElementById('dlDropDown').className = "dropdown"
+            }
         // }
     }
 
@@ -36,7 +43,7 @@ class Explorer extends Component {
                                         </button>
                                         </li>
 
-                                        <li className="dropdown">
+                                        <li className="dropdown" id="dlDropDown">
                                             <a className="dropdown-toggle user-dropdown" onClick={() => { this.handleDropdown()}} >
                                                 <span className="typcn typcn-user-outline" aria-hidden="true"></span>
                                             </a>
@@ -50,7 +57,7 @@ class Explorer extends Component {
                                                 </li>
 
                                                 <li>
-                                                    <a href="/accounts/logout/">
+                                                    <a href="/accounts/logout/" >
                                                         <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout  </a>
                                                 </li>
                                             </ul>

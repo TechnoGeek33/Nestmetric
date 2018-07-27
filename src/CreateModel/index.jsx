@@ -3,6 +3,7 @@ import ModelType from './components/ModelType'
 import Datasource from './components/DataSource'
 import ChooseFile from './components/ChooseFile'
 import Preview from './components/Preview'
+import { inject, observer } from 'mobx-react';
 
 class CreateModel extends Component {
 
@@ -13,9 +14,9 @@ class CreateModel extends Component {
         case 'data-source':
         return <Datasource/>;
         case 'choose-file':
-        return <ChooseFile/>;
+        return <ChooseFile store={this.props.store}/>;
         case 'preview':
-        return <Preview/>;
+        return <Preview store={this.props.store}/>;
         default : 
         return <ModelType/>
     }
@@ -44,4 +45,4 @@ class CreateModel extends Component {
   }
 }
 
-export default CreateModel;
+export default inject('store')(observer(CreateModel));
