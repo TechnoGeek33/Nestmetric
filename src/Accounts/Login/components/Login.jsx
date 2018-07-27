@@ -44,7 +44,7 @@ class LoginUi extends Component {
                 <a href="" className="brand"></a>
 
                 <div className="minipanel">
-                    <h1>Login</h1>
+                    <h1>Login from ahaioshdoiujhasiod</h1>
 
                     {this.state.Alert}
 
