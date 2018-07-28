@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 
-let dummyarray = [] ;
+let usethisColumn = [] ;
+let otherData = [];
 
 class Preview extends Component {
   state = {
-    TableComponent : ''
+    TableComponent : '',
+    otherDataComp: ''
   }
-      componentWillMount () {
+      componentDidMount () {
             this.props.store.getExtractedData()
-      this.printColums()
+      this.printColums();
 
       }
 
       printColums = () => {
-
+console.log("chal gaya")
             for(var i = 1; i <= Object.keys(this.props.store.ExtractedData[0]).length; i++) {
-              dummyarray.push ( <th id={Math.random()}>
+              usethisColumn.push ( <th id={Math.random()}>
                     <div className="checkbox">
                       <label>
                         <div className="custom-checkbox clickable" >
@@ -26,10 +28,26 @@ class Preview extends Component {
                       </label>
                     </div>
                   </th> )
+
+            } 
+
+            for(var i = 0; i <= this.props.store.ExtractedData.length; i++) {
+
+              console.log(this.props.store.ExtractedData[i] === undefined ? null:this.props.store.ExtractedData[i].GroupName )
+              
+            otherData.push(
+             
+              <tr  className="disabled">
+              <td className="td-index">{i + 1}</td>
+              <td  className="td-index">{this.props.store.ExtractedData[i] === undefined ? null:this.props.store.ExtractedData[i].GroupName}</td>
+       
+            </tr>  )
+
             }
 
             this.setState({
-              TableComponent : dummyarray
+              TableComponent : usethisColumn,
+              otherDataComp: otherData
             })
 
           
@@ -72,26 +90,8 @@ class Preview extends Component {
                           
                                 </th>
                                 {this.state.TableComponent}
-                                   
-          {this.props.store.ExtractedData.map( (data , index) => {
-      
-               return (
-                 <div>
-                 <tr> 
-                   <td> 
-                      {index + 1}
-                   </td>
-                   </tr>
-                  
-                 <tr  className="disabled">
-                    <td  className="td-index">{data.GroupName}</td>
-            
-                  </tr> 
-                  </div>
-
-               )
-                
-          })}   
+                                  
+         {this.state.otherDataComp}
          
                   
               <tr>
