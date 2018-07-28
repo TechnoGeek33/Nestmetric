@@ -1,42 +1,45 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 
+let dummyarray = [] ;
 
 class Preview extends Component {
+  state = {
+    TableComponent : ''
+  }
       componentWillMount () {
             this.props.store.getExtractedData()
+      this.printColums()
+
       }
 
       printColums = () => {
-            console.log(Object.keys(this.props.store.ExtractedData[0]).length)
+
             for(var i = 1; i <= Object.keys(this.props.store.ExtractedData[0]).length; i++) {
-                  var data = document.createElement('th');
-                  data.className = "";
-                  data.innerHTML= `
-                  <div className="checkbox">
-                  <label>
-                    
-        <div className="custom-checkbox clickable" >
-          <span className="typcn typcn-tick" data-bind="visible: checked" style={{display: "none"}}>
-        </span></div>
-        
-                    <span >Use this column</span>
-                  </label>
-                </div>
-                  `;
-                  var data = document.createElement('div');
+              dummyarray.push ( <th id={Math.random()}>
+                    <div className="checkbox">
+                      <label>
+                        <div className="custom-checkbox clickable" >
+                          <span className="typcn typcn-tick" data-bind="visible: checked" style={{ display: "none" }}>
+                          </span></div>
+                        <span >Use this column</span>
+                      </label>
+                    </div>
+                  </th> )
             }
-            
-            
+
+            this.setState({
+              TableComponent : dummyarray
+            })
+
+          
       }
 
 
     render() {
-    
-      //     console.log(this.props.store.ExtractedData)
+  
         return (
             <div data-bind="component: wizard.getCurrentComponent()">
-         
             <h5 className="wizard-category-subtitle">Preview</h5>
             <h1 className="wizard-category-title">
               Select Texts
@@ -68,51 +71,45 @@ class Preview extends Component {
                           <th>
                           
                                 </th>
-                              {Object.keys(this.props.store.ExtractedData[0].length)}
-                                 <th>
-                          <div className="checkbox">
-                  <label>
-                    
-        <div className="custom-checkbox clickable" >
-          <span className="typcn typcn-tick" data-bind="visible: checked" style={{display: "none"}}>
-        </span></div>
-        
-                    <span >Use this column</span>
-                  </label>
-                </div>
-                                </th>
-                         
-          
-          {/* {this.props.store.ExtractedData.map( d => {
-                console.log(Object.keys(d).length)
+                                {this.state.TableComponent}
+                                   
+          {this.props.store.ExtractedData.map( (data , index) => {
+      
                return (
+                 <div>
+                 <tr> 
+                   <td> 
+                      {index + 1}
+                   </td>
+                   </tr>
                   
-              
-                
+                 <tr  className="disabled">
+                    <td  className="td-index">{data.GroupName}</td>
+            
+                  </tr> 
+                  </div>
 
                )
                 
-          })}      */}
+          })}   
          
-                  {/* <tr  className="disabled">
-                    <td  className="td-index">1</td>
-            
-                  </tr> */}
+                  
               <tr>
                 <td className="td-index"></td>
                 <td className="text-center not-clickable" data-bind="text: 'Showing ' + Math.min(10, table().length) + ' of ' + rowsLength() + ' rows',
                                attr: { colspan: tableHeaders().length }" colspan="10">Showing 10 of 11 rows</td>
               </tr>
-            </tbody></table>
+            </tbody>
+            </table>
           </div>
         
               
             </div>
             <div className="text-center margin-top-20">
-              <button type="button" className="btn btn-primary continue" data-bind="enable: enabledContinue, click: upload" disabled="">Continue</button>
+              <button type="button" className="btn btn-primary continue" data-bind="enable: enabledContinue, click: upload" disabled="disabled">Continue</button>
             </div>
           
-            <alert params="modal_id: 'alert-duplicated-samples',
+            {/* <alert params="modal_id: 'alert-duplicated-samples',
                            modal_title: 'Upload Confirmation',
                            modal_info: uploadSamplesErrorMessage,
                            dismissNotAllowed: true,
@@ -136,9 +133,9 @@ class Preview extends Component {
                     </div>
                 </div>
               </div>
-          </alert>
+          </alert> */}
           
-            <alert params="modal_id: 'alert-no-samples-uploaded',
+            {/* <alert params="modal_id: 'alert-no-samples-uploaded',
                            modal_title: 'No data uploaded',
                            modal_info: uploadSamplesErrorMessage,
                            onOk: function() {setTimeout(function() { uploadedTable([]); }, 700)}">
@@ -161,9 +158,9 @@ class Preview extends Component {
                     </div>
                 </div>
               </div>
-          </alert>
+          </alert> */}
           
-            <loading params="id: 'uploading-data',
+            {/* <loading params="id: 'uploading-data',
                              title: 'Uploading Data',
                              progress: uploadingProgress">
               <div className="modal fade" data-bind="attr: {id: id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false" id="uploading-data">
@@ -183,9 +180,9 @@ class Preview extends Component {
                       </div>
                   </div>
               </div>
-          </loading>
+          </loading> */}
           
-            <loading params="id: 'importing-data',
+            {/* <loading params="id: 'importing-data',
                              title: 'Importing Data',
                              progress: importingProgress">
               <div className="modal fade" data-bind="attr: {id: id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false" id="importing-data">
@@ -205,7 +202,7 @@ class Preview extends Component {
                       </div>
                   </div>
               </div>
-          </loading>
+          </loading> */}
           </div>
         )
     }

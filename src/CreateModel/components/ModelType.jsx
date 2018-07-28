@@ -14,7 +14,9 @@ class ModelType extends Component {
             <div class="row module-type">
               <div class="col-md-12">
                 <div class="panel panel-default">
-                  <div class="panel-body">
+                  <div class="panel-body" onClick={()=> {
+                        this.props.history.push({pathname : '/main/module-create/wizard/data-source/'})
+                      }}>
                     <div class="triangle-topleft">
                       <span class="typcn typcn-tick"></span>
                     </div>
@@ -24,9 +26,7 @@ class ModelType extends Component {
                     <p>Classify churn , purchase or credit score.</p>
                     <div class="text-center">
                       <button type="button" class="btn btn-primary"
-                      onClick={()=> {
-                        this.props.history.push({pathname : '/main/module-create/wizard/data-source/'})
-                      }}
+                     
                       >Create Classifier</button>
                     </div>
                   </div>

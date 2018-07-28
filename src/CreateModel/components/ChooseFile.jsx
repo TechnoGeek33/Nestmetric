@@ -36,8 +36,9 @@ state = {
                 <input type="file" name="myfile" id="newfile" onInput={(e) => this.handleSubmit(e)} />
               </div>
               <p class="margin-top-10">Don’t you have one? Try a sample dataset from our <a data-bind="click: goToSampleLibrary">Sample Library</a></p>
-              <div class="alert alert-danger" data-bind="visible: errorMessage, text: errorMessage" style={{display: "none"}}></div>
+              <div class="alert alert-danger">There was an error while reading the file. Please, make sure that your csv file is correctly formated.</div>
             </div>
+            
           </div>
         )
     }
