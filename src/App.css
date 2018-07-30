@@ -300,7 +300,9 @@ body {
     font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333
+    color: #333;
+    background-color: #006;
+
 }
 
 button,

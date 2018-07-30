@@ -42,8 +42,6 @@ class Store {
 
     getExtractedData () {
         this.ExtractedData = SampleData;
-
-       
     }
 
 }
