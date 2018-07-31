@@ -30,6 +30,10 @@ class Preview extends Component {
     document.getElementById(elementid).className = ""
     // document.querySelector(`.${keyName}`).className= keyName
   }
+  handelClick(elementid) {
+    document.getElementById(elementid).className = "highlighted selected";
+
+  }
 
 
 
@@ -38,11 +42,13 @@ class Preview extends Component {
       dummyarray.push(
         <th id={`th${index}`} key={Math.random()}
           onMouseOver={() => { this.handleMouseOver(`th${index}`, header) }}
-          onMouseOut={() => this.handleMouseOut(`th${index}`, header)}>
+          onMouseOut={() => this.handleMouseOut(`th${index}`, header)}
+          onClick = { () => this.handelClick(`th${index}`)}
+          >
           <div className="checkbox">
             <label>
               <div className="custom-checkbox clickable" >
-                <span className="typcn typcn-tick" data-bind="visible: checked" style={{ display: "none" }}>
+                <span  className="typcn typcn-tick" style={{ display: "none" }}>
                 </span>
               </div>
               <span >Use this column</span>
@@ -69,20 +75,20 @@ class Preview extends Component {
         <h5 className="wizard-subtitle">Select the columns with your texts. Multiple selected columns will be concatenated</h5>
         <div className="preview">
           <div className="discard-first-row">
-              <div className="row input-fields">
-                <div className="">
-                  <div className="checkbox">
-                    <label>
-                      <checkbox>
-                        <div className="custom-checkbox clickable" >
-                          <span className="typcn typcn-tick">
-                          </span></div>
-                      </checkbox>
-                      <span >Discard first row</span>
-                    </label>
-                  </div>
+            <div className="row input-fields">
+              <div className="">
+                <div className="checkbox">
+                  <label>
+                    <checkbox>
+                      <div className="custom-checkbox clickable" >
+                        <span className="typcn typcn-tick">
+                        </span></div>
+                    </checkbox>
+                    <span >Discard first row</span>
+                  </label>
                 </div>
               </div>
+            </div>
           </div>
           <div className="table-responsive table-preview-flatten">
             <table className="table">
@@ -129,12 +135,12 @@ class Preview extends Component {
           </div>
         </div>
         <div className="text-center margin-top-20">
-          <button type="button" 
-          onClick={() => {
-            this.props.history.push({ pathname: "/main/module-create/wizard/select-algorithm" })
-          }} 
-          className="btn btn-primary continue" 
-          disabled="">Continue</button>
+          <button type="button"
+            onClick={() => {
+              this.props.history.push({ pathname: "/main/module-create/wizard/select-algorithm" })
+            }}
+            className="btn btn-primary continue"
+            disabled="">Continue</button>
         </div>
 
         {/* <alert params="modal_id: 'alert-duplicated-samples',

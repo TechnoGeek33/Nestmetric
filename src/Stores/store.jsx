@@ -5,24 +5,30 @@ import SampleData from './SampleData'
 
 class Store {
     pageCount = 0;
+    ExtractedData = [];
 
-    // Login values
-    LoginEmail = '';
-    LoginPassword = '';
-    ExtractedData = []
+    // Login Object
+    Login = {
+        Email: '',
+        Password: '',
+    }
 
-    //  Registration Values
-    RegEmail = '';
-    RegPassword = '';
-    RegFirstName = '';
-    RegLastName = '';
+    //  Registration Object
+    Registration = {
+        Email: '',
+        Password: '',
+        ConfirmPassword: '',
+        FirstName: '',
+        LastName: ''
+    }
+
 
 
     LoginCheck() {
         const email = "admin";
         const password = 'admin';
-        if (this.LoginEmail === email) {
-            if (this.LoginPassword === password) {
+        if (this.Login.Email === email) {
+            if (this.Login.Password === password) {
                 return true
             }
             else {
@@ -35,26 +41,23 @@ class Store {
     }
 
     RegistrationCheck() {
+        return true
 
     }
 
-    getExtractedData () {
+    getExtractedData() {
         this.ExtractedData = SampleData;
     }
 
 }
 
 decorate(Store, {
-    pageCount: observable,
-    Email: observable,
-    Password: observable,
-    RegEmail : observable,
-    RegPassword : observable,
-    RegFirstName : observable,
-    RegLastName : observable,
-    ExtractedData : observable,
+    Login: observable,
     LoginCheck: action.bound,
-    RegistrationCheck : action.bound,
+    Registration: observable,
+    RegistrationCheck: action.bound,
+    ExtractedData: observable,
+    pageCount: observable,
 });
 
 const store = new Store();

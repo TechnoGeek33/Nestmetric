@@ -13,7 +13,7 @@ class LoginUi extends Component {
     }
 
     HandleLogin = () => {
-        if(this.store.LoginEmail.length !== 0 && this.store.LoginPassword.length !== 0 ){
+        if(this.store.Login.Email.length !== 0 && this.store.Login.Password.length !== 0 ){
             if (this.store.LoginCheck() === true) {
                 this.props.history.push({ pathname: "/main/dashboard" })
             }
@@ -35,7 +35,7 @@ class LoginUi extends Component {
     }
 
     handelInput(event, state) {
-        this.store[state] = event.target.value
+        this.store.Login[state] = event.target.value
     }
 
     render() {
@@ -52,12 +52,12 @@ class LoginUi extends Component {
 
                     <form onClick={(e) => { e.preventDefault(); }} className="form float-label">
                         <div className="form-group">
-                            <input onChange={(event) => this.handelInput(event, "LoginEmail")} className="form-control" id="id_username"  placeholder="Email address" type="text"  />
+                            <input onChange={(event) => this.handelInput(event, "Email")} className="form-control" id="id_username"  placeholder="Email address" type="text"  />
                             <label htmlFor="id_username" className="control-label">Email address</label>
                         </div>
                         <div className="form-group">
 
-                            <input onChange={(event) => this.handelInput(event, "LoginPassword")} className=" form-control" id="id_password"  placeholder="Password" type="password"  />
+                            <input onChange={(event) => this.handelInput(event, "Password")} className=" form-control" id="id_password"  placeholder="Password" type="password"  />
                             <label htmlFor="id_password" className="control-label">Password</label>
                         </div>
                         <input type="hidden" name="next" value="" />

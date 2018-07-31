@@ -22,7 +22,7 @@ class ModelType extends Component {
           Create a Model
             </h1>
         <div className="row module-type">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <div className="panel panel-default">
               <div className="panel-body" onClick={() => {
                 this.props.history.push({ pathname: '/main/module-create/wizard/data-source/' })
