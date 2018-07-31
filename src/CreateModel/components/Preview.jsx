@@ -1,40 +1,50 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import { inject, observer } from 'mobx-react';
 
 let dummyarray = [];
 
 class Preview extends Component {
-  state = {
-    TableComponent: ''
+
+  constructor(props) {
+    super(props);
+    this.store = this.props.store;
+    this.state = {
+      TableComponent: ''
+    }
   }
+
   componentWillMount() {
     this.props.store.getExtractedData()
-    this.printColums()
+    this.printColums();
+    // To keep track of ProgressBar
+    this.store.pageCount = 4;
 
   }
-  handleMouseOver  (elementid, keyName ) {
+
+  handleMouseOver(elementid, keyName) {
     document.getElementById(elementid).className = "highlighted";
-    document.querySelector(`.${keyName}`).className= "highlighted"
+    // document.querySelector(`.${keyName}`).className= "highlighted"
   }
-  handleMouseOut  (elementid,keyName) {
+  handleMouseOut(elementid, keyName) {
     document.getElementById(elementid).className = ""
-    document.querySelector(`.${keyName}`).className= keyName
+    // document.querySelector(`.${keyName}`).className= keyName
   }
 
 
 
   printColums = () => {
-    Object.keys(this.props.store.ExtractedData[0]).forEach((header , index) => {
+    Object.keys(this.props.store.ExtractedData[0]).forEach((header, index) => {
       dummyarray.push(
-        <th  id={`th${index}`} key={Math.random()} 
-        onMouseOver={() => {this.handleMouseOver(`th${index}`, header)}} 
-        onMouseOut={() => this.handleMouseOut(`th${index}`, header)}>
+        <th id={`th${index}`} key={Math.random()}
+          onMouseOver={() => { this.handleMouseOver(`th${index}`, header) }}
+          onMouseOut={() => this.handleMouseOut(`th${index}`, header)}>
           <div className="checkbox">
             <label>
               <div className="custom-checkbox clickable" >
                 <span className="typcn typcn-tick" data-bind="visible: checked" style={{ display: "none" }}>
                 </span>
-                </div>
+              </div>
               <span >Use this column</span>
             </label>
           </div>
@@ -59,40 +69,38 @@ class Preview extends Component {
         <h5 className="wizard-subtitle">Select the columns with your texts. Multiple selected columns will be concatenated</h5>
         <div className="preview">
           <div className="discard-first-row">
-            <div className="row input-fields">
-              <div className="col-xs-6 col-xs-offset-0" data-bind="css: 'col-xs-offset-' + offset">
-                <div className="checkbox">
-                  <label>
-
-                    <div className="custom-checkbox clickable" >
-                      <span className="typcn typcn-tick" data-bind="visible: checked">
-                      </span></div>
-
-                    <span>Discard first row</span>
-                  </label>
-                  <span className="glyphicon glyphicon-question-sign question-sign-tooltip" style={{ display: "none" }}></span>
+              <div className="row input-fields">
+                <div className="">
+                  <div className="checkbox">
+                    <label>
+                      <checkbox>
+                        <div className="custom-checkbox clickable" >
+                          <span className="typcn typcn-tick">
+                          </span></div>
+                      </checkbox>
+                      <span >Discard first row</span>
+                    </label>
+                  </div>
                 </div>
               </div>
-            </div>
-
           </div>
           <div className="table-responsive table-preview-flatten">
             <table className="table">
               <tbody >
                 <tr>
-                <th>
-                </th>
-                {this.state.TableComponent}
+                  <th>
+                  </th>
+                  {this.state.TableComponent}
                 </tr>
                 {/* Header or first column */}
                 <tr>
                   <td className="td-index">1</td>
                   {
-                    Object.keys(this.props.store.ExtractedData[0]).map((header) => {
+                    Object.keys(this.props.store.ExtractedData[0]).map((header, index) => {
                       return (
-                       
-                          <td className="td-index">{header}</td>
-                        
+
+                        <td key={Math.random()} className="td-index">{header}</td>
+
                       )
                     })}
                 </tr>
@@ -102,14 +110,14 @@ class Preview extends Component {
                 {this.props.store.ExtractedData.map((data, index) => {
 
                   return (<tr>
-                    <td className="td-index">{index + 2}</td>
+                    <td key={Math.random()} className="td-index">{index + 2}</td>
                     {
                       Object.keys(this.props.store.ExtractedData[0]).map((header) => {
                         return (
-                          <React.Fragment>
 
-                            <td className = {header}>{data[header]}</td>
-                          </React.Fragment>
+
+                          <td key={Math.random()} className={header}>{data[header]}</td>
+
                         )
                       })
                     }
@@ -121,7 +129,12 @@ class Preview extends Component {
           </div>
         </div>
         <div className="text-center margin-top-20">
-          <button type="button" className="btn btn-primary continue" data-bind="enable: enabledContinue, click: upload" disabled="disabled">Continue</button>
+          <button type="button" 
+          onClick={() => {
+            this.props.history.push({ pathname: "/main/module-create/wizard/select-algorithm" })
+          }} 
+          className="btn btn-primary continue" 
+          disabled="">Continue</button>
         </div>
 
         {/* <alert params="modal_id: 'alert-duplicated-samples',
@@ -223,4 +236,4 @@ class Preview extends Component {
   }
 }
 
-export default withRouter(Preview);
+export default withRouter(inject('store')(observer(Preview)));

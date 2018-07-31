@@ -2,11 +2,9 @@ import {
     observable, decorate, action
 } from 'mobx';
 import SampleData from './SampleData'
-// import axios from 'axios'
-// import {
-//     getCookie
-// } from '../Services'
+
 class Store {
+    pageCount = 0;
 
     // Login values
     LoginEmail = '';
@@ -47,6 +45,7 @@ class Store {
 }
 
 decorate(Store, {
+    pageCount: observable,
     Email: observable,
     Password: observable,
     RegEmail : observable,

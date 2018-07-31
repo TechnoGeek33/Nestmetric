@@ -10,18 +10,18 @@ class Logout extends Component {
     render() {
         return (
             <div className="unauth">
-            <div class="page-wrapper">
-            <a href="/" class="brand"></a>
+            <div className="page-wrapper">
+            <a href="/" className="brand"></a>
         
-            <div class="minipanel">
+            <div className="minipanel">
               
           <h1>Good bye!</h1>
-          <p class="page-footer">You've been successfully logged out.</p>
+          <p className="page-footer">You've been successfully logged out.</p>
         
             </div>
         
             
-          <p class="page-footer">
+          <p className="page-footer">
             Back to <a href="/accounts/login/">login</a>
           </p>
         

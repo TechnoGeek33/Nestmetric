@@ -32,7 +32,3 @@ class App extends Component {
 }
 
 export default  inject('store')(observer(App))
-// compose(
-//   observer,
-//   inject('store')
-// )(App);

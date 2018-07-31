@@ -19,7 +19,7 @@ class LoginUi extends Component {
             }
             else {
                 this.setState({
-                    Alert: <div class="alert alert-warning">
+                    Alert: <div className="alert alert-warning">
                         Your username and password didn't match. Please try again.
                             </div>
                 })
@@ -27,7 +27,7 @@ class LoginUi extends Component {
         }
         else {
             this.setState({
-                Alert: <div class="alert alert-warning">
+                Alert: <div className="alert alert-warning">
                     Your username and password can't Be Empty.
                         </div>
             })
