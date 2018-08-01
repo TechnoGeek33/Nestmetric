@@ -30,7 +30,7 @@ componentWillMount() {
             </div>
           
             <div className="row module-type data-source" data-bind="foreach: options, visible: tabSelected() === 'popular'">
-              <div className="col-md-3">
+              <div className="col-md-6">
                 <div 
                 onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/choose-file/'})}}
                 
@@ -45,7 +45,7 @@ componentWillMount() {
                 </div>
               </div>
             
-              <div className="col-md-3">
+              <div className="col-md-6">
                 <div
                 onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/choose-file/'})}}
                 

@@ -2718,6 +2718,7 @@ input.list-item-select {
 }
 
 .btn {
+    margin-left: 5px;
     display: inline-block;
     margin-bottom: 0;
     font-weight: 400;
@@ -14462,8 +14463,8 @@ h4.tree-template-name {
 }
 
 .module-create-flatten .module-type {
-    margin: auto;
-    width: 578px;
+    margin: 0 auto;
+    width: 320px;
 }
 
 .module-create-flatten .module-type .panel-body {
@@ -14476,7 +14477,7 @@ h4.tree-template-name {
 }
 
 .module-create-flatten .module-type .panel-body:hover {
-    border-radius: 6px;
+    border-radius: 3px;
     box-shadow: 0 15px 30px 0 rgba(119, 135, 147, .2), 0 1px 4px 0 rgba(119, 135, 147, .1);
     border: 2px solid transparent;
     background-image: linear-gradient(#fff, #fff), linear-gradient(325deg, #01befe, #008bff);
@@ -14603,7 +14604,7 @@ h4.tree-template-name {
 }
 
 .module-create-flatten .tabs {
-    width: 800px;
+    width: 55%;
     margin: auto;
     text-align: center;
     border-bottom: 1px solid rgba(127, 138, 150, .12);
@@ -14613,7 +14614,7 @@ h4.tree-template-name {
 }
 
 .module-create-flatten .tabs .tab {
-    margin-right: 36px;
+    /* margin-right: 36px; */
     font-size: 16px;
     letter-spacing: -.2px;
     color: #6a7b8d;
@@ -14627,7 +14628,7 @@ h4.tree-template-name {
 }
 
 .module-create-flatten .data-source {
-    width: 800px
+    width: 400px
 }
 
 .module-create-flatten .data-source .panel-body {
@@ -14673,7 +14674,7 @@ h4.tree-template-name {
 .module-create-flatten .data-source .panel-body .image {
     width: 50px;
     height: 50px;
-    margin-left: 60px
+    margin: 0 auto;
 }
 
 .module-create-flatten .data-source .panel-body .excel {

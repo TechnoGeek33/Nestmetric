@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
-import ModelType from './components/ModelType'
+import ModuleType from './components/ModuleType'
 import Datasource from './components/DataSource'
 import ChooseFile from './components/ChooseFile'
 import Preview from './components/Preview'
 import SelectFeatures from './components/SelectFeatures'
 import SelectAlgorithm from './components/SelectAlgorithm'
+import NameYourModule from './components/NameYourModule'
 import { increaseProgressBar } from '../Service'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import ErrorDialog from '../ErrorDialog'
 
 class CreateModel extends Component {
+
+  CloseBtnCheck = () => {
+    if(this.props.history.location.pathname === "/main/module-create/wizard/name-your-module" )
+    { 
+     return <ErrorDialog/>
+      // console.log("from if")
+    }
+    else{
+    this.props.history.push({ pathname: "/main/dashboard" })
+      
+    }
+
+  }
 
   renderSwitch() {
     switch (this.props.match.params.childRoute) {
       case 'choose-module-type':
-        return <ModelType/>;
+        return <ModuleType />;
       case 'data-source':
-        return <Datasource/>;
+        return <Datasource />;
       case 'choose-file':
-        return <ChooseFile/>;
+        return <ChooseFile />;
       case 'preview':
-        return <Preview/>;
+        return <Preview />;
       case 'features':
-        return <SelectFeatures/>;
-        case 'select-algorithm':
-        return <SelectAlgorithm/>;
+        return <SelectFeatures />;
+      case 'select-algorithm':
+        return <SelectAlgorithm />;
+      case 'name-your-module':
+        return <NameYourModule />;
       default:
-        return <ModelType />
+        return <ModuleType />
     }
   }
 
@@ -55,9 +72,7 @@ class CreateModel extends Component {
               }} className="typcn typcn-arrow-left clickable"
               // style={{ display: "none" }}
               ></span>
-              <span onClick={() => {
-                this.props.history.push({ pathname: "/main/dashboard" })
-              }} className="typcn typcn-times clickable"></span>
+              <span onClick={this.CloseBtnCheck} className="typcn typcn-times clickable"></span>
             </div>
             {this.renderSwitch()}
           </div>

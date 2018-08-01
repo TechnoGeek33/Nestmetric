@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
-class ModelType extends Component {
+class ModuleType extends Component {
 
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class ModelType extends Component {
           Create a Model
             </h1>
         <div className="row module-type">
-          <div className="col-md-6">
+          <div className="col-md-12">
             <div className="panel panel-default">
               <div className="panel-body" onClick={() => {
                 this.props.history.push({ pathname: '/main/module-create/wizard/data-source/' })
@@ -51,4 +51,4 @@ class ModelType extends Component {
   }
 }
 
-export default withRouter(inject('store')(observer(ModelType)))
+export default withRouter(inject('store')(observer(ModuleType)))
