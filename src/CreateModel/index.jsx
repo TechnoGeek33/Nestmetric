@@ -9,21 +9,24 @@ import NameYourModule from './components/NameYourModule'
 import { increaseProgressBar } from '../Service'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import ErrorDialog from '../ErrorDialog'
 
 class CreateModel extends Component {
-
   CloseBtnCheck = () => {
-    if(this.props.history.location.pathname === "/main/module-create/wizard/name-your-module" )
-    { 
-     return <ErrorDialog/>
-      // console.log("from if")
+    if (this.props.match.params.childRoute === "name-your-module") {
+      document.getElementById("delete-project").style.display = "block"
+      document.getElementById("delete-project").className = "modal fade in"
+      document.getElementById("overlay").className = "modal-backdrop fade in"
     }
-    else{
-    this.props.history.push({ pathname: "/main/dashboard" })
-      
+    else {
+      this.props.history.push({ pathname: "/main/dashboard" })
     }
 
+  }
+
+  onClocse =() => {
+    document.getElementById("delete-project").style.display = "none"
+    document.getElementById("delete-project").className = "modal fade"
+    document.getElementById("overlay").className = "fade in"
   }
 
   renderSwitch() {
@@ -67,6 +70,7 @@ class CreateModel extends Component {
               </div>
             </div>
             <div className="navigation-bar">
+
               <span onClick={() => {
                 this.props.history.goBack()
               }} className="typcn typcn-arrow-left clickable"
@@ -77,6 +81,39 @@ class CreateModel extends Component {
             {this.renderSwitch()}
           </div>
         </div>
+
+        {/* Error Dialog for hititng cross button */}
+        <div>
+          <div className="modal fade" aria-labelledby="myModalLabel" aria-hidden="true" id="delete-project" style={{ display: "none", paddingLeft: "0px" }}>
+            <div className="modal-dialog" style={{ left: "0" }}>
+              <form id="delete-project-form">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 className="modal-title" id="myModalLabel" data-bind="text: modal_title">Stop Creation Wizard</h4>
+                  </div>
+
+                  <div className="modal-body">
+                    <div className="alert alert-danger">
+                      <strong>Warning:</strong>
+                      <span >This will delete all your progress with this model.</span>
+                    </div>
+
+                    <p >Are you sure you want to stop the creation wizard?</p>
+                  </div>
+
+                  <div className="modal-footer">
+                    <button type="button" onClick={this.onClocse} className="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" className="btn btn-danger">Stop Creation Wizard</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div id="overlay" class="fade in"></div>
+        </div>
+        {/* Ends */}
+
       </div>
 
     )
@@ -84,4 +121,3 @@ class CreateModel extends Component {
 }
 
 export default withRouter(inject('store')(observer(CreateModel)))
-

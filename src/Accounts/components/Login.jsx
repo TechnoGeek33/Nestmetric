@@ -62,7 +62,7 @@ class LoginUi extends Component {
                         </div>
                         <input type="hidden" name="next" value="" />
                         <p>
-                            <a href="#">Forgot your password?</a>
+                            <a href="">Forgot your password?</a>
                         </p>
                         <input onClick={() => this.HandleLogin()} className="btn btn-primary" type="submit" value="Login" />
                     </form>

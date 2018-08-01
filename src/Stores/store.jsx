@@ -6,6 +6,7 @@ import SampleData from './SampleData'
 class Store {
     pageCount = 0;
     ExtractedData = [];
+    ModelData = [];
 
     // Login Object
     Login = {
@@ -22,8 +23,7 @@ class Store {
         LastName: ''
     }
 
-
-
+    // Login Credentials check
     LoginCheck() {
         const email = "admin";
         const password = 'admin';
@@ -40,14 +40,21 @@ class Store {
         }
     }
 
+    // Registration Proceedings
     RegistrationCheck() {
         return true
-
     }
 
+    // The data extracted from CSV file goes here
     getExtractedData() {
         this.ExtractedData = SampleData;
     }
+
+    // 
+    getUserData() {
+        this.ExtractedData = SampleData;
+    }
+
 
 }
 
@@ -58,6 +65,7 @@ decorate(Store, {
     RegistrationCheck: action.bound,
     ExtractedData: observable,
     pageCount: observable,
+    ModelData:observable,
 });
 
 const store = new Store();
