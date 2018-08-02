@@ -2,11 +2,20 @@ import {
     observable, decorate, action
 } from 'mobx';
 import SampleData from './SampleData'
+import Features from './Features'
+
 
 class Store {
     pageCount = 0;
     ExtractedData = [];
-    ModelData = [];
+    ModelData = {
+        ModuleName : '',
+        ModuleAlgo : '',
+        allfeatures : [],
+        selectedfeatures : [],
+        targetedfeatures : [],
+    };
+    Features = Features;
 
     // Login Object
     Login = {
@@ -51,8 +60,10 @@ class Store {
     }
 
     // 
-    getUserData() {
-        this.ExtractedData = SampleData;
+    FeaturesAction() {
+       this.Features.map((data , index) => {
+            this.ModelData[`${data.category}features`].push(data)
+       })
     }
 
 
@@ -66,6 +77,8 @@ decorate(Store, {
     ExtractedData: observable,
     pageCount: observable,
     ModelData:observable,
+    Features : observable,
+    FeaturesAction:action.bound,
 });
 
 const store = new Store();

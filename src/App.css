@@ -2123,7 +2123,7 @@ input[type=date] {
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-left: 20px
+    /* padding-left: 20px */
 }
 
 .checkbox label,
@@ -14963,7 +14963,7 @@ h4.tree-template-name {
     box-shadow: 1px 1px 1px 0 rgba(42, 62, 82, .05);
     color: rgba(107, 124, 142, .8);
     line-height: 1.46;
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     min-width: 227px
 }
@@ -15034,7 +15034,7 @@ h4.tree-template-name {
 
 .table-preview-flatten .table th span {
     color: #2b3e51;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600
 }
 

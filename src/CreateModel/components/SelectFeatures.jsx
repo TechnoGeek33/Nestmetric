@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
+
 class SelectFeatures extends Component {
   constructor(props) {
     super(props);
@@ -10,26 +11,31 @@ class SelectFeatures extends Component {
       titles: [{
         name: "Learn Angular",
         category: "all",
-        bgcolor: "yellow"
+        
       },
 
       {
         name: "React",
         category: "all",
-        bgcolor: "pink"
+       
       },
 
       {
         name: "Vue",
         category: "all",
-        bgcolor: "skyblue"
+       
       },
       ]
     }
   }
 
+  componentWillMount() {
+    // To keep track of ProgressBar
+    this.store.pageCount = 5;
+  }
+
   onDragStart = (ev, id) => {
-    console.log('dragstart:', id);
+    // console.log('dragstart:', id);
     ev.dataTransfer.setData("id", id);
   }
 
@@ -40,37 +46,36 @@ class SelectFeatures extends Component {
   onDrop = (ev, cat) => {
     let id = ev.dataTransfer.getData("id");
 
-    let titles = this.state.titles.filter((titles) => {
-      if (titles.name == id) {
+    let titles = this.store.Features.filter((titles) => {
+      if (titles.title == id) {
         titles.category = cat;
       }
       return titles;
     });
+      this.store.Features = titles
+  }
 
-    this.setState({
-      ...this.state,
-      titles
-    });
+  OnContinue() {
+    this.store.FeaturesAction()
+    // this.props.history.push({ pathname: '/main/module-create/wizard/select-algorithm/' })
   }
-  componentWillMount() {
-    // To keep track of ProgressBar
-    this.store.pageCount = 5;
-  }
+  
   render() {
+
     var titles = {
       all: [],
       selected: [],
       targeted: [],
     }
-
-    this.state.titles.forEach((t) => {
+   
+    this.store.Features.forEach((t) => {
       titles[t.category].push(
-        <li key={t.name}
-          onDragStart={(e) => this.onDragStart(e, t.name)}
+        <li key={t.title}
+          onDragStart={(e) => this.onDragStart(e, t.title)}
           draggable
           className="drag-item draggable">
           <div style={{ margin: "8px auto" }}>
-            {t.name}
+            {t.title}
           </div>
         </li>
       );
@@ -129,9 +134,7 @@ class SelectFeatures extends Component {
         </div>
 
         <div className="text-center margin-top-20">
-          <button type="button"  onClick={() => {
-                this.props.history.push({ pathname: '/main/module-create/wizard/select-algorithm/' })
-              }} className="btn btn-primary continue" disabled="">Continue</button>
+          <button type="button"  onClick={() => { this.OnContinue() }} className="btn btn-primary continue" disabled="">Continue</button>
         </div>
 
       </div>

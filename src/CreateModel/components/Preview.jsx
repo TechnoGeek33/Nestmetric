@@ -2,67 +2,19 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { inject, observer } from 'mobx-react';
 
-let dummyarray = [];
-
 class Preview extends Component {
 
   constructor(props) {
     super(props);
     this.store = this.props.store;
-    this.state = {
-      TableComponent: ''
-    }
   }
 
   componentWillMount() {
     this.props.store.getExtractedData()
-    this.printColums();
     // To keep track of ProgressBar
     this.store.pageCount = 4;
 
   }
-
-  handleMouseOver(elementid, keyName) {
-    document.getElementById(elementid).className = "highlighted";
-    // document.querySelector(`.${keyName}`).className= "highlighted"
-  }
-  handleMouseOut(elementid, keyName) {
-    document.getElementById(elementid).className = ""
-    // document.querySelector(`.${keyName}`).className= keyName
-  }
-  handelClick(elementid) {
-    document.getElementById(elementid).className = "highlighted selected";
-
-  }
-
-
-
-  printColums = () => {
-    Object.keys(this.props.store.ExtractedData[0]).forEach((header, index) => {
-      dummyarray.push(
-        <th id={`th${index}`} key={Math.random()}
-          onMouseOver={() => { this.handleMouseOver(`th${index}`, header) }}
-          onMouseOut={() => this.handleMouseOut(`th${index}`, header)}
-          onClick = { () => this.handelClick(`th${index}`)}
-          >
-          <div className="checkbox">
-            <label>
-              <div className="custom-checkbox clickable" >
-                <span  className="typcn typcn-tick" style={{ display: "none" }}>
-                </span>
-              </div>
-              <span >Use this column</span>
-            </label>
-          </div>
-        </th>)
-    })
-
-    this.setState({
-      TableComponent: dummyarray
-    })
-  }
-
-
 
   render() {
 
@@ -78,14 +30,7 @@ class Preview extends Component {
             <div className="row input-fields">
               <div className="">
                 <div className="checkbox">
-                  <label>
-                    <checkbox>
-                      <div className="custom-checkbox clickable" >
-                        <span className="typcn typcn-tick">
-                        </span></div>
-                    </checkbox>
-                    <span >Discard first row</span>
-                  </label>
+                 
                 </div>
               </div>
             </div>
@@ -94,36 +39,31 @@ class Preview extends Component {
             <table className="table">
               <tbody >
                 <tr>
-                  <th>
-                  </th>
-                  {this.state.TableComponent}
-                </tr>
-                {/* Header or first column */}
-                <tr>
-                  <td className="td-index">1</td>
+                  <td className=""></td>
                   {
                     Object.keys(this.props.store.ExtractedData[0]).map((header, index) => {
                       return (
 
-                        <td key={Math.random()} className="td-index">{header}</td>
+                        <th id="" key={Math.random()} >
+                          <div className="checkbox">
+                            <label>
 
+                              <span >{header}</span>
+                            </label>
+                          </div>
+                        </th>
                       )
                     })}
                 </tr>
-                {/* Header or first column */}
-
 
                 {this.props.store.ExtractedData.map((data, index) => {
 
                   return (<tr>
-                    <td key={Math.random()} className="td-index">{index + 2}</td>
+                    <td key={Math.random()} className="td-index">{index + 1}</td>
                     {
                       Object.keys(this.props.store.ExtractedData[0]).map((header) => {
                         return (
-
-
                           <td key={Math.random()} className={header}>{data[header]}</td>
-
                         )
                       })
                     }
