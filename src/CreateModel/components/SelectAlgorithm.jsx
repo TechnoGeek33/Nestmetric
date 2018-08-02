@@ -16,7 +16,7 @@ componentWillMount() {
     render() {
      
         return (
-            <div data-bind="component: wizard.getCurrentComponent()">
+            <div >
             <h5 className="wizard-category-subtitle">Setup</h5>
             <h1 className="wizard-category-title">
               Select Algorithm
@@ -28,10 +28,10 @@ componentWillMount() {
     
             </div>
             <div className ="container">
-            <div className="row module-type data-source" data-bind="foreach: options, visible: tabSelected() === 'popular'">
+            <div className="row module-type data-source" style={{width: "785px"}} >
               <div className="col-md-3 col-sm-3 col-xs-3 ">
                 <div 
-                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/choose-file/'})}}
+                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/name-your-module/'})}}
                 
                 className="panel panel-default">
                   <div className="panel-body">
@@ -46,7 +46,7 @@ componentWillMount() {
             
               <div className="col-md-3 col-sm-3 col-xs-3">
                 <div
-                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/choose-file/'})}}
+                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/name-your-module/'})}}
                 className="panel panel-default">
                   <div className="panel-body" data-bind="click: $parent.clickOption.bind($component, source)">
                     <div className="triangle-topleft">
@@ -60,7 +60,7 @@ componentWillMount() {
 
               <div className="col-md-3 col-sm-3 col-xs-3">
                 <div
-                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/choose-file/'})}}
+                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/name-your-module/'})}}
                 className="panel panel-default">
                   <div className="panel-body" data-bind="click: $parent.clickOption.bind($component, source)">
                     <div className="triangle-topleft">
@@ -74,7 +74,7 @@ componentWillMount() {
 
               <div className="col-md-3 col-sm-3 col-xs-3">
                 <div
-                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/choose-file/'})}}
+                onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/name-your-module/'})}}
                 className="panel panel-default">
                   <div className="panel-body" data-bind="click: $parent.clickOption.bind($component, source)">
                     <div className="triangle-topleft">

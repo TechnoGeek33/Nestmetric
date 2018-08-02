@@ -19,6 +19,8 @@ class App extends Component {
               <Route exact path="/main/:childRoute" render={(props) => { return <Main  {...props} /> }} />
               <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
               <Route exact path="/" render={() => { return <Redirect to="/accounts/login" /> }} />
+              <Route exact path="/main" render={() => { return <Redirect to="/main/dashboard" /> }} />
+
               <Route render={() => { return <Error404/> }} />
 
             </Switch>

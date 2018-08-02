@@ -7,23 +7,23 @@ class SelectFeatures extends Component {
     super(props);
     this.store = this.props.store;
     this.state = {
-      tasks: [{
+      titles: [{
         name: "Learn Angular",
-        category: "wip",
+        category: "all",
         bgcolor: "yellow"
       },
 
       {
         name: "React",
-        category: "wip",
+        category: "all",
         bgcolor: "pink"
       },
 
       {
         name: "Vue",
-        category: "complete",
+        category: "all",
         bgcolor: "skyblue"
-      }
+      },
       ]
     }
   }
@@ -40,16 +40,16 @@ class SelectFeatures extends Component {
   onDrop = (ev, cat) => {
     let id = ev.dataTransfer.getData("id");
 
-    let tasks = this.state.tasks.filter((task) => {
-      if (task.name == id) {
-        task.category = cat;
+    let titles = this.state.titles.filter((titles) => {
+      if (titles.name == id) {
+        titles.category = cat;
       }
-      return task;
+      return titles;
     });
 
     this.setState({
       ...this.state,
-      tasks
+      titles
     });
   }
   componentWillMount() {
@@ -57,91 +57,81 @@ class SelectFeatures extends Component {
     this.store.pageCount = 5;
   }
   render() {
-    var tasks = {
-      wip: [],
-      complete: []
+    var titles = {
+      all: [],
+      selected: [],
+      targeted: [],
     }
 
-    this.state.tasks.forEach((t) => {
-      tasks[t.category].push(
-        <div key={t.name}
+    this.state.titles.forEach((t) => {
+      titles[t.category].push(
+        <li key={t.name}
           onDragStart={(e) => this.onDragStart(e, t.name)}
           draggable
-          className="draggable"
-          style={{ backgroundColor: t.bgcolor }}
-        >
-          {t.name}
-        </div>
+          className="drag-item draggable">
+          <div style={{ margin: "8px auto" }}>
+            {t.name}
+          </div>
+        </li>
       );
     });
 
     return (
-      <div data-bind="component: wizard.getCurrentComponent()">
+      <div >
         <h5 className="wizard-category-subtitle">Features</h5>
         <h1 className="wizard-category-title">
           Select Features
             </h1>
 
-        <div class="table-responsive table-preview-flatten" style={{ width: "300px" }}>
-          <table class="table">
-            <tbody><tr>
+        <div class="drag-container">
+          <ul class="drag-list">
 
-              <th class="">
-                <div class="checkbox">
-                  <label>
-                    <span >WIP</span>
-                  </label>
-                </div>
-              </th>
-            </tr>
-            <tr> </tr>
+            <li className="all"
+              onDragOver={(e) => this.onDragOver(e)}
+              onDrop={(e) => { this.onDrop(e, "all") }}
+              class="drag-column drag-column-on-hold">
+              <span class="drag-column-header">
+                <h2>All Features</h2>
+              </span>
+              <div class="drag-options" id="options1"></div>
+              <ul class="drag-inner-list" id="1">
+                {titles.all}
+              </ul>
+            </li>
 
-              <tr className="wip"
-                onDragOver={(e) => this.onDragOver(e)}
-                onDrop={(e) => { this.onDrop(e, "wip") }}>
+            <li className="selected"
+              onDragOver={(e) => this.onDragOver(e)}
+              onDrop={(e) => { this.onDrop(e, "selected") }}
+              class="drag-column drag-column-in-progress">
+              <span class="drag-column-header">
+                <h2>Selected Features</h2>
+              </span>
+              <div class="drag-options" id="options2"></div>
+              <ul class="drag-inner-list" id="2">
+                {titles.selected}
+              </ul>
+            </li>
 
-                {tasks.wip}
-              </tr>
-            </tbody></table>
-        </div>
+            <li className="targeted"
+              onDragOver={(e) => this.onDragOver(e)}
+              onDrop={(e) => { this.onDrop(e, "targeted") }}
+              class="drag-column drag-column-needs-review">
+              <span class="drag-column-header">
+                <h2>Targeted Features</h2>
+              </span>
+              <div class="drag-options" id="options3"></div>
+              <ul class="drag-inner-list" id="3">
+                {titles.targeted}
+              </ul>
+            </li>
 
-        <div class="table-responsive table-preview-flatten" style={{ width: "300px" }}>
-          <table class="table">
-            <tbody><tr>
-
-              <th class="">
-                <div class="checkbox">
-                  <label>
-                    <span >Complete</span>
-                  </label>
-                </div>
-              </th>
-            </tr>
-            <tr> </tr>
-
-              <tr className="droppable"
-                onDragOver={(e) => this.onDragOver(e)}
-                onDrop={(e) => this.onDrop(e, "complete")}>
-                {tasks.complete}
-              </tr>
-            </tbody></table>
-        </div>
-
-        <div className="wip"
-          onDragOver={(e) => this.onDragOver(e)}
-          onDrop={(e) => { this.onDrop(e, "wip") }}>
-          <span className="task-header">WIP</span>
-          {tasks.wip}
-        </div>
-        <div className="droppable"
-          onDragOver={(e) => this.onDragOver(e)}
-          onDrop={(e) => this.onDrop(e, "complete")}>
-          <span className="task-header">COMPLETED</span>
-          {tasks.complete}
+          </ul>
         </div>
 
         <div className="text-center margin-top-20">
-          <button type="button" className="btn btn-primary continue" disabled="disabled">Continue</button>
+          <button type="button"  onClick={() => {
+                this.props.history.push({ pathname: '/main/module-create/wizard/select-algorithm/' })
+              }} className="btn btn-primary continue" disabled="">Continue</button>
         </div>
 
       </div>

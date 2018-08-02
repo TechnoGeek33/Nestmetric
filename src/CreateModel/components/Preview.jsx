@@ -137,7 +137,7 @@ class Preview extends Component {
         <div className="text-center margin-top-20">
           <button type="button"
             onClick={() => {
-              this.props.history.push({ pathname: "/main/module-create/wizard/select-algorithm" })
+              this.props.history.push({ pathname: "/main/module-create/wizard/features" })
             }}
             className="btn btn-primary continue"
             disabled="">Continue</button>
