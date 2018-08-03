@@ -35,7 +35,6 @@ class SelectFeatures extends Component {
   }
 
   onDragStart = (ev, id) => {
-    // console.log('dragstart:', id);
     ev.dataTransfer.setData("id", id);
   }
 
@@ -57,7 +56,7 @@ class SelectFeatures extends Component {
 
   OnContinue() {
     this.store.FeaturesAction()
-    // this.props.history.push({ pathname: '/main/module-create/wizard/select-algorithm/' })
+    this.props.history.push({ pathname: '/main/module-create/wizard/select-algorithm' })
   }
   
   render() {

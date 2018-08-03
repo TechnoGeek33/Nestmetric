@@ -14485,6 +14485,33 @@ h4.tree-template-name {
     background-clip: content-box, border-box
 }
 
+.module-create-flatten .module-type .panel-active {
+    border-radius: 3px;
+    -webkit-box-shadow: 0 15px 30px 0 rgba(119, 135, 147, .2), 0 1px 4px 0 rgba(119, 135, 147, .1);
+    box-shadow: 0 15px 30px 0 rgba(119, 135, 147, .2), 0 1px 4px 0 rgba(119, 135, 147, .1);
+    border: 2px solid transparent;
+    background-image: -webkit-linear-gradient(#fff, #fff), -webkit-linear-gradient(125deg, #01befe, #008bff);
+    background-image: -o-linear-gradient(#fff, #fff), -o-linear-gradient(125deg, #01befe, #008bff);
+    background-image: linear-gradient(#fff, #fff), linear-gradient(325deg, #01befe, #008bff);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.module-create-flatten .module-type .panel-body .panel-triangle-active {
+    width: 0;
+    height: 0;
+    border-top: 37px solid #08f;
+    border-right: 37px solid transparent;
+}
+.module-create-flatten .module-type .panel-body .panel-tick-active {
+    position: absolute;
+    font-size: 20px;
+    left: 20px;
+    top: 4px;
+    color: #fff;
+    display: inherit;
+}
+
+
 .module-create-flatten .module-type .panel-body:hover .triangle-topleft {
     width: 0;
     height: 0;
