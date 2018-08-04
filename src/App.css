@@ -14470,7 +14470,7 @@ h4.tree-template-name {
 .module-create-flatten .module-type .panel-body {
     padding: 0;
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 3px;
     box-shadow: 0 2px 4px 0 rgba(6, 21, 33, .04), 0 0 2px 0 rgba(16, 25, 32, .03);
     cursor: pointer;
     height: 383px
@@ -14659,7 +14659,7 @@ h4.tree-template-name {
 }
 
 .module-create-flatten .data-source .panel-body {
-    height: 153px
+    height: 158px
 }
 
 .module-create-flatten .data-source .panel-body:hover.sample-library>.download-sample>.typcn-download-outline {

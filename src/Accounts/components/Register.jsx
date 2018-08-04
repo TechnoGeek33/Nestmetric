@@ -16,7 +16,7 @@ class RegisterUi extends Component {
   handelSubmit = () => {
     // RegExp to check email
     if (/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.store.Registration.Email)) {
-      if (this.store.Registration.Password.lenght > 0 && this.store.Registration.Password === this.store.Registration.ConfirmPassword) {
+      if (this.store.Registration.Password.length > 0 && this.store.Registration.Password === this.store.Registration.ConfirmPassword) {
             this.store.RegistrationCheck();
       }
       else {
