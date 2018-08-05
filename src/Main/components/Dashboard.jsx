@@ -2,88 +2,101 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
 class Explorer extends Component {
-    // state = {
-    //     toggle = false
-    // }
 
     handleDropdown() {
-        // if(this.state.toggle === false){
-           
-            if ( document.getElementById('dlDropDown').className === "dropdown") {
-                document.getElementById('dlDropDown').className = "dropdown open"
-            }
 
-            else {
-                document.getElementById('dlDropDown').className = "dropdown"
-            }
-        // }
+        if (document.getElementById('dlDropDown').className === "dropdown") {
+            document.getElementById('dlDropDown').className = "dropdown open"
+        }
+
+        else {
+            document.getElementById('dlDropDown').className = "dropdown"
+        }
     }
 
     render() {
-        
 
         return (
             <div>
-
-                    <div id="header-wrapper">
-                        <nav className="navbar navbar-default">
-                            <div className="container-fluid">
-                                <div className="navbar-header">
-                                    <a className="navbar-brand" href="/main/dashboard/" style={{ height: "45px" }}></a>
-                                </div>
-                                <div className="collapse navbar-collapse" >
-                                    <ul className="nav navbar-nav navbar-right">
-                                        <li className="create-model">
-                                            <button type="button" className="btn btn-primary"
-                                                onClick={() => {
-                                                    this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
-                                                }}
-                                            >
-                                                <span className="plus-white" id="hello" >+</span> Create Model
-                                        </button>
-                                        </li>
-
-                                        <li className="dropdown" id="dlDropDown">
-                                            <a className="dropdown-toggle user-dropdown" onClick={() => { this.handleDropdown()}} >
-                                                <span className="typcn typcn-user-outline" aria-hidden="true"></span>
-                                            </a>
-                                            <ul className="dropdown-menu">
-
-                                                <hr />
-
-                                                <li>
-                                                    <a href="/main/my-account/">
-                                                        <span className="typcn typcn-user" aria-hidden="true"></span> My Account </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="/accounts/logout/" >
-                                                        <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout  </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                    <ul className="nav navbar-nav navigation-menu">
-                                        <li className="active">
-                                            <a href="/main/dashboard/">Dashboard</a>
-                                        </li>
-
-                                    </ul>
-
-                                </div>
+                <div id="header-wrapper">
+                    <nav className="navbar navbar-default">
+                        <div className="container-fluid">
+                            <div className="navbar-header">
+                                <a className="navbar-brand" href="/main/dashboard/" style={{ height: "45px" }}></a>
                             </div>
-                        </nav>
-                    </div>
-               
+                            <div className="collapse navbar-collapse" >
+                                <ul className="nav navbar-nav navbar-right">
+                                    <li className="create-model">
+                                        <button type="button" className="btn btn-primary"
+                                            onClick={() => {
+                                                this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" }) }} >
+                                            <span className="plus-white" id="hello" >+</span> Create Model
+                                        </button>
+                                    </li>
+
+                                    <li className="dropdown" id="dlDropDown">
+                                        <a className="dropdown-toggle user-dropdown" onClick={() => { this.handleDropdown() }} >
+                                            <span className="typcn typcn-user-outline" aria-hidden="true"></span>
+                                        </a>
+                                        <ul className="dropdown-menu">
+
+                                            <hr />
+
+                                            <li>
+                                                <a href="#">
+                                                    <span className="typcn typcn-user" aria-hidden="true"></span> My Account </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="/accounts/logout/" >
+                                                    <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout  </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                                <ul className="nav navbar-nav navigation-menu">
+                                    <li className="active">
+                                        <a href="/main/dashboard/">Dashboard</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
 
                 <div className="container container-body">
                     <div className="container-wrapper">
                         <div className="main-content">
-
                             <h3 className="margin-bottom-20">Recently Used</h3>
                             <div data-bind="fastForEach: $data" className="row projects-grid">
+                            
+                            <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
+                                    <div >
+                                        <div className="panel panel-default" >
+                                            <div style={{padding : "0" , margin : "60px auto"}} className="panel-body">
 
+                                                <div className="">
+                                                </div>
+                                                <span className="btn-group module-options" >
+                                                    <span className="glyphicon glyphicon-option-vertical" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="options-WmPw5xm8O6h2PN" style={{ display: "none" }}></span>
+                                                    <ul className="dropdown-menu">
+                                                        <li><a >Delete</a></li>
+                                                    </ul>
+                                                </span>
+                                                <h3 style={{fontSize : "24px", textAlign:"center"}}>Create Model</h3>
+                                              <p className="description create-model" style={{textAlign:"center"}}>   
+                                              <button type="button" className="btn btn-primary" 
+                                            onClick={() => {
+                                                this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" }) }} >
+                                            <span className="plus-white" id="hello" >+</span> Create Model
+                                        </button> </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
                                     <div id="module-cl_KFXhoTdt">
