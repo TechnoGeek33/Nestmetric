@@ -62,11 +62,9 @@ class Store {
     // 
     FeaturesAction() {
        this.Features.map((data , index) => {
-            this.ModelData[`${data.category}features`].push(data)
+        return this.ModelData[`${data.category}features`].push(data)
        })
     }
-
-
 }
 
 decorate(Store, {

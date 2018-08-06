@@ -27,13 +27,13 @@ class SelectAlgorithm extends Component {
       "lr-tick", "svm-tick", "rf-tick", "nn-tick"];
 
     arr.map((data, index) => {
-      if (index === 0 | index == 1 | index === 2 | index == 3) {
+      if (index === 0 | index === 1 | index === 2 | index === 3) {
         document.getElementById(data).className = "panel-body"
       }
-      if (index === 4 | index == 5 | index === 6 | index == 7) {
+      if (index === 4 | index === 5 | index === 6 | index === 7) {
         document.getElementById(data).className = "triangle-topleft"
       }
-      if (index === 8 | index == 9 | index === 10 | index == 11) {
+      if (index === 8 | index === 9 | index === 10 | index === 11) {
         document.getElementById(data).className = "typcn typcn-tick"
       }
     })
@@ -43,8 +43,8 @@ class SelectAlgorithm extends Component {
         .backgroundImage = "linear-gradient(#e0dfdf, #e0dfdf), linear-gradient(325deg, #01befe, #008bff)";
     }
 
-    document.getElementById(idPanel).style.
-      backgroundImage = "linear-gradient(#fff, #fff), linear-gradient(325deg, #01befe, #008bff)";
+    document.getElementById(idPanel).style
+    .backgroundImage = "linear-gradient(#fff, #fff), linear-gradient(325deg, #01befe, #008bff)";
     document.getElementById(idPanel).className = "panel-body panel-active"
     document.getElementById(idTri).className = "panel-triangle-active"
     document.getElementById(idTick).className = "typcn typcn-tick panel-tick-active"

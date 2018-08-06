@@ -46,7 +46,7 @@ class SelectFeatures extends Component {
     let id = ev.dataTransfer.getData("id");
 
     let titles = this.store.Features.filter((titles) => {
-      if (titles.title == id) {
+      if (titles.title === id) {
         titles.category = cat;
       }
       return titles;
