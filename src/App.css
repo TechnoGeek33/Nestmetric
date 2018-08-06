@@ -15080,7 +15080,8 @@ h4.tree-template-name {
     left: 0;
     z-index: 1050;
     -webkit-overflow-scrolling: touch;
-    outline: 0
+    outline: 0;
+    background: #00000080;
 }
 
 .modal.fade .modal-dialog {

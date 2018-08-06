@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import axios from 'axios'
 
 class SelectAlgorithm extends Component {
   constructor(props) {
     super(props);
     this.store = this.props.store;
-    this.state={
-      disabled :"disabled"    }
+    this.state = {
+      disabled: "disabled",
+      progressWidth: 0
+
+    }
   }
 
   componentWillMount() {
@@ -15,8 +19,8 @@ class SelectAlgorithm extends Component {
     this.store.pageCount = 6;
   }
 
-  OnAlgoSelect(event , idPanel, idTri, idTick) {
-    console.log(event.target.value)
+  OnAlgoSelect(idPanel, idTri, idTick) {
+    // console.log(document.getElementById(idPanel).getElementsByTagName('h3')[0].innerText )
 
     var arr = ["lr-panel", "svm-panel", "rf-panel", "nn-panel",
       "lr-triangle", "svm-triangle", "rf-triangle", "nn-triangle",
@@ -40,21 +44,145 @@ class SelectAlgorithm extends Component {
     }
 
     document.getElementById(idPanel).style.
-    backgroundImage = "linear-gradient(#fff, #fff), linear-gradient(325deg, #01befe, #008bff)";
+      backgroundImage = "linear-gradient(#fff, #fff), linear-gradient(325deg, #01befe, #008bff)";
     document.getElementById(idPanel).className = "panel-body panel-active"
     document.getElementById(idTri).className = "panel-triangle-active"
     document.getElementById(idTick).className = "typcn typcn-tick panel-tick-active"
 
     this.setState({
-      disabled : null
+      disabled: null
     })
+    this.props.store.ModelData.ModelAlgo = document.getElementById(idPanel).getElementsByTagName('h3')[0].innerText
+    console.log(this.props.store.ModelData.ModelAlgo)
+  }
 
+  OnContinue = () => {
+
+    var counter = 0
+
+
+    // axios.get('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
+
+    //   console.log(response)
+
+    // }).catch(error => {
+
+    //   console.log(error)
+    // })
+    var url = 'https://jsonplaceholder.typicode.com/todos/1';
+
+    var promise = new Promise((resolve, reject) => {
+
+      var percentage = 0
+      // Do the usual XHR stuff
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+
+      var intervalId;
+      req.onloadstart = (e) => {
+        document.getElementById('uploading-data').style.display = "block"
+        intervalId = window.setInterval(() => {
+          if (percentage === 99) {
+            clearInterval(intervalId)
+          }
+          percentage++;
+          this.setState({
+            progressWidth: percentage
+          })
+        }, 90)
+      
+
+      }
+
+      req.onreadystatechange = () => {
+        clearInterval(intervalId)
+      
+        intervalId = window.setInterval(() => {
+          if (percentage === 99) {
+            clearInterval(intervalId)
+          }
+          percentage++;
+          this.setState({
+            progressWidth: percentage
+          })
+        }, 90)
+
+        
+      }
+
+      req.onloadend =  (e) => {
+        if(percentage === 99) {
+          clearInterval(intervalId)
+        }
+        
+        else {
+         
+          this.setState({
+            progressWidth: 100
+          })
+          console.log(this.state.progressWidth)
+        }
+        // console.log("loaading end..")
+
+      }
+      req.onload = function (e) {
+
+        // console.log("loading...")
+        // This is called even on 404 etc
+        // so check the status
+        if (req.status == 200) {
+          // Resolve the promise with the response text
+          resolve(req.response);
+        }
+        else {
+          // Otherwise reject with the status text
+          // which will hopefully be a meaningful error
+          reject(Error(req.statusText));
+        }
+      };
+      req.onabort = () => {
+        console.log("aborted")
+        clearInterval(intervalId)
+      }
+      req.ontimeout = () => {
+        clearInterval(intervalId)
+      }
+
+      // Handle network errors
+      req.onerror = function () {
+        clearInterval(intervalId)
+      };
+
+      // Make the request
+      req.send();
+    });
+
+    promise.then(response => {
+      document.getElementById('uploading-data').style.display = "none"
+      alert("Data Imported")
+    })
   }
 
   render() {
 
     return (
       <div >
+        <div className="modal fade in" id="uploading-data" tabIndex={-1}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title" id="myModalLabel" data-bind="text: title">Uploading Data</h4>
+              </div>
+              <div className="modal-body">
+                <div className="progress progress-striped active">
+                  <div className="progress-bar" style={{ minWidth: "3em", width: `${this.state.progressWidth}%` }} >
+                    <span >{this.state.progressWidth}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <h5 className="wizard-category-subtitle">Setup</h5>
         <h1 className="wizard-category-title">
           Select Algorithm
@@ -71,8 +199,8 @@ class SelectAlgorithm extends Component {
             <div
               // style={{ pointerEvents : "none"}} 
               className="col-md-3 col-sm-3 col-xs-3 ">
-              <div 
-                onClick={(e) => { this.OnAlgoSelect(e,"lr-panel", "lr-triangle", "lr-tick") }}
+              <div
+                onClick={(e) => { this.OnAlgoSelect("lr-panel", "lr-triangle", "lr-tick") }}
                 className="panel panel-default">
                 <div id="lr-panel" className="panel-body">
                   <div id="lr-triangle" className="triangle-topleft">
@@ -86,7 +214,7 @@ class SelectAlgorithm extends Component {
 
             <div className="col-md-3 col-sm-3 col-xs-3">
               <div
-                onClick={(e) => { this.OnAlgoSelect(e,"svm-panel", "svm-triangle", "svm-tick") }}
+                onClick={() => { this.OnAlgoSelect("svm-panel", "svm-triangle", "svm-tick") }}
                 className="panel panel-default">
                 <div id="svm-panel" className="panel-body"  >
                   <div id="svm-triangle" className="triangle-topleft">
@@ -100,7 +228,7 @@ class SelectAlgorithm extends Component {
 
             <div className="col-md-3 col-sm-3 col-xs-3">
               <div
-                onClick={(e) => { this.OnAlgoSelect(e,"rf-panel", "rf-triangle", "rf-tick") }}
+                onClick={() => { this.OnAlgoSelect("rf-panel", "rf-triangle", "rf-tick") }}
                 className="panel panel-default">
                 <div id="rf-panel" className="panel-body" >
                   <div id="rf-triangle" className="triangle-topleft">
@@ -114,7 +242,7 @@ class SelectAlgorithm extends Component {
 
             <div className="col-md-3 col-sm-3 col-xs-3">
               <div
-                onClick={(e) => { this.OnAlgoSelect(e,"nn-panel", "nn-triangle", "nn-tick") }}
+                onClick={() => { this.OnAlgoSelect("nn-panel", "nn-triangle", "nn-tick") }}
                 className="panel panel-default">
                 <div id="nn-panel" className="panel-body">
                   <div id="nn-triangle" className="triangle-topleft">
@@ -129,11 +257,19 @@ class SelectAlgorithm extends Component {
           </div>
         </div>
         <div className="text-center margin-top-20">
-          <button type="button" onClick={() => { this.OnContinue() }} className="btn btn-primary continue" disabled={this.state.disabled}>Continue</button>
+          <button type="button" onClick={this.OnContinue} className="btn btn-primary continue"
+          //  disabled={this.state.disabled}
+
+          >Continue</button>
         </div>
         <p class="text-center margin-top-40">
           or <a data-bind="click: function(){dataSource('tagged')}">Learn more about algorithm</a>
         </p>
+
+
+
+
+
       </div>
     )
   }
