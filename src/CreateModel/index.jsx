@@ -6,11 +6,16 @@ import Preview from './components/Preview'
 import SelectFeatures from './components/SelectFeatures'
 import SelectAlgorithm from './components/SelectAlgorithm'
 import NameYourModule from './components/NameYourModule'
+import Congrats from './components/Congrats'
 import { increaseProgressBar } from '../Service'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
 class CreateModel extends Component {
+
+  state ={
+    flag : true
+  }
   CloseBtnCheck = () => {
     if (this.props.match.params.childRoute === "name-your-module") {
       document.getElementById("delete-project").style.display = "block"
@@ -45,6 +50,8 @@ class CreateModel extends Component {
         return <SelectAlgorithm />;
       case 'name-your-module':
         return <NameYourModule />;
+        case 'congrats':
+        return <Congrats />;
       default:
         return <ModuleType />
     }
@@ -54,15 +61,14 @@ class CreateModel extends Component {
 
     return (
       <div className="current-view-module-create">
-        <div className="container container-body">
+      {!this.state.flag ?  <div className="container container-body">
           <div className="container-wrapper">
-            <div className="main-content" data-bind="if: dataReady">
-              <div className="tail-spinner" data-bind="visible: loading" style={{ display: "none" }}></div>
+            <div className="main-content">
+              <div className="tail-spinner" style={{ display: "block" }}></div>
 
             </div>
           </div>
-        </div>
-        <div className="container-body module-create-flatten">
+        </div> : <div className="container-body module-create-flatten">
           <div className="container-wrapper">
             <div className="progress progress-global">
               <div className="progress-bar" role="progressbar" style={{ width: increaseProgressBar(8, this.props.store.pageCount) }}>
@@ -80,7 +86,9 @@ class CreateModel extends Component {
             </div>
             {this.renderSwitch()}
           </div>
-        </div>
+        </div> }
+       
+        
 
         {/* Error Dialog for hititng cross button */}
         <div>
