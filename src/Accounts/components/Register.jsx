@@ -46,7 +46,7 @@ class RegisterUi extends Component {
 
       <div className="unauth">
         <div className="page-wrapper-wide">
-          <a href="" className="brand" />
+          <a href="" className="brand" > </a>
           <div className="minipanel">
             <h1>Sign Up</h1>
 

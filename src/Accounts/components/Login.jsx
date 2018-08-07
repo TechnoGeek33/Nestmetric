@@ -42,7 +42,7 @@ class LoginUi extends Component {
         return (
             <div className="unauth">
             <div className="page-wrapper">
-                <a href="" className="brand"></a>
+                <a href="" className="brand"> </a>
 
                 <div className="minipanel">
                     <h1>Login</h1>

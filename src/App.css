@@ -19537,3 +19537,7 @@ form#advanced-options-form .button-row {
   .gu-transit {
     opacity: 0.2;
   }
+  
+  #alertInfo, #modalFooter {
+      display: none;
+  }

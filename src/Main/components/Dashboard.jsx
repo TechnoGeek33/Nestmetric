@@ -22,7 +22,7 @@ class Explorer extends Component {
                     <nav className="navbar navbar-default">
                         <div className="container-fluid">
                             <div className="navbar-header">
-                                <a className="navbar-brand" href="/main/dashboard/" style={{ height: "45px" }}></a>
+                                <a className="navbar-brand" href="/main/dashboard/" style={{ height: "45px" }}> </a>
                             </div>
                             <div className="collapse navbar-collapse" >
                                 <ul className="nav navbar-nav navbar-right">
@@ -43,7 +43,7 @@ class Explorer extends Component {
                                             <hr />
 
                                             <li>
-                                                <a href="#">
+                                                <a href="/">
                                                     <span className="typcn typcn-user" aria-hidden="true"></span> My Account </a>
                                             </li>
 

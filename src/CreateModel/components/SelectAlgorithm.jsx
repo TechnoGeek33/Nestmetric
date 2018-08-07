@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import axios from 'axios'
+import ProgressModal from '../../ProgressModal'
 
 class SelectAlgorithm extends Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class SelectAlgorithm extends Component {
     this.store = this.props.store;
     this.state = {
       disabled: "disabled",
-      progressWidth: 0
+      progressWidth: 0,
+      modalMsg: ''
 
     }
   }
@@ -26,7 +27,7 @@ class SelectAlgorithm extends Component {
       "lr-triangle", "svm-triangle", "rf-triangle", "nn-triangle",
       "lr-tick", "svm-tick", "rf-tick", "nn-tick"];
 
-    arr.map((data, index) => {
+    arr.forEach((data, index) => {
       if (index === 0 | index === 1 | index === 2 | index === 3) {
         document.getElementById(data).className = "panel-body"
       }
@@ -53,22 +54,11 @@ class SelectAlgorithm extends Component {
       disabled: null
     })
     this.props.store.ModelData.ModelAlgo = document.getElementById(idPanel).getElementsByTagName('h3')[0].innerText
-    console.log(this.props.store.ModelData.ModelAlgo)
+    
   }
 
   OnContinue = () => {
 
-    var counter = 0
-
-
-    // axios.get('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
-
-    //   console.log(response)
-
-    // }).catch(error => {
-
-    //   console.log(error)
-    // })
     var url = 'https://jsonplaceholder.typicode.com/todos/1';
 
     var promise = new Promise((resolve, reject) => {
@@ -87,7 +77,9 @@ class SelectAlgorithm extends Component {
           }
           percentage++;
           this.setState({
-            progressWidth: percentage
+            progressWidth: percentage,
+         
+            modalMsg: "Training Your Module"
           })
         }, 90)
       
@@ -120,28 +112,35 @@ class SelectAlgorithm extends Component {
           this.setState({
             progressWidth: 100
           })
-          console.log(this.state.progressWidth)
+
+          clearInterval(intervalId)
+
+        setTimeout( () => {
+          document.getElementById('progressBar').style.display = "none"
+          document.getElementById('alertInfo').style.display = "block"
+          document.getElementById('modalFooter').style.display = "block"
+
+          this.setState({
+            modalMsg : "Training Confirmation"
+          })
+
+        }, 1000)
         }
-        // console.log("loaading end..")
+       
 
       }
       req.onload = function (e) {
-
-        // console.log("loading...")
-        // This is called even on 404 etc
-        // so check the status
-        if (req.status == 200) {
+        if (req.status === 200) {
           // Resolve the promise with the response text
           resolve(req.response);
         }
         else {
-          // Otherwise reject with the status text
-          // which will hopefully be a meaningful error
+
           reject(Error(req.statusText));
         }
       };
       req.onabort = () => {
-        console.log("aborted")
+       
         clearInterval(intervalId)
       }
       req.ontimeout = () => {
@@ -158,31 +157,27 @@ class SelectAlgorithm extends Component {
     });
 
     promise.then(response => {
-      document.getElementById('uploading-data').style.display = "none"
-      alert("Data Imported")
+     
     })
+  }
+
+  handleModalBtnClick =  () =>{
+    this.props.history.push ({
+      pathname: "/main/module-create/wizard/name-your-module"
+    }) 
   }
 
   render() {
 
     return (
       <div >
-        <div className="modal fade in" id="uploading-data" tabIndex={-1}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h4 className="modal-title" id="myModalLabel" data-bind="text: title">Uploading Data</h4>
-              </div>
-              <div className="modal-body">
-                <div className="progress progress-striped active">
-                  <div className="progress-bar" style={{ minWidth: "3em", width: `${this.state.progressWidth}%` }} >
-                    <span >{this.state.progressWidth}%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       <ProgressModal
+        modalMsg={this.state.modalMsg} 
+        progressWidth={this.state.progressWidth}
+        modalAlertMsg= "Your Module has been trained successfully !"
+        modalBtnTxt="ok"
+        modalBtnClick = { this.handleModalBtnClick}
+        />
         <h5 className="wizard-category-subtitle">Setup</h5>
         <h1 className="wizard-category-title">
           Select Algorithm
