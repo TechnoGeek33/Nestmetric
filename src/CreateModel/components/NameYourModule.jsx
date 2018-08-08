@@ -10,19 +10,30 @@ class NameYourModule extends Component {
     disabled: "disabled"
   }
 
-  inputChange(e){
-    if(e.target.value.length > 0){
+  inputChange(e) {
+    if (e.target.value.length > 0) {
       this.setState({
-        disabled : null
+        disabled: null
       })
 
       this.props.store.ModelData.ModuleName = e.target.value
     }
-    else{
+    else {
       this.setState({
-        disabled : "disabled"
+        disabled: "disabled"
       })
     }
+  }
+
+  handleFinish = () => {
+    this.props.store.createModule().then((responce) => {
+      console.log(responce.data)
+      this.props.store.ModelData = responce.data
+      this.props.history.push({ pathname: '/main/module-create/wizard/congrats/' })
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }
   render() {
 
@@ -36,10 +47,10 @@ class NameYourModule extends Component {
           <input onChange={(e) => this.inputChange(e)} type="text" id="module-name" className="form-control" placeholder="Type something…" data-bind="textInput: moduleName, event: {keypress: onEnter}" />
         </div>
         <div className="text-center margin-top-70">
-          <button type="button" 
-          className="btn btn-primary continue" 
-          onClick={() => {this.props.history.push({pathname: '/main/module-create/wizard/congrats/'})}}
-          disabled={this.state.disabled}>Finish</button>
+          <button type="button"
+            className="btn btn-primary continue"
+            onClick={this.handleFinish}
+            disabled={this.state.disabled}>Finish</button>
         </div>
       </div>
     )

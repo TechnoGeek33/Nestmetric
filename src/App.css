@@ -5352,9 +5352,9 @@ input[type=submit].btn-block {
     content: "\E0FD"
 }
 
-.typcn-th-menu:before {
+/* .typcn-th-menu:before {
     content: "\E0FE"
-}
+} */
 
 .typcn-th-small-outline:before {
     content: "\E0FF"
@@ -5653,7 +5653,7 @@ input[type=submit].btn-block {
 }
 
 .open>a {
-    outline: 0
+    outline: 0;
 }
 
 .dropdown-menu-right {

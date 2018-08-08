@@ -53,7 +53,7 @@ class SelectAlgorithm extends Component {
     this.setState({
       disabled: null
     })
-    this.props.store.ModelData.ModelAlgo = document.getElementById(idPanel).getElementsByTagName('h3')[0].innerText
+    this.props.store.ModelData.ModuleAlgo = document.getElementById(idPanel).getElementsByTagName('h3')[0].innerText
     
   }
 

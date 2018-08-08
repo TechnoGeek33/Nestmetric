@@ -3,17 +3,19 @@ import {
 } from 'mobx';
 import SampleData from './SampleData'
 import Features from './Features'
+import axios from 'axios';
 
 
 class Store {
     pageCount = 0;
     ExtractedData = [];
+    AllModules = []
     ModelData = {
-        ModuleName : '',
-        ModuleAlgo : '',
-        allfeatures : [],
-        selectedfeatures : [],
-        targetedfeatures : [],
+        ModuleName: '',
+        ModuleAlgo: '',
+        allfeatures: [],
+        selectedfeatures: [],
+        targetedfeatures: [],
     };
     Features = Features;
 
@@ -61,9 +63,21 @@ class Store {
 
     // 
     FeaturesAction() {
-       this.Features.map((data , index) => {
-        return this.ModelData[`${data.category}features`].push(data)
-       })
+        this.Features.map((data, index) => {
+            return this.ModelData[`${data.category}features`].push(data)
+        })
+    }
+
+    createModule() {
+        return axios.post('http://localhost:5000/api/moduleCreate', this.ModelData)
+    }
+
+    getAllModules() {
+        axios.get('http://localhost:5000/api/getModule').then((response) => {
+            this.AllModules = response.data
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 }
 
@@ -74,9 +88,12 @@ decorate(Store, {
     RegistrationCheck: action.bound,
     ExtractedData: observable,
     pageCount: observable,
-    ModelData:observable,
-    Features : observable,
-    FeaturesAction:action.bound,
+    ModelData: observable,
+    Features: observable,
+    FeaturesAction: action.bound,
+    createModule: action.bound,
+    getAllModules: action.bound,
+    AllModules: observable
 });
 
 const store = new Store();
