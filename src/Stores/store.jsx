@@ -79,6 +79,10 @@ class Store {
             console.log(error)
         })
     }
+
+    DeleteModule(id) {
+        axios.post('http://localhost:5000/api/moduleDelete', { _id : id })
+    }
 }
 
 decorate(Store, {

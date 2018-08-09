@@ -9,7 +9,7 @@ class Error404 extends Component {
           <div className="container" >
             <div className="navbar-header" style={{ height: "54px" }}>
               <a className="navbar-brand" onClick={() => {
-                this.props.history.push({ pathname: "/accounts/login" })
+                this.props.history.push({ pathname: "/main/dashboard" })
               }}> </a>
             </div>
 

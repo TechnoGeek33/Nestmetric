@@ -4,15 +4,8 @@ import RecentlyUsed from './RecentlyUsed';
 import MyModels from './MyModels';
 
 class Explorer extends Component {
-
-   
-
     render() {
-
         return (
-        
-
-
                 <div className="container container-body">
                     <div className="container-wrapper">
                         <div className="main-content">
@@ -24,7 +17,6 @@ class Explorer extends Component {
                         </div>
                     </div>
                 </div>
-        
         )
     }
 }
