@@ -21,7 +21,7 @@ class Header extends Component {
                     <div className="container-fluid">
                         <div className="navbar-header">
 
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#monkeylearn-navbar-collapse-1">
+                            <button type="button" class="navbar-toggle">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -56,7 +56,7 @@ class Header extends Component {
 
                                         <li>
                                             <a href="/accounts/logout/" >
-                                                <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout  </a>
+                                                <span className="typcn typcn-eject-outline" aria-hidden="true"></span> Logout  </a>
                                         </li>
                                     </ul>
                                 </li>
