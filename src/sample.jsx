@@ -83,7 +83,7 @@ class Sample extends Component {
                         <li className="">
                           <a href="#">
                             <span className="typcn margin-right-5 typcn-input-checked" ></span>
-                            <span >Demo</span>
+                            <span >Single Predict</span>
                           </a>
                         </li>
                         <li data-bind="css: { active: active, disabled: disabled }" className="active">
