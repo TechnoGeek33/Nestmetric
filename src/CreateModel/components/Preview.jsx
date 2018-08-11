@@ -1,115 +1,208 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom'
-
-let usethisColumn = [] ;
-let otherData = [];
+import { withRouter } from 'react-router-dom'
+import { inject, observer } from 'mobx-react';
+import ProgressModal from '../../ProgressModal'
 
 class Preview extends Component {
-  state = {
-    TableComponent : '',
-    otherDataComp: ''
+
+  constructor(props) {
+    super(props);
+    this.store = this.props.store;
+
+    this.state = {
+      modalMsg : '',
+      progressWidth : 0
+    }
   }
-      componentDidMount () {
-            this.props.store.getExtractedData()
-      this.printColums();
+
+  componentWillMount() {
+    this.props.store.getExtractedData()
+    // To keep track of ProgressBar
+    this.store.pageCount = 4;
+
+  }
+
+  handleContinue () {
+    var url = 'https://jsonplaceholder.typicode.com/todos/1';
+
+    var promise = new Promise((resolve, reject) => {
+
+      var percentage = 0
+      // Do the usual XHR stuff
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+
+      var intervalId;
+      req.onloadstart = (e) => {
+        document.getElementById('uploading-data').style.display = "block"
+        intervalId = window.setInterval(() => {
+          if (percentage === 99) {
+            clearInterval(intervalId)
+          }
+          percentage++;
+          this.setState({
+            progressWidth: percentage,
+         
+            modalMsg: "Uploading & Importing Data"
+          })
+        }, 90)
+      
 
       }
 
-      printColums = () => {
-console.log("chal gaya")
-            for(var i = 1; i <= Object.keys(this.props.store.ExtractedData[0]).length; i++) {
-              usethisColumn.push ( <th id={Math.random()}>
-                    <div className="checkbox">
-                      <label>
-                        <div className="custom-checkbox clickable" >
-                          <span className="typcn typcn-tick" data-bind="visible: checked" style={{ display: "none" }}>
-                          </span></div>
-                        <span >Use this column</span>
-                      </label>
-                    </div>
-                  </th> )
+      req.onreadystatechange = () => {
+        clearInterval(intervalId)
+      
+        intervalId = window.setInterval(() => {
+          if (percentage === 99) {
+            clearInterval(intervalId)
+          }
+          percentage++;
+          this.setState({
+            progressWidth: percentage
+          })
+        }, 90)
 
-            } 
+        
+      }
 
-            for(var i = 0; i <= this.props.store.ExtractedData.length; i++) {
+      req.onloadend =  (e) => {
+        if(percentage === 99) {
+          clearInterval(intervalId)
+        }
+        
+        else {
+         
+          this.setState({
+            progressWidth: 100
+          })
 
-              console.log(this.props.store.ExtractedData[i] === undefined ? null:this.props.store.ExtractedData[i].GroupName )
-              
-            otherData.push(
-             
-              <tr  className="disabled">
-              <td className="td-index">{i + 1}</td>
-              <td  className="td-index">{this.props.store.ExtractedData[i] === undefined ? null:this.props.store.ExtractedData[i].GroupName}</td>
+          clearInterval(intervalId)
+
+        setTimeout( () => {
+          document.getElementById('progressBar').style.display = "none"
+          document.getElementById('alertInfo').style.display = "block"
+          document.getElementById('modalFooter').style.display = "block"
+
+          this.setState({
+            modalMsg : "Upload Confirmation"
+          })
+
+        }, 1000)
+        }
        
-            </tr>  )
 
-            }
+      }
+      req.onload = function (e) {
+        if (req.status === 200) {
+          // Resolve the promise with the response text
+          resolve(req.response);
+        }
+        else {
 
-            this.setState({
-              TableComponent : usethisColumn,
-              otherDataComp: otherData
-            })
-
-          
+          reject(Error(req.statusText));
+        }
+      };
+      req.onabort = () => {
+       
+        clearInterval(intervalId)
+      }
+      req.ontimeout = () => {
+        clearInterval(intervalId)
       }
 
+      // Handle network errors
+      req.onerror = function () {
+        clearInterval(intervalId)
+      };
 
-    render() {
+      // Make the request
+      req.send();
+    });
+
+    promise.then(response => {
+     
+    })
   
-        return (
-            <div data-bind="component: wizard.getCurrentComponent()">
-            <h5 className="wizard-category-subtitle">Preview</h5>
-            <h1 className="wizard-category-title">
-              Select Texts
+  }
+  handleModalBtnClick = () => {
+    this.props.history.push({ pathname: "/main/module-create/wizard/features" })
+  }
+  render() {
+
+    return (
+      <div >
+       <ProgressModal
+        modalMsg={this.state.modalMsg} 
+        progressWidth={this.state.progressWidth}
+        modalAlertMsg= "Data Imported"
+        modalBtnTxt="ok"
+        modalBtnClick = { this.handleModalBtnClick}
+        />
+        <h5 className="wizard-category-subtitle">Preview</h5>
+        <h1 className="wizard-category-title">
+          Select Texts
             </h1>
-            <h5 className="wizard-subtitle">Select the columns with your texts. Multiple selected columns will be concatenated</h5>
-            <div className="preview">
+        <h5 className="wizard-subtitle">Select the columns with your texts. Multiple selected columns will be concatenated</h5>
+        <div className="preview">
           <div className="discard-first-row">
-          <div className="row input-fields">
-            <div className="col-xs-6 col-xs-offset-0" data-bind="css: 'col-xs-offset-' + offset">
-              <div className="checkbox">
-                <label>
-                  
-          <div className="custom-checkbox clickable" >
-            <span className="typcn typcn-tick" data-bind="visible: checked">
-          </span></div>
-          
-                  <span>Discard first row</span>
-                </label>
-                <span className="glyphicon glyphicon-question-sign question-sign-tooltip"   style={{display: "none"}}></span>
+            <div className="row input-fields">
+              <div className="">
+                <div className="checkbox">
+                 
+                </div>
               </div>
             </div>
-          </div>
-        
           </div>
           <div className="table-responsive table-preview-flatten">
             <table className="table">
               <tbody >
-                    
-                          <th>
-                          
-                                </th>
-                                {this.state.TableComponent}
-                                  
-         {this.state.otherDataComp}
-         
-                  
-              <tr>
-                <td className="td-index"></td>
-                <td className="text-center not-clickable" data-bind="text: 'Showing ' + Math.min(10, table().length) + ' of ' + rowsLength() + ' rows',
-                               attr: { colspan: tableHeaders().length }" colspan="10">Showing 10 of 11 rows</td>
-              </tr>
-            </tbody>
+                <tr>
+                  <td className=""></td>
+                  {
+                    Object.keys(this.props.store.ExtractedData[0]).map((header, index) => {
+                      return (
+
+                        <th id="" key={Math.random()} >
+                          <div className="checkbox">
+                            <label>
+
+                              <span >{header}</span>
+                            </label>
+                          </div>
+                        </th>
+                      )
+                    })}
+                </tr>
+
+                {this.props.store.ExtractedData.map((data, index) => {
+
+                  return (<tr>
+                    <td key={Math.random()} className="td-index">{index + 1}</td>
+                    {
+                      Object.keys(this.props.store.ExtractedData[0]).map((header) => {
+                        return (
+                          <td key={Math.random()} className={header}>{data[header]}</td>
+                        )
+                      })
+                    }
+                  </tr>)
+                })
+                }
+              </tbody>
             </table>
           </div>
-        
-              
-            </div>
-            <div className="text-center margin-top-20">
-              <button type="button" className="btn btn-primary continue" data-bind="enable: enabledContinue, click: upload" disabled="disabled">Continue</button>
-            </div>
-          
-            {/* <alert params="modal_id: 'alert-duplicated-samples',
+        </div>
+        <div className="text-center margin-top-20">
+          <button type="button"
+            onClick={() => {
+              this.handleContinue()
+            }}
+            className="btn btn-primary continue"
+            disabled="">Continue</button>
+        </div>
+
+        {/* <alert params="modal_id: 'alert-duplicated-samples',
                            modal_title: 'Upload Confirmation',
                            modal_info: uploadSamplesErrorMessage,
                            dismissNotAllowed: true,
@@ -134,8 +227,8 @@ console.log("chal gaya")
                 </div>
               </div>
           </alert> */}
-          
-            {/* <alert params="modal_id: 'alert-no-samples-uploaded',
+
+        {/* <alert params="modal_id: 'alert-no-samples-uploaded',
                            modal_title: 'No data uploaded',
                            modal_info: uploadSamplesErrorMessage,
                            onOk: function() {setTimeout(function() { uploadedTable([]); }, 700)}">
@@ -159,8 +252,8 @@ console.log("chal gaya")
                 </div>
               </div>
           </alert> */}
-          
-            {/* <loading params="id: 'uploading-data',
+
+        {/* <loading params="id: 'uploading-data',
                              title: 'Uploading Data',
                              progress: uploadingProgress">
               <div className="modal fade" data-bind="attr: {id: id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false" id="uploading-data">
@@ -181,8 +274,8 @@ console.log("chal gaya")
                   </div>
               </div>
           </loading> */}
-          
-            {/* <loading params="id: 'importing-data',
+
+        {/* <loading params="id: 'importing-data',
                              title: 'Importing Data',
                              progress: importingProgress">
               <div className="modal fade" data-bind="attr: {id: id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false" id="importing-data">
@@ -203,9 +296,9 @@ console.log("chal gaya")
                   </div>
               </div>
           </loading> */}
-          </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
-export default withRouter(Preview);
+export default withRouter(inject('store')(observer(Preview)));

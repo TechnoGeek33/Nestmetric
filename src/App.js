@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import { inject, observer } from 'mobx-react';
 import Accounts from './Accounts';
-import Main from './Main';
-import Test from './sample';
+import Dashboard from './Dashboard';
 import CreateModel from './CreateModel';
-import Error404 from './404' 
+import Error404 from './404'
 
+
+import Sample from './sample'
 
 class App extends Component {
   render() {
@@ -16,13 +17,13 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Switch>
-              <Route exact path="/accounts/:childRoute" render={(props) => { return <Accounts  {...props} /> }} />
-              <Route exact path="/main/:childRoute" render={(props) => { return <Main  {...props} /> }} />
-              <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
-              <Route exact path="/test" render={(props) => { return <Test  {...props} /> }} />
               <Route exact path="/" render={() => { return <Redirect to="/accounts/login" /> }} />
-              <Route render={() => { return <Error404/> }} />
-
+              <Route exact path="/accounts/:childRoute" render={(props) => { return <Accounts  {...props} /> }} />
+              <Route exact path="/main/dashboard" render={(props) => { return <Dashboard  {...props} /> }} />
+              <Route exact path="/main" render={() => { return <Redirect to="/main/dashboard" /> }} />
+              <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
+              <Route exact path="/sample" render={(props) => { return <Sample  {...props} /> }} />
+              <Route render={() => { return <Error404 /> }} />
             </Switch>
           </div>
         </BrowserRouter>
@@ -31,8 +32,4 @@ class App extends Component {
   }
 }
 
-export default  inject('store')(observer(App))
-// compose(
-//   observer,
-//   inject('store')
-// )(App);
+export default inject('store')(observer(App))

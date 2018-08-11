@@ -2,29 +2,44 @@ import {
     observable, decorate, action
 } from 'mobx';
 import SampleData from './SampleData'
-// import axios from 'axios'
-// import {
-//     getCookie
-// } from '../Services'
+import Features from './Features'
+import axios from 'axios';
+
+
 class Store {
+    pageCount = 0;
+    ExtractedData = [];
+    AllModules = []
+    ModelData = {
+        ModuleName: '',
+        ModuleAlgo: '',
+        allfeatures: [],
+        selectedfeatures: [],
+        targetedfeatures: [],
+    };
+    Features = Features;
 
-    // Login values
-    LoginEmail = '';
-    LoginPassword = '';
-    ExtractedData = []
+    // Login Object
+    Login = {
+        Email: '',
+        Password: '',
+    }
 
-    //  Registration Values
-    RegEmail = '';
-    RegPassword = '';
-    RegFirstName = '';
-    RegLastName = '';
+    //  Registration Object
+    Registration = {
+        Email: '',
+        Password: '',
+        ConfirmPassword: '',
+        FirstName: '',
+        LastName: ''
+    }
 
-
+    // Login Credentials check
     LoginCheck() {
         const email = "admin";
         const password = 'admin';
-        if (this.LoginEmail === email) {
-            if (this.LoginPassword === password) {
+        if (this.Login.Email === email) {
+            if (this.Login.Password === password) {
                 return true
             }
             else {
@@ -36,28 +51,53 @@ class Store {
         }
     }
 
+    // Registration Proceedings
     RegistrationCheck() {
-
+        return true
     }
 
-    getExtractedData () {
+    // The data extracted from CSV file goes here
+    getExtractedData() {
         this.ExtractedData = SampleData;
-
-       
     }
 
+    // 
+    FeaturesAction() {
+        this.Features.map((data, index) => {
+            return this.ModelData[`${data.category}features`].push(data)
+        })
+    }
+
+    createModule() {
+        return axios.post('http://localhost:5000/api/moduleCreate', this.ModelData)
+    }
+
+    getAllModules() {
+        axios.get('http://localhost:5000/api/getModule').then((response) => {
+            this.AllModules = response.data
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    DeleteModule(id) {
+        axios.post('http://localhost:5000/api/moduleDelete', { _id : id })
+    }
 }
 
 decorate(Store, {
-    Email: observable,
-    Password: observable,
-    RegEmail : observable,
-    RegPassword : observable,
-    RegFirstName : observable,
-    RegLastName : observable,
-    ExtractedData : observable,
+    Login: observable,
     LoginCheck: action.bound,
-    RegistrationCheck : action.bound,
+    Registration: observable,
+    RegistrationCheck: action.bound,
+    ExtractedData: observable,
+    pageCount: observable,
+    ModelData: observable,
+    Features: observable,
+    FeaturesAction: action.bound,
+    createModule: action.bound,
+    getAllModules: action.bound,
+    AllModules: observable
 });
 
 const store = new Store();
