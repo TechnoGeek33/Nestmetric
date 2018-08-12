@@ -1,4 +1,4 @@
-import React, { Component, } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
 
 
@@ -20,7 +20,6 @@ class Header extends Component {
                 <nav className="navbar navbar-default">
                     <div className="container-fluid">
                         <div className="navbar-header">
-
                             <button type="button" class="navbar-toggle">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar"></span>
@@ -28,18 +27,38 @@ class Header extends Component {
                                 <span class="icon-bar"></span>
                             </button>
 
-                            <a className="navbar-brand" href="/main/dashboard/" style={{ height: "45px" }}> </a>
+                            {this.props.location.pathname == "/main/dashboard" ?
+                                <a className="navbar-brand" href="/main/dashboard" style={{ height: "45px" }}> </a> :
+                                <Fragment>
+
+                                    <a className="navbar-brand navbar-brand-small"
+                                        style={{
+                                            background: "url('/images/logo.png') no-repeat",
+                                            backgroundSize: "50px",
+                                            width: "50px"
+                                        }}
+                                        href="/main/dashboard"></a>
+                                    <breadcrumbs >
+                                        <div className="breadcrumbs">
+                                            <span><a href="/main/explore">Explore</a></span>
+                                            <span className="separator">&gt;</span>
+                                            <span className="title" data-bind="text: module().name">Sentiment Analysis</span>
+
+                                        </div>
+                                    </breadcrumbs>
+                                </Fragment>}
                         </div>
                         <div className="collapse navbar-collapse" >
                             <ul className="nav navbar-nav navbar-right">
-                                <li className="create-model">
-                                    <button type="button" className="btn btn-primary"
-                                        onClick={() => {
-                                            this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
-                                        }} >
-                                        <span className="plus-white" id="hello" >+</span> Create Model
+                                {this.props.location.pathname == "/main/dashboard" ?
+                                    <li className="create-model">
+                                        <button type="button" className="btn btn-primary"
+                                            onClick={() => {
+                                                this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
+                                            }} >
+                                            <span className="plus-white" id="hello" >+</span> Create Model
                                         </button>
-                                </li>
+                                    </li> : null}
 
                                 <li className="dropdown" id="dlDropDown">
                                     <a className="dropdown-toggle user-dropdown" onClick={() => { this.handleDropdown() }} >
@@ -62,11 +81,12 @@ class Header extends Component {
                                 </li>
 
                             </ul>
-                            <ul className="nav navbar-nav navigation-menu">
-                                <li className="active">
-                                    <a href="/main/dashboard/">Dashboard</a>
-                                </li>
-                            </ul>
+                            {this.props.location.pathname == "/main/dashboard" ?
+                                <ul className="nav navbar-nav navigation-menu">
+                                    <li className="active">
+                                        <a href="/main/dashboard/">Dashboard</a>
+                                    </li>
+                                </ul> : null}
                         </div>
                     </div>
                 </nav>
