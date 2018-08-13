@@ -19,7 +19,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" render={() => { return <Redirect to="/accounts/login" /> }} />
               <Route exact path="/accounts/:childRoute" render={(props) => { return <Accounts  {...props} /> }} />
-              <Route exact path="/main/dashboard" render={(props) => { return <Dashboard  {...props} /> }} />
+              <Route exact path="/main/:childRoute" render={(props) => { return <Dashboard  {...props} /> }} />
               <Route exact path="/main" render={() => { return <Redirect to="/main/dashboard" /> }} />
               <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
               <Route exact path="/main/predictions/:childRoute" render={(props) => { return <Predictions  {...props} /> }} />
