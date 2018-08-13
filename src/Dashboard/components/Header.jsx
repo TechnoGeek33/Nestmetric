@@ -50,7 +50,7 @@ class Header extends Component {
                                         <hr />
 
                                         <li>
-                                            <a href="/">
+                                            <a onClick={ () => { this.props.history.push({pathname: '/main/my-account/query-usage'})}}>
                                                 <span className="typcn typcn-user" aria-hidden="true"></span> My Account </a>
                                         </li>
 
