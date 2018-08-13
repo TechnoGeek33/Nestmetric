@@ -47,8 +47,49 @@ class MyAccount extends Component {
         }
     }
 
+    handleTabs(tabPath) {
+        this.props.history.push({
+            pathname: `/main/my-account/${tabPath}`
+        })
+        document.querySelector('.active').className = ""
+
+        document.getElementById(tabPath).className = "active"
+
+    }
+
+    componentDidMount () {
+        switch (this.props.match.params.childRoute) {
+            case 'query-usage':
+
+              document
+
+            case 'profile':
+
+                return <Profile />;
+
+            case 'change-password':
+
+                return <ChangePassword />;
+
+            case 'change-plan':
+
+                return <PlansAndPricing />
+
+            case 'billing-settings':
+
+                return <PaymentMethod />
+
+            case 'billing-history':
+
+                return <BillingHistory />
+
+            case '':
+
+                return <PlanUsage />;
+        }
+    }
+
     render() {
-        console.log(this.props.match.params)
 
         return (
 
@@ -65,51 +106,51 @@ class MyAccount extends Component {
                                         <div className="col-md-3">
                                             <div className="menu-nav-stacked">
                                                 <ul className="nav nav-pills nav-stacked-module">
-                                                    <li className="active">
+                                                    <li id='query-usage' className="active" onClick={() => this.handleTabs('query-usage')}>
 
-                                                        <a href="#" >
-                                                            <span class="typcn margin-right-5 typcn-chart-area-outline" ></span>
+                                                        <a  >
+                                                            <span className="typcn margin-right-5 typcn-chart-area-outline" ></span>
                                                             <span  >Plan Usage</span>
 
                                                         </a>
                                                     </li>
-                                                    <li >
+                                                    <li id='profile' onClick={() => this.handleTabs('profile')}>
 
-                                                        <a href="#" >
-                                                            <span class="typcn margin-right-5 typcn-user-outline" ></span>
+                                                        <a  >
+                                                            <span className="typcn margin-right-5 typcn-user-outline" ></span>
                                                             <span  >Profile</span>
 
                                                         </a>
                                                     </li>
-                                                    <li >
+                                                    <li id='change-password' onClick={() => this.handleTabs('change-password')}>
 
-                                                        <a href="#" >
-                                                            <span class="typcn margin-right-5 typcn-user-outline" ></span>
+                                                        <a  >
+                                                            <span className="typcn margin-right-5 typcn-user-outline" ></span>
                                                             <span  >Change Password</span>
 
                                                         </a>
                                                     </li>
-                                                    <li >
+                                                    <li id='change-plan' onClick={() => this.handleTabs('change-plan')}>
 
-                                                        <a href="#" >
-                                                            <span class="typcn margin-right-5 typcn-input-checked-outline" ></span>
+                                                        <a  >
+                                                            <span className="typcn margin-right-5 typcn-input-checked-outline" ></span>
                                                             <span  >Plans and Pricing</span>
 
                                                         </a>
                                                     </li>
-                                                    <li >
+                                                    <li id='billing-settings' onClick={() => this.handleTabs('billing-settings')}>
 
-                                                        <a href="#" >
-                                                            <span class="typcn margin-right-5 typcn-credit-card" ></span>
+                                                        <a  >
+                                                            <span className="typcn margin-right-5 typcn-credit-card" ></span>
                                                             <span  >Payment Method</span>
 
                                                         </a>
                                                     </li>
 
-                                                    <li >
+                                                    <li id='billing-history' onClick={() => this.handleTabs('billing-history')}>
 
-                                                        <a href="#" >
-                                                            <span class="typcn margin-right-5 typcn-book" ></span>
+                                                        <a  >
+                                                            <span className="typcn margin-right-5 typcn-book" ></span>
                                                             <span  >Billing History</span>
 
                                                         </a>
@@ -117,13 +158,18 @@ class MyAccount extends Component {
                                                 </ul>
                                             </div>
                                         </div>
-<div className="panel-nav-stacked-no-border">
-{this.renderSwitch()}
-</div>
+                                        <div className="col-md-9">
+
+                                            <div className="panel-nav-stacked-no-border">
+                                                {this.renderSwitch()}
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
