@@ -17,14 +17,19 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Switch>
+              <Route exact path="/main/predictions" render={() => { return <Redirect to="/main/predictions/single-predict" /> }} />
+
               <Route exact path="/" render={() => { return <Redirect to="/accounts/login" /> }} />
               <Route exact path="/accounts/:childRoute" render={(props) => { return <Accounts  {...props} /> }} />
-              <Route exact path="/main/:childRoute" render={(props) => { return <Dashboard  {...props} /> }} />
+
               <Route exact path="/main" render={() => { return <Redirect to="/main/dashboard" /> }} />
-              <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
-              <Route exact path="/main/predictions/:childRoute" render={(props) => { return <Predictions  {...props} /> }} />
+              <Route exact path="/main/:childRoute" render={(props) => { return <Dashboard  {...props} /> }} />
+
+              <Route exact path="/main/predictions/:childRoute" render={(props) => { return <Dashboard  {...props} /> }} />
+
               <Route exact path="/main/my-account/:childRoute" render={(props) => { return <MyAccount {...props} /> }} />
-              
+
+              <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
 
               <Route exact path="/sample" render={(props) => { return <Sample  {...props} /> }} />
               <Route render={() => { return <Error404 /> }} />

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { observer, inject } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 
 class MyModels extends Component {
@@ -26,6 +27,10 @@ class MyModels extends Component {
         this.props.store.DeleteModule(_id);
     }
 
+    hanlelModuleClick = (id) => {
+            this.props.history.push({ pathname : `/main/predictions/single-predict` , search : `id=${id}` })
+    }
+
     render() {
         return (
             <Fragment>
@@ -39,7 +44,7 @@ class MyModels extends Component {
                     {this.props.store.AllModules.length ? this.props.store.AllModules.map((d, i) => {
                         return (
 
-                            <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
+                            <div onClick={() => {this.hanlelModuleClick(d._id)}} className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
                                 <div id="module-cl_KFXhoTdt">
                                     <div className="panel panel-default" >
                                         <div className="panel-body">
@@ -79,4 +84,4 @@ class MyModels extends Component {
     }
 
 }
-export default inject('store')(observer(MyModels));
+export default withRouter(inject('store')(observer(MyModels)));

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import RecentlyUsed from './RecentlyUsed';
 import MyModels from './MyModels';
 
-class Explorer extends Component {
+class Dashboard extends Component {
     render() {
         return (
                 <div className="container container-body">
@@ -12,7 +12,6 @@ class Explorer extends Component {
                             <RecentlyUsed/>
                             <div className="row underlined-row">
                             </div>
-
                             <MyModels/>
                         </div>
                     </div>
@@ -21,4 +20,4 @@ class Explorer extends Component {
     }
 }
 
-export default withRouter(Explorer);
+export default withRouter(Dashboard);

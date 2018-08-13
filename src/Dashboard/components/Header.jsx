@@ -42,7 +42,7 @@ class Header extends Component {
                                         <div className="breadcrumbs">
                                             <span><a href="/main/explore">Explore</a></span>
                                             <span className="separator">&gt;</span>
-                                            <span className="title" data-bind="text: module().name">Sentiment Analysis</span>
+                                            <span className="title" >Sentiment Analysis</span>
 
                                         </div>
                                     </breadcrumbs>
