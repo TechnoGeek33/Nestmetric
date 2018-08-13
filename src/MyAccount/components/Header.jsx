@@ -25,7 +25,7 @@ class Header extends Component {
                     width:"50px"
                     
                   }}
-                  href="/main/dashboard/"></a>
+                  href="/main/dashboard"></a>
                 <breadcrumbs >
                   <div className="breadcrumbs">
                     <span><a href="/main/explore/">Explore</a></span>
