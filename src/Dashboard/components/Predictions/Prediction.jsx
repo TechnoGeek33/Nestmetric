@@ -21,9 +21,7 @@ class Prediction extends Component {
         }
         else{
             document.getElementById("single").className= "active";
-
         }
-
     }
 
     renderSwitch() {

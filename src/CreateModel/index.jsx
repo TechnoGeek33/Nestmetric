@@ -7,7 +7,7 @@ import SelectFeatures from './components/SelectFeatures'
 import SelectAlgorithm from './components/SelectAlgorithm'
 import NameYourModule from './components/NameYourModule'
 import Congrats from './components/Congrats'
-import { increaseProgressBar } from '../Service'
+import { Services } from '../Service'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
@@ -75,7 +75,7 @@ class CreateModel extends Component {
         </div> : <div className="container-body module-create-flatten">
           <div className="container-wrapper">
             <div className="progress progress-global">
-              <div className="progress-bar" role="progressbar" style={{ width: increaseProgressBar(8, this.props.store.pageCount) }}>
+              <div className="progress-bar" role="progressbar" style={{ width: Services.increaseProgressBar(8, this.props.store.pageCount) }}>
                 <span className="sr-only"></span>
               </div>
             </div>
@@ -84,7 +84,7 @@ class CreateModel extends Component {
               <span onClick={() => {
                 this.props.history.goBack()
               }} className="typcn typcn-arrow-left clickable"
-              // style={{ display: "none" }}
+             
               ></span>
               <span onClick={this.CloseBtnCheck} className="typcn typcn-times clickable"></span>
             </div>

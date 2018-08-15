@@ -30,7 +30,6 @@ class Header extends Component {
                             {this.props.location.pathname == "/main/dashboard" ?
                                 <a className="navbar-brand" href="/main/dashboard" style={{ height: "45px" }}> </a> :
                                 <Fragment>
-
                                     <a className="navbar-brand navbar-brand-small"
                                         style={{
                                             background: "url('/images/logo.png') no-repeat",
@@ -38,14 +37,19 @@ class Header extends Component {
                                             width: "50px"
                                         }}
                                         href="/main/dashboard"></a>
+
                                     <breadcrumbs >
                                         <div className="breadcrumbs">
-                                            <span><a href="/main/explore">Explore</a></span>
+                                            <span><a href="/main/dashboard">Dashboard</a></span>
                                             <span className="separator">&gt;</span>
-                                            <span className="title" >Sentiment Analysis</span>
 
+                                            {this.props.location.pathname == `/main/predictions/${this.props.match.params.childRoute}` ?
+                                                <span className="title" >Sentiment Analysis</span> :
+                                                <span className="title" >My Account</span>
+                                            }
                                         </div>
                                     </breadcrumbs>
+
                                 </Fragment>}
                         </div>
                         <div className="collapse navbar-collapse" >
@@ -69,7 +73,7 @@ class Header extends Component {
                                         <hr />
 
                                         <li>
-                                            <a onClick={ () => { this.props.history.push({pathname: '/main/my-account/query-usage'})}}>
+                                            <a onClick={() => { this.props.history.push({ pathname: '/main/my-account/query-usage' }) }}>
                                                 <span className="typcn typcn-user" aria-hidden="true"></span> My Account </a>
                                         </li>
 

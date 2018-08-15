@@ -4,7 +4,7 @@ import {
 import SampleData from './SampleData'
 import Features from './Features'
 import axios from 'axios';
-
+import {Services} from '../Service';
 
 class Store {
     pageCount = 0;
@@ -69,11 +69,11 @@ class Store {
     }
 
     createModule() {
-        return axios.post('http://localhost:5000/api/moduleCreate', this.ModelData)
+        return axios.post(`${Services.env}/api/moduleCreate`, this.ModelData)
     }
 
     getAllModules() {
-        axios.get('http://localhost:5000/api/getModule').then((response) => {
+        axios.get(`${Services.env}/api/getModule`).then((response) => {
             this.AllModules = response.data
         }).catch((error) => {
             console.log(error)
@@ -81,7 +81,7 @@ class Store {
     }
 
     DeleteModule(id) {
-        axios.post('http://localhost:5000/api/moduleDelete', { _id : id })
+        axios.post(`${Services.env}/api/moduleDelete`, { _id : id })
     }
 }
 

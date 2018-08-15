@@ -31,7 +31,7 @@ class Congrats extends Component {
           <button type="button" class="btn btn-default continue margin-right-20" disabled >Keep Training It</button>
            
           <button type="button" class="btn btn-primary continue" 
-          onClick={() => {this.props.history.push({pathname: '/main/dashboard/'})}} >Test It</button>
+          onClick={() => {this.props.history.push({pathname: '/main/dashboard'})}} >Test It</button>
         </div>
       </div>
     )

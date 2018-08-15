@@ -1,16 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import Header from './components/Header';
 import { withRouter } from 'react-router-dom'
-import Profile from './components/Profile';
-import PlanUsage from './components/PlanUsage';
-import ChangePassword from './components/ChangePassword';
-import PlansAndPricing from './components/PlansAndPricing';
-import PaymentMethod from './components/PaymentMethod';
-import BillingHistory from './components/BillingHistory';
+import Profile from './Profile';
+import PlanUsage from './PlanUsage';
+import ChangePassword from './ChangePassword';
+import PlansAndPricing from './PlansAndPricing';
+import PaymentMethod from './PaymentMethod';
+import BillingHistory from './BillingHistory';
 
 
 
-class MyAccount extends Component {
+class Account extends Component {
 
     renderSwitch() {
 
@@ -92,11 +91,7 @@ class MyAccount extends Component {
     render() {
 
         return (
-
             <Fragment>
-                <Header />
-
-
                 <div className="container container-body">
                     <div className="container-wrapper">
                         <div className="main-content">
@@ -177,4 +172,4 @@ class MyAccount extends Component {
         )
     }
 }
-export default withRouter(MyAccount)
+export default withRouter(Account)
