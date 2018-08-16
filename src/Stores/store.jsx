@@ -4,12 +4,14 @@ import {
 import SampleData from './SampleData'
 import Features from './Features'
 import axios from 'axios';
-import {Services} from '../Service';
+import { Services } from '../Service';
 
 class Store {
     pageCount = 0;
     ExtractedData = [];
     AllModules = []
+    SelectedModule = '';
+
     ModelData = {
         ModuleName: '',
         ModuleAlgo: '',
@@ -81,7 +83,7 @@ class Store {
     }
 
     DeleteModule(id) {
-        axios.post(`${Services.env}/api/moduleDelete`, { _id : id })
+        axios.post(`${Services.env}/api/moduleDelete`, { _id: id })
     }
 }
 

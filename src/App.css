@@ -8227,14 +8227,14 @@ li.sample-categories {
     margin-top: -55px
 }
 
-.module-options .glyphicon-option-vertical {
+.module-options .typcn-th-menu {
     font-size: 19px;
     color: rgba(127, 143, 160, .4);
     width: 20px;
     height: 30px
 }
 
-.module-options .glyphicon-option-vertical:hover {
+.module-options .typcn-th-menu:hover {
     color: rgba(127, 143, 160, .6)
 }
 

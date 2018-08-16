@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
-
+import { inject, observer } from 'mobx-react';
 
 class Header extends Component {
 
@@ -44,7 +44,7 @@ class Header extends Component {
                                             <span className="separator">&gt;</span>
 
                                             {this.props.location.pathname == `/main/predictions/${this.props.match.params.childRoute}` ?
-                                                <span className="title" >Sentiment Analysis</span> :
+                                                <span className="title" >{this.props.store.SelectedModule.ModuleName}</span> :
                                                 <span className="title" >My Account</span>
                                             }
                                         </div>
@@ -60,7 +60,7 @@ class Header extends Component {
                                             onClick={() => {
                                                 this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
                                             }} >
-                                            <span className="plus-white" id="hello" >+</span> Create Model
+                                            <span className="plus-white" style={{left: "14px"}} >+</span> Create Model
                                         </button>
                                     </li> : null}
 
@@ -69,8 +69,6 @@ class Header extends Component {
                                         <span className="typcn typcn-user-outline" aria-hidden="true"></span>
                                     </a>
                                     <ul className="dropdown-menu">
-
-                                        <hr />
 
                                         <li>
                                             <a onClick={() => { this.props.history.push({ pathname: '/main/my-account/query-usage' }) }}>
@@ -88,7 +86,7 @@ class Header extends Component {
                             {this.props.location.pathname == "/main/dashboard" ?
                                 <ul className="nav navbar-nav navigation-menu">
                                     <li className="active">
-                                        <a href="/main/dashboard/">Dashboard</a>
+                                        <a href="/main/dashboard">Dashboard</a>
                                     </li>
                                 </ul> : null}
                         </div>
@@ -100,4 +98,4 @@ class Header extends Component {
 
 }
 
-export default withRouter(Header)
+export default withRouter(inject('store')(observer(Header)))

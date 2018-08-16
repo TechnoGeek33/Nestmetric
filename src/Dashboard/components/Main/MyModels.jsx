@@ -5,7 +5,10 @@ import { withRouter } from 'react-router-dom'
 
 class MyModels extends Component {
 
-    handleDelMenu(id) {
+    handleDelMenu(e,id) {
+
+        // To stop from firing a parent onclick
+        e.stopPropagation();
 
         var btnId = document.getElementById(id);
 
@@ -28,7 +31,7 @@ class MyModels extends Component {
     }
 
     hanlelModuleClick = (id) => {
-            this.props.history.push({ pathname : `/main/predictions/single-predict` , search : `id=${id}` })
+        this.props.history.push({ pathname: `/main/predictions/single-predict`, search: `id=${id}` })
     }
 
     render() {
@@ -44,24 +47,21 @@ class MyModels extends Component {
                     {this.props.store.AllModules.length ? this.props.store.AllModules.map((d, i) => {
                         return (
 
-                            <div onClick={() => {this.hanlelModuleClick(d._id)}} className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
-                                <div id="module-cl_KFXhoTdt">
+                            <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
+                                <div onClick={() => { this.hanlelModuleClick(d._id) }} >
                                     <div className="panel panel-default" >
                                         <div className="panel-body">
 
                                             <div className="cell-avatar topic">
                                             </div>
-                                            <span id={`moduleBtn${i}`} onClick={(e) => this.handleDelMenu(`moduleBtn${i}`)} className="btn-group module-options" >
-                                                <span className="typcn typcn-th-menu" id="options-WmPw5xm8O6h2PN"
-                                                //   style={{ display: "none" }}
-                                                ></span>
+                                            <span id={`moduleBtn${i}`} onClick={(e) => this.handleDelMenu(e,`moduleBtn${i}`)} className="btn-group module-options" >
+                                                <span className="typcn typcn-th-menu" ></span>
                                                 <ul className="dropdown-menu">
-                                                    <li onClick={() => this.handleDelBtn(d._id)}><a >Delete</a></li>
+                                                    <li ><a onClick={() => this.handleDelBtn(d._id)} >Delete</a></li>
                                                 </ul>
                                             </span>
                                             <h3>{d.ModuleName}</h3>
-                                            <p className="description"> {d.ModuleAlgo}</p>
-
+                                            <p className="description">{d.ModuleAlgo}</p>
                                         </div>
                                     </div>
                                 </div>

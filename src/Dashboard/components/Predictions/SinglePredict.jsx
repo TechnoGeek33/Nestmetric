@@ -8,7 +8,7 @@ class SinglePredict extends Component {
         return (
             <div className="col-md-10">
             <div className="batch-processing">
-              <h2>Batch Processing</h2>
+              <h2>Single Processing</h2>
               <div className="panel panel-default">
                 <div className="panel-body">
                   <div className="csv-xls"></div>

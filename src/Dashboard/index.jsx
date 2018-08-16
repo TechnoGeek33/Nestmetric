@@ -12,10 +12,14 @@ class Main extends Component {
 
     componentWillMount() {
         this.props.store.getAllModules();
+        this.props.store.SelectedModule = this.props.store.AllModules.find((d) => { return d._id === new URLSearchParams(this.props.location.search).get('id') })
+           
     }
 
     renderSwitch() {
-        console.log(this.props.match.params.childRoute)
+     
+            
+        
 
         switch (this.props.location.pathname) {
 
@@ -32,7 +36,6 @@ class Main extends Component {
     }
 
     render() {
-        Module = this.props.store.AllModules.find((d) => { return d._id === new URLSearchParams(this.props.location.search).get('id') })
         return (
             <Fragment>
                 <Header />

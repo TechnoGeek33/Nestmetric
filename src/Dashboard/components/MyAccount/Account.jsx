@@ -57,35 +57,8 @@ class Account extends Component {
     }
 
     componentDidMount () {
-        switch (this.props.match.params.childRoute) {
-            case 'query-usage':
-
-              document
-
-            case 'profile':
-
-                return <Profile />;
-
-            case 'change-password':
-
-                return <ChangePassword />;
-
-            case 'change-plan':
-
-                return <PlansAndPricing />
-
-            case 'billing-settings':
-
-                return <PaymentMethod />
-
-            case 'billing-history':
-
-                return <BillingHistory />
-
-            case '':
-
-                return <PlanUsage />;
-        }
+        
+       document.getElementById(this.props.match.params.childRoute).className = "active";
     }
 
     render() {
@@ -101,7 +74,7 @@ class Account extends Component {
                                         <div className="col-md-3">
                                             <div className="menu-nav-stacked">
                                                 <ul className="nav nav-pills nav-stacked-module">
-                                                    <li id='query-usage' className="active" onClick={() => this.handleTabs('query-usage')}>
+                                                    <li id='query-usage' onClick={() => this.handleTabs('query-usage')}>
 
                                                         <a  >
                                                             <span className="typcn margin-right-5 typcn-chart-area-outline" ></span>

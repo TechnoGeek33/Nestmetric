@@ -16,12 +16,14 @@ class Prediction extends Component {
 
     }
     componentDidMount() {
+
         if (this.props.location.pathname === '/main/predictions/multiple-predict') {
-            document.getElementById("multiple").className= "active";
+            document.getElementById("multiple").className = "active";
         }
-        else{
-            document.getElementById("single").className= "active";
+        else {
+            document.getElementById("single").className = "active";
         }
+        
     }
 
     renderSwitch() {
@@ -48,13 +50,13 @@ class Prediction extends Component {
                                 <div className="col-md-2">
                                     <div className="menu-nav-stacked">
                                         <ul className="nav nav-pills nav-stacked-module" >
-                                            <li onClick={ () => this.handleTabs('single-predict','single')} id="single" className="">
+                                            <li onClick={() => this.handleTabs('single-predict', 'single')} id="single" className="">
                                                 <a >
                                                     <span className="typcn margin-right-5 typcn-input-checked" ></span>
                                                     <span >Single Predict</span>
                                                 </a>
                                             </li>
-                                            <li onClick={ () => this.handleTabs('multiple-predict','multiple')} id="multiple" className="">
+                                            <li onClick={() => this.handleTabs('multiple-predict', 'multiple')} id="multiple" className="">
                                                 <a >
                                                     <span className="typcn margin-right-5 typcn-document" ></span>
                                                     <span >Batch</span>
