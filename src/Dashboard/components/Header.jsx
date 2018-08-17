@@ -15,6 +15,7 @@ class Header extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div id="header-wrapper">
                 <nav className="navbar navbar-default">
@@ -44,7 +45,7 @@ class Header extends Component {
                                             <span className="separator">&gt;</span>
 
                                             {this.props.location.pathname == `/main/predictions/${this.props.match.params.childRoute}` ?
-                                                <span className="title" >{this.props.store.SelectedModule.ModuleName}</span> :
+                                                <span className="title" >{this.props.Model ? this.props.Model.ModuleName : null }</span> :
                                                 <span className="title" >My Account</span>
                                             }
                                         </div>

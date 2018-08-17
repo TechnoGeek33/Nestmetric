@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {withRouter} from 'react-router-dom'
 
 
 class RecentlyUsed extends Component {
@@ -81,4 +82,4 @@ class RecentlyUsed extends Component {
     }
 }
 
-export default RecentlyUsed;
+export default withRouter(RecentlyUsed) ;

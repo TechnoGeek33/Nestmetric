@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
-import Profile from './Profile';
-import PlanUsage from './PlanUsage';
-import ChangePassword from './ChangePassword';
-import PlansAndPricing from './PlansAndPricing';
-import PaymentMethod from './PaymentMethod';
-import BillingHistory from './BillingHistory';
+import Profile from './components/Profile';
+import PlanUsage from './components/PlanUsage';
+import ChangePassword from './components/ChangePassword';
+import PlansAndPricing from './components/PlansAndPricing';
+import PaymentMethod from './components/PaymentMethod';
+import BillingHistory from './components/BillingHistory';
 
 
 

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom'
-import RecentlyUsed from './RecentlyUsed';
-import MyModels from './MyModels';
+import RecentlyUsed from './components/RecentlyUsed';
+import MyModels from './components/MyModels';
 import { inject, observer } from 'mobx-react';
 
 class Dashboard extends Component {
