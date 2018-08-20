@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import MultiplePredict from './MultiplePredict';
-import SinglePredict from './SinglePredict';
+import MultiplePredict from './components/MultiplePredict';
+import SinglePredict from './components/SinglePredict';
 import { inject, observer } from 'mobx-react';
 
 class Prediction extends Component {
 
     handleTabs(tabPath, id) {
         this.props.history.push({
-            pathname: `/main/predictions/${tabPath}`
+            pathname: `/main/predictions/${tabPath}`,
+            search : `id=${this.props.Model._id}`
         })
         document.querySelector('.active').className = ""
 
@@ -33,7 +34,7 @@ class Prediction extends Component {
                 return <MultiplePredict />
 
             case '/main/predictions/single-predict':
-                return <SinglePredict />
+                return <SinglePredict Model={this.props.Model}/>
             default:
                 return <SinglePredict />
         }
@@ -65,7 +66,11 @@ class Prediction extends Component {
                                         </ul>
                                     </div>
                                 </div>
+                                <div 
+                                // className="col-md-10"
+                                >
                                 {this.renderSwitch()}
+                                </div>
                             </div>
                         </div>
                     </div>
