@@ -13,8 +13,8 @@ import { inject, observer } from 'mobx-react';
 
 class CreateModel extends Component {
 
-  state ={
-    flag : true
+  state = {
+    flag: true
   }
   CloseBtnCheck = () => {
     if (this.props.match.params.childRoute === "name-your-module") {
@@ -28,7 +28,7 @@ class CreateModel extends Component {
 
   }
 
-  onClocse =() => {
+  onClocse = () => {
     document.getElementById("delete-project").style.display = "none"
     document.getElementById("delete-project").className = "modal fade"
     document.getElementById("overlay").className = "fade in"
@@ -54,7 +54,7 @@ class CreateModel extends Component {
         return <SelectAlgorithm />;
       case 'name-your-module':
         return <NameYourModule />;
-        case 'congrats':
+      case 'congrats':
         return <Congrats />;
       default:
         return <ModuleType />
@@ -65,7 +65,7 @@ class CreateModel extends Component {
 
     return (
       <div className="current-view-module-create">
-      {!this.state.flag ?  <div className="container container-body">
+        {!this.state.flag ? <div className="container container-body">
           <div className="container-wrapper">
             <div className="main-content">
               <div className="tail-spinner" style={{ display: "block" }}></div>
@@ -73,30 +73,27 @@ class CreateModel extends Component {
             </div>
           </div>
         </div> : <div className="container-body module-create-flatten">
-          <div className="container-wrapper">
-            <div className="progress progress-global">
-              <div className="progress-bar" role="progressbar" style={{ width: Services.increaseProgressBar(8, this.props.store.pageCount) }}>
-                <span className="sr-only"></span>
+            <div className="container-wrapper">
+              <div className="progress progress-global">
+                <div className="progress-bar" role="progressbar" style={{ width: Services.increaseProgressBar(8, this.props.store.pageCount) }}>
+                  <span className="sr-only"></span>
+                </div>
               </div>
-            </div>
-            <div className="navigation-bar">
 
-              <span onClick={() => {
-                this.props.history.goBack()
-              }} className="typcn typcn-arrow-left clickable"
-             
-              ></span>
-              <span onClick={this.CloseBtnCheck} className="typcn typcn-times clickable"></span>
+              <div className="navigation-bar">
+                {this.props.match.params.childRoute === "choose-module-type" ? null : 
+                <span onClick={() => {
+                  this.props.history.goBack()
+                }} className="typcn typcn-arrow-left clickable" ></span>}
+                <span onClick={this.CloseBtnCheck} className="typcn typcn-times clickable"></span>
+              </div>
+              {this.renderSwitch()}
             </div>
-            {this.renderSwitch()}
-          </div>
-        </div> }
-       
-        
+          </div>}
 
         {/* Error Dialog for hititng cross button */}
         <div>
-          <div className="modal fade"  id="delete-project" style={{ display: "none", paddingLeft: "0px" }}>
+          <div className="modal fade" id="delete-project" style={{ display: "none", paddingLeft: "0px" }}>
             <div className="modal-dialog" style={{ left: "0" }}>
               <form id="delete-project-form">
                 <div className="modal-content">
@@ -104,7 +101,6 @@ class CreateModel extends Component {
                     <button type="button" onClick={this.onClocse} className="close">×</button>
                     <h4 className="modal-title" id="myModalLabel" data-bind="text: modal_title">Stop Creation Wizard</h4>
                   </div>
-
                   <div className="modal-body">
                     <div className="alert alert-danger">
                       <strong>Warning:</strong>
@@ -116,7 +112,7 @@ class CreateModel extends Component {
 
                   <div className="modal-footer">
                     <button type="button" onClick={this.onClocse} className="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" onClick={ this.handleStop} className="btn btn-danger">Stop Creation Wizard</button>
+                    <button type="submit" onClick={this.handleStop} className="btn btn-danger">Stop Creation Wizard</button>
                   </div>
                 </div>
               </form>

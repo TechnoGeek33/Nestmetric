@@ -5,6 +5,12 @@ import { inject, observer } from 'mobx-react';
 
 
 class Congrats extends Component {
+  store = this.props.store;
+
+  componentWillMount() {
+    // To keep track of ProgressBar
+    this.store.pageCount = 8;
+  }
 
 
   render() {

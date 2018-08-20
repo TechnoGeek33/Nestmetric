@@ -44,7 +44,7 @@ class Header extends Component {
                                             <span className="separator">&gt;</span>
 
                                             {this.props.location.pathname == `/main/predictions/${this.props.match.params.childRoute}` ?
-                                                <span className="title" >{this.props.store.SelectedModule.ModuleName}</span> :
+                                                <span className="title" >sdko[fk</span> :
                                                 <span className="title" >My Account</span>
                                             }
                                         </div>

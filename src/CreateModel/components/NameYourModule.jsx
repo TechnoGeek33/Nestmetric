@@ -5,9 +5,14 @@ import { inject, observer } from 'mobx-react';
 
 
 class NameYourModule extends Component {
-
+  store = this.props.store;
   state = {
     disabled: "disabled"
+  }
+
+  componentWillMount() {
+    // To keep track of ProgressBar
+    this.store.pageCount = 7;
   }
 
   inputChange(e) {
