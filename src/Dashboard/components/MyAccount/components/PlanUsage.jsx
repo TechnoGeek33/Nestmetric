@@ -7,7 +7,7 @@ class PlanUsage extends Component {
 
         return (
           <Fragment>
-<h2 class="small-heading small-heading-top">Plan Usage</h2>
+<h2 className="small-heading small-heading-top">Plan Usage</h2>
    <p>Coming Soon</p>
 {/* <p>
   <strong>Consumed queries:</strong>

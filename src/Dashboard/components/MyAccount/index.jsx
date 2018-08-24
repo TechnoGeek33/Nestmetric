@@ -9,6 +9,7 @@ import BillingHistory from './components/BillingHistory';
 
 
 
+
 class Account extends Component {
 
     renderSwitch() {
@@ -38,9 +39,9 @@ class Account extends Component {
 
                 return <BillingHistory />
 
-            case '':
+            default:
 
-                return <PlanUsage />;
+                 window.location.href="/main/my-account/query-usage" 
 
 
         }
@@ -57,8 +58,13 @@ class Account extends Component {
     }
 
     componentDidMount () {
+        var activeComponent = document.getElementById(this.props.match.params.childRoute);
+
+        if(activeComponent) {
+            activeComponent.className = "active";
+        }
         
-       document.getElementById(this.props.match.params.childRoute).className = "active";
+      
     }
 
     render() {

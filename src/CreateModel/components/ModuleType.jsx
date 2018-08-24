@@ -30,7 +30,7 @@ class ModuleType extends Component {
                 <div className="triangle-topleft">
                   <span className="typcn typcn-tick"></span>
                 </div>
-                <div className="cell-avatar topic" data-bind="css: 'topic'">
+                <div className="cell-avatar topic" >
                 </div>
                 <h1>Classifier</h1>
                 <p>Classify churn , purchase or credit score.</p>

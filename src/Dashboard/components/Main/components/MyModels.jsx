@@ -47,7 +47,7 @@ class MyModels extends Component {
                     {this.props.store.AllModules.length ? this.props.store.AllModules.map((d, i) => {
                         return (
 
-                            <div className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
+                            <div key={i * 4} className="col-xs-12 col-sm-6 col-md-3 projects-gird-cell">
                                 <div onClick={() => { this.hanlelModuleClick(d._id) }} >
                                     <div className="panel panel-default" >
                                         <div className="panel-body">

@@ -50,7 +50,7 @@ class RecentlyUsed extends Component {
                                         <li><a >Delete</a></li>
                                     </ul>
                                 </span>
-                                <h3 data-bind="text: name">Profanity &amp; Abuse Detection</h3>
+                                <h3>Profanity &amp; Abuse Detection</h3>
                                 <p className="description">Identify profanity or abuse in user generated content....</p>
 
                             </div>

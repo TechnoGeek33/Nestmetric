@@ -4,7 +4,7 @@ import Prediction from './components/Predictions';
 import Account from './components/MyAccount';
 import { inject, observer } from 'mobx-react';
 import Header from './components/Header';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 
 let Model = {}
@@ -31,6 +31,10 @@ class Main extends Component {
 
             case `/main/my-account/${this.props.match.params.childRoute}`:
                 return <Account Model={Model} />
+            
+            default : 
+                  window.location.href="/main/dashboard"
+                
 
         }
     }

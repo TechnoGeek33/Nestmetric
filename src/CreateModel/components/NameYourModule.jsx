@@ -43,13 +43,13 @@ class NameYourModule extends Component {
   render() {
 
     return (
-      <div data-bind="component: wizard.getCurrentComponent()">
+      <div >
         <h5 className="wizard-category-subtitle">New Model</h5>
         <h1 className="wizard-category-title">
           Name your model
       </h1>
         <div className="module-name">
-          <input onChange={(e) => this.inputChange(e)} type="text" id="module-name" className="form-control" placeholder="Type something…" data-bind="textInput: moduleName, event: {keypress: onEnter}" />
+          <input onChange={(e) => this.inputChange(e)} type="text" id="module-name" className="form-control" placeholder="Type something…" />
         </div>
         <div className="text-center margin-top-70">
           <button type="button"
