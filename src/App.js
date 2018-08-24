@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 import Accounts from './Accounts';
 import Dashboard from './Dashboard';
 import CreateModel from './CreateModel';
+import NewBatch from './NewBatch'
 import Error404 from './404'
 
 class App extends Component {
@@ -27,6 +28,8 @@ class App extends Component {
               <Route exact path="/main/my-account/:childRoute" render={(props) => { return <Dashboard {...props} /> }} />
 
               <Route exact path="/main/module-create/wizard/:childRoute" render={(props) => { return <CreateModel  {...props} /> }} />
+              <Route exact path="/main/module-batch/wizard/:childRoute" render={(props) => { return <NewBatch  {...props} /> }} />
+              
 
               <Route render={() => { return <Error404 /> }} />
             </Switch>
