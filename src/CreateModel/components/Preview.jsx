@@ -187,8 +187,7 @@ class Preview extends Component {
                       })
                     }
                   </tr>)
-                })
-                }
+                })}
               </tbody>
             </table>
           </div>
@@ -201,101 +200,6 @@ class Preview extends Component {
             className="btn btn-primary continue"
             disabled="">Continue</button>
         </div>
-
-        {/* <alert params="modal_id: 'alert-duplicated-samples',
-                           modal_title: 'Upload Confirmation',
-                           modal_info: uploadSamplesErrorMessage,
-                           dismissNotAllowed: true,
-                           onOk: function() {setTimeout(function() { uploadedSamples(true) }, 700)}">
-              <div className="modal fade" data-bind="attr: {id: modal_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  id="alert-duplicated-samples">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <button type="button" className="close" data-dismiss="modal"  data-bind="visible: !dismissNotAllowed" style={{display: "none"}}>×</button>
-                        <h4 className="modal-title" id="myModalLabel" data-bind="text: modal_title">Upload Confirmation</h4>
-                      </div>
-                      <div className="modal-body">
-                        <div className="alert alert-info">
-                          <span data-bind="html: modal_info"></span>
-                        </div>
-                      </div>
-          
-                      <div className="modal-footer">
-                        <button type="button" className="btn btn-default" data-dismiss="modal" data-bind="click: onOk, text: okMessage">Ok</button>
-                      </div>
-                    </div>
-                </div>
-              </div>
-          </alert> */}
-
-        {/* <alert params="modal_id: 'alert-no-samples-uploaded',
-                           modal_title: 'No data uploaded',
-                           modal_info: uploadSamplesErrorMessage,
-                           onOk: function() {setTimeout(function() { uploadedTable([]); }, 700)}">
-              <div className="modal fade" data-bind="attr: {id: modal_id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  id="alert-no-samples-uploaded">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <button type="button" className="close" data-dismiss="modal"  data-bind="visible: !dismissNotAllowed">×</button>
-                        <h4 className="modal-title" id="myModalLabel" data-bind="text: modal_title">No data uploaded</h4>
-                      </div>
-                      <div className="modal-body">
-                        <div className="alert alert-info">
-                          <span data-bind="html: modal_info"></span>
-                        </div>
-                      </div>
-          
-                      <div className="modal-footer">
-                        <button type="button" className="btn btn-default" data-dismiss="modal" data-bind="click: onOk, text: okMessage">Ok</button>
-                      </div>
-                    </div>
-                </div>
-              </div>
-          </alert> */}
-
-        {/* <loading params="id: 'uploading-data',
-                             title: 'Uploading Data',
-                             progress: uploadingProgress">
-              <div className="modal fade" data-bind="attr: {id: id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false" id="uploading-data">
-                  <div className="modal-dialog">
-                      <div className="modal-content">
-                          <div className="modal-header">
-                            <h4 className="modal-title" id="myModalLabel" data-bind="text: title">Uploading Data</h4>
-                          </div>
-                          <div className="modal-body">
-                              <div className="progress progress-striped active">
-                                <div className="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style={{minWidth: "3em", width: "0%"}} data-bind="attr: { 'aria-valuenow': '60'},
-                                                style: { width: parseInt(progress()) + '%' }" aria-valuenow="60">
-                                  <span data-bind="text: useProgress ? parseInt(progress()) + '%' : 'Loading...'">0%</span>
-                                </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </loading> */}
-
-        {/* <loading params="id: 'importing-data',
-                             title: 'Importing Data',
-                             progress: importingProgress">
-              <div className="modal fade" data-bind="attr: {id: id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false" id="importing-data">
-                  <div className="modal-dialog">
-                      <div className="modal-content">
-                          <div className="modal-header">
-                            <h4 className="modal-title" id="myModalLabel" data-bind="text: title">Importing Data</h4>
-                          </div>
-                          <div className="modal-body">
-                              <div className="progress progress-striped active">
-                                <div className="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style={{minWidth: "3em", width: "0%"}} data-bind="attr: { 'aria-valuenow': '60'},
-                                                style: { width: parseInt(progress()) + '%' }" aria-valuenow="60">
-                                  <span data-bind="text: useProgress ? parseInt(progress()) + '%' : 'Loading...'">0%</span>
-                                </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </loading> */}
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from  'react-router-dom'
 
 
 class MultiplePredict extends Component {
@@ -12,8 +13,14 @@ class MultiplePredict extends Component {
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="csv-xls"></div>
-              <p>Process your file using <span className="module-name" data-bind="text: module().name">Sentiment Analysis</span></p>
-              <button type="button" className="btn btn-primary" data-bind="click: clickUpload">+ New batch</button>
+              <p>Process your file using <span className="module-name" >Sentiment Analysis</span></p>
+              <button type="button" className="btn btn-primary"
+              onClick={
+                () => { this.props.history.push({
+                  pathname : '/main/module-batch/wizard/choose-file'
+                })}
+              }
+              >+ New batch</button>
             </div>
           </div>
         </div>
@@ -22,4 +29,4 @@ class MultiplePredict extends Component {
   }
 }
 
-export default MultiplePredict;
+export default withRouter(MultiplePredict);

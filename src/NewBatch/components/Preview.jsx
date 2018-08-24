@@ -126,9 +126,16 @@ class Preview extends Component {
   
   }
   handleModalBtnClick = () => {
-   
+    document.getElementById('uploading-data').className = "modal fade out"
+     this.props.store.DownloadDataFile().then(response => {
       window.location = '/SampleCSVFile_11kb.csv'
-      document.getElementById('uploading-data').className = "modal fade out"
+     
+
+    }).catch ( (error) => {
+
+        
+    })
+   
   }
 
 

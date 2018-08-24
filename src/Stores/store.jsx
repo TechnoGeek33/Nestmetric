@@ -85,6 +85,12 @@ class Store {
     DeleteModule(id) {
         axios.post(`${Services.env}/api/moduleDelete`, { _id: id })
     }
+
+    DownloadDataFile () {
+        var url = 'https://jsonplaceholder.typicode.com/todos/1';
+
+       return  axios.get(url)
+    }
 }
 
 decorate(Store, {
