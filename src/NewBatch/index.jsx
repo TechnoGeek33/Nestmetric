@@ -18,7 +18,7 @@ class CreateModel extends Component {
       document.getElementById("overlay").className = "modal-backdrop fade in"
     }
     else {
-      this.props.history.push({ pathname: "/main/dashboard" })
+      this.props.history.push({ pathname: "/main/predictions/multiple-predict" })
     }
 
   }
@@ -30,7 +30,7 @@ class CreateModel extends Component {
   }
 
   handleStop = () => {
-    this.props.history.push({ pathname: "/main/dashboard" })
+    this.props.history.push({ pathname: "/main/predictions/multiple-predict" })
   }
 
   renderSwitch() {

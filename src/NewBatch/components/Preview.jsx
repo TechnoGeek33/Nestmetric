@@ -43,7 +43,7 @@ class Preview extends Component {
           this.setState({
             progressWidth: percentage,
          
-            modalMsg: "Uploading & Importing Data"
+            modalMsg: "Analyzing Data"
           })
         }, 90)
       
@@ -85,7 +85,7 @@ class Preview extends Component {
           document.getElementById('modalFooter').style.display = "block"
 
           this.setState({
-            modalMsg : "Upload Confirmation"
+            modalMsg : "Analyze Confirmation"
           })
 
         }, 1000)
@@ -126,8 +126,13 @@ class Preview extends Component {
   
   }
   handleModalBtnClick = () => {
-    this.props.history.push({ pathname: "/main/module-create/wizard/features" })
+   
+      window.location = '/SampleCSVFile_11kb.csv'
+      document.getElementById('uploading-data').className = "modal fade out"
   }
+
+
+  
   render() {
 
     return (
@@ -135,8 +140,8 @@ class Preview extends Component {
        <ProgressModal
         modalMsg={this.state.modalMsg} 
         progressWidth={this.state.progressWidth}
-        modalAlertMsg= "Data Imported"
-        modalBtnTxt="ok"
+        modalAlertMsg= "Done !"
+        modalBtnTxt="Download"
         modalBtnClick = { this.handleModalBtnClick}
         />
         <h5 className="wizard-category-subtitle">Preview</h5>
