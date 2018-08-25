@@ -71,7 +71,12 @@ class Header extends Component {
                                     <ul className="dropdown-menu">
 
                                         <li>
-                                            <a onClick={() => { this.props.history.push({ pathname: '/main/my-account/query-usage' }) }}>
+                                            <a onClick={() => { 
+                                                
+                                                this.props.history.push({ pathname: '/main/my-account/query-usage' });
+                                                document.getElementById('dlDropDown').className = "dropdown"
+                                                
+                                                }}>
                                                 <span className="typcn typcn-user" aria-hidden="true"></span> My Account </a>
                                         </li>
 

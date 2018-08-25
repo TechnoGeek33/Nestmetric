@@ -58,18 +58,13 @@ class CreateModel extends Component {
           </div>
         </div> : <div className="container-body module-create-flatten">
           <div className="container-wrapper">
-            {/* <div className="progress progress-global">
-              <div className="progress-bar" role="progressbar" style={{ width: Services.increaseProgressBar(8, this.props.store.pageCount) }}>
-                <span className="sr-only"></span>
-              </div>
-            </div> */}
             <div className="navigation-bar">
 
-              <span onClick={() => {
+             {this.props.match.params.childRoute === 'choose-file' ? null : <span onClick={() => {
                 this.props.history.goBack()
               }} className="typcn typcn-arrow-left clickable"
              
-              ></span>
+              ></span> } 
               <span onClick={this.CloseBtnCheck} className="typcn typcn-times clickable"></span>
             </div>
             {this.renderSwitch()}
