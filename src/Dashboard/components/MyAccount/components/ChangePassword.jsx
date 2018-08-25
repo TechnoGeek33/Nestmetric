@@ -9,7 +9,7 @@ class ChangePassword extends Component {
       <Fragment>
         <h2 className="small-heading small-heading-top">Account</h2>
         <div >
-          <form role="form" id="user-change-password-form">
+          <form id="user-change-password-form">
             <legend style={{ display: 'none' }}>
               <a style={{ display: 'none' }}>Hide undefined</a>
             </legend>
@@ -25,7 +25,7 @@ class ChangePassword extends Component {
               </div>
 
               <div className="col-md-12">
-                <label for="user-change-password-forms-password2">New password (again)</label>
+                <label >New password (again)</label>
 
                 <input className="form-control" id="user-change-password-forms-password2" type="password" name="password2" placeholder="" />
 
@@ -39,7 +39,7 @@ class ChangePassword extends Component {
                 </span>
                 <div className="pull-right">
 
-                  <img src="https://mlproductionmedia.azureedge.net/static/img/ajax-loader.gif" style={{ display: 'none' }} />
+                  <img src="https://mlproductionmedia.azureedge.net/static/img/ajax-loader.gif" alt="loader" style={{ display: 'none' }} />
                   <span className="glyphicon glyphicon-ok" style={{ display: 'none' }}></span>
                   <span className="glyphicon glyphicon-remove" style={{ display: 'none' }}></span>
 

@@ -40,7 +40,7 @@ class ChooseFile extends Component {
           <div className="upload-btn-wrapper">
             <div className="upload-input">
               <span className="typcn typcn-document-add"></span>
-              <span className="file-name" data-bind="text: fileName">{this.state.filename}</span>
+              <span className="file-name">{this.state.filename}</span>
               <span className="browse">Browse File</span>
             </div>
             <input type="file" name="myfile" id="newfile2" onInput={(e) => this.handleSubmit(e)} />

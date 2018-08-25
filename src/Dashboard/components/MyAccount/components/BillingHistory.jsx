@@ -6,17 +6,17 @@ class BillingHistory extends Component {
     render() {
 
         return (
-            <div class="panel-nav-stacked-no-border">
-                <h2 class="small-heading small-heading-top">Billing History</h2>
-                <div class="list-group">
+            <div className="panel-nav-stacked-no-border">
+                <h2 className="small-heading small-heading-top">Billing History</h2>
+                <div className="list-group">
                 </div>
 
-                <div class="modal fade" id="invoice-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel">Invoice Detail</h4>
+                <div className="modal fade" id="invoice-modal" tabIndex="-1"  >
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" >×</button>
+                                <h4 className="modal-title" id="myModalLabel">Invoice Detail</h4>
                             </div>
 
                         </div>

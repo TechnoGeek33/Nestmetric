@@ -258,7 +258,7 @@ class SelectAlgorithm extends Component {
           >Continue</button>
         </div>
         <p class="text-center margin-top-40">
-          or <a data-bind="click: function(){dataSource('tagged')}">Learn more about algorithm</a>
+          or <a >Learn more about algorithm</a>
         </p>
 
 

@@ -8,20 +8,20 @@ class SinglePredict extends Component {
 
         return (
   <div className="col-md-10">
-            <div class="panel-nav-stacked-no-border" >
-            {this.props.Model ? <Fragment> <div class="panel panel-default panel-public-description">
-<div class="panel-body">
-<div class="row">
-<div class="col-md-4">
-<div class="row">
-<div class="col-md-3 module-symbol">
+            <div className="panel-nav-stacked-no-border" >
+            {this.props.Model ? <Fragment> <div className="panel panel-default panel-public-description">
+<div className="panel-body">
+<div className="row">
+<div className="col-md-4">
+<div className="row">
+<div className="col-md-3 module-symbol">
 
-<div class="cell-avatar topic"   title="">
+<div className="cell-avatar topic"   title="">
 </div>
 
 </div>
-<div class="col-md-9">
-<h3 class="margin-top-10" >{this.props.Model.ModuleName}</h3>
+<div className="col-md-9">
+<h3 className="margin-top-10" >{this.props.Model.ModuleName}</h3>
 <h5 >{this.props.Model.ModuleAlgo}</h5>
 </div>
 </div>
@@ -31,23 +31,23 @@ class SinglePredict extends Component {
 </div>
 </div>
 
-<div class="container-test-api" id="try-form">
+<div className="container-test-api" id="try-form">
 
-<div  class="module-test-api classifier-multi-label">
+<div  className="module-test-api classifier-multi-label">
 
 
-<div class="dialog-box dialog-box-alert">
-<div class="modal fade" tabindex="-1" role="dialog"  id="dialog-auto-id-vsu2yrx05t">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<div className="dialog-box dialog-box-alert">
+<div className="modal fade"    id="dialog-auto-id-vsu2yrx05t">
+<div className="modal-dialog" >
+<div className="modal-content">
+<button type="button" className="close" >
 <span aria-hidden="true">×</span>
 </button>
 
 
-<h2 data-bind="text: title">Out of queries</h2>
-<p data-bind="text: message" class="message">You’ve reached the request limit for your Plan. Please upgrade to have more requests available.</p>
-<a  class="btn btn-primary btn-lg green" href="/main/my-account/tab/change-plan/">Upgrade</a>
+<h2 >Out of queries</h2>
+<p className="message">You’ve reached the request limit for your Plan. Please upgrade to have more requests available.</p>
+<a  className="btn btn-primary btn-lg green" href="/main/my-account/tab/change-plan/">Upgrade</a>
 
 
 </div>
@@ -56,21 +56,21 @@ class SinglePredict extends Component {
 </div>
 
 
-<div class="query-col">
+<div className="query-col">
 <h2 style={{padding: "0px 0 18px 0"}}>Test with your own text
 </h2>
-{this.props.Model.selectedfeatures.map( (d) => {
+{this.props.Model.selectedfeatures.map( (d, i) => {
 
   return (
-    <Fragment>
+    <Fragment key={i*4}>
    <h4>{d.title}</h4>
 
 
 
 
-<form  class="text-form">
-<div class="form-group margin-top-15">
-<input  class="form-control" id="text-input-field" />
+<form  className="text-form">
+<div className="form-group margin-top-15">
+<input  className="form-control" id="text-input-field" />
 
 </div>
 
@@ -80,90 +80,90 @@ class SinglePredict extends Component {
   )
 })}
 
-<button type="submit" class="btn btn-primary" >Classify Text</button>
+<button type="submit" className="btn btn-primary" >Classify Text</button>
 
 </div>
 
 
-<div data-bind="css: resultColTypeClass" class="result-col result-col-type-table">
+<div  className="result-col result-col-type-table">
 
 
 
 
-<div class="result-loading-wrapper"  
+<div className="result-loading-wrapper"  
 style={{display:'none'}}
 >
-<div class="logo-loader"></div>
+<div className="logo-loader"></div>
 </div>
 
 
-<div  class="code-view-results" style={{display:'none'}}>
-<div class="result-header">
+<div  className="code-view-results" style={{display:'none'}}>
+<div className="result-header">
 <div>
   HTTP/1.1
-  <span class="value" >200</span>
+  <span className="value" >200</span>
   <span >OK</span>
 </div>
 
 <div >
   <div>
     <span >Content-Type</span>:
-    <span class="value">application/json</span>
+    <span className="value">application/json</span>
   </div>
 </div>
 
 </div>
 
-<div class="result-body">
+<div className="result-body">
 
-<div class="code-block">
-<pre ><span class="token punctuation">[</span>
-<span class="token punctuation"></span>
-<span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"Great out of the box CRM features. Non-profits get 10 licenses free and discounts on the additional license. Chatter is a great communication tool."</span><span class="token punctuation">,</span>
-<span class="token property">"external_id"</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
-<span class="token property">"error"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-<span class="token property">"classifications"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-<span class="token punctuation"></span>
-<span class="token property">"tag_name"</span><span class="token operator">:</span> <span class="token string">"Pricing"</span><span class="token punctuation">,</span>
-<span class="token property">"tag_id"</span><span class="token operator">:</span> <span class="token number">26615327</span><span class="token punctuation">,</span>
-<span class="token property">"confidence"</span><span class="token operator">:</span> <span class="token number">0.783</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation"></span>
-<span class="token property">"tag_name"</span><span class="token operator">:</span> <span class="token string">"Features"</span><span class="token punctuation">,</span>
-<span class="token property">"tag_id"</span><span class="token operator">:</span> <span class="token number">26615326</span><span class="token punctuation">,</span>
-<span class="token property">"confidence"</span><span class="token operator">:</span> <span class="token number">0.566</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">]</span></pre>
+<div className="code-block">
+<pre ><span className="token punctuation">[</span>
+<span className="token punctuation"></span>
+<span className="token property">"text"</span><span className="token operator">:</span> <span className="token string">"Great out of the box CRM features. Non-profits get 10 licenses free and discounts on the additional license. Chatter is a great communication tool."</span><span className="token punctuation">,</span>
+<span className="token property">"external_id"</span><span className="token operator">:</span> <span className="token null">null</span><span className="token punctuation">,</span>
+<span className="token property">"error"</span><span className="token operator">:</span> <span className="token boolean">false</span><span className="token punctuation">,</span>
+<span className="token property">"classifications"</span><span className="token operator">:</span> <span className="token punctuation">[</span>
+<span className="token punctuation"></span>
+<span className="token property">"tag_name"</span><span className="token operator">:</span> <span className="token string">"Pricing"</span><span className="token punctuation">,</span>
+<span className="token property">"tag_id"</span><span className="token operator">:</span> <span className="token number">26615327</span><span className="token punctuation">,</span>
+<span className="token property">"confidence"</span><span className="token operator">:</span> <span className="token number">0.783</span>
+<span className="token punctuation">}</span><span className="token punctuation">,</span>
+<span className="token punctuation"></span>
+<span className="token property">"tag_name"</span><span className="token operator">:</span> <span className="token string">"Features"</span><span className="token punctuation">,</span>
+<span className="token property">"tag_id"</span><span className="token operator">:</span> <span className="token number">26615326</span><span className="token punctuation">,</span>
+<span className="token property">"confidence"</span><span className="token operator">:</span> <span className="token number">0.566</span>
+<span className="token punctuation">}</span>
+<span className="token punctuation">]</span>
+<span className="token punctuation">}</span>
+<span className="token punctuation">]</span></pre>
 </div>
 
 </div>
 </div>
 
-<div class="table-view-results" >
+<div className="table-view-results" >
 <h2>Results</h2>
 
 
-  <div class="row row-header">
-    <div class="col-md-9 col-header">Tag</div>
-    <div class="col-md-3 col-header probability">Confidence</div>
+  <div className="row row-header">
+    <div className="col-md-9 col-header">Tag</div>
+    <div className="col-md-3 col-header probability">Confidence</div>
   </div>
 
-  <div class="path">
-    <div class="row" >
-      <div class="col-md-9 col-label" >Pricing</div>
-      <div class="col-md-3 col-probability" >78.3%</div>
+  <div className="path">
+    <div className="row" >
+      <div className="col-md-9 col-label" >Pricing</div>
+      <div className="col-md-3 col-probability" >78.3%</div>
     </div>
   
-    <div class="row" data-bind="foreach: {data: paths, as: 'step'}">
-      <div class="col-md-9 col-label" >Features</div>
-      <div class="col-md-3 col-probability" >56.6%</div>
+    <div className="row">
+      <div className="col-md-9 col-label" >Features</div>
+      <div className="col-md-3 col-probability" >56.6%</div>
     </div>
   </div>
 
 
-<div class="table-view-error"></div>
+<div className="table-view-error"></div>
 
 </div>
 
@@ -172,8 +172,8 @@ style={{display:'none'}}
 </div>
 
 </div>
-<p class="pull-right margin-top-20" data-bind="visible: tabNav" style={{display:'none'}}>
-Not the result you expected? Build more accuracy by <a data-bind="click: goToTrain">training</a> the model.
+<p className="pull-right margin-top-20"  style={{display:'none'}}>
+Not the result you expected? Build more accuracy by <a >training</a> the model.
 </p> </Fragment> : <div className="tail-spinner" style={{ display: "block" }}></div> }
 
 

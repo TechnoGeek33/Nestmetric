@@ -15,20 +15,19 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div id="header-wrapper">
                 <nav className="navbar navbar-default">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <button type="button" class="navbar-toggle">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
+                            <button type="button" className="navbar-toggle">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
                             </button>
 
-                            {this.props.location.pathname == "/main/dashboard" ?
+                            {this.props.location.pathname === "/main/dashboard" ?
                                 <a className="navbar-brand" href="/main/dashboard" style={{ height: "45px" }}> </a> :
                                 <Fragment>
                                     <a className="navbar-brand navbar-brand-small"
@@ -37,14 +36,14 @@ class Header extends Component {
                                             backgroundSize: "50px",
                                             width: "50px"
                                         }}
-                                        href="/main/dashboard"></a>
+                                        href="/main/dashboard"> </a>
 
                                     <breadcrumbs >
                                         <div className="breadcrumbs">
                                             <span><a href="/main/dashboard">Dashboard</a></span>
                                             <span className="separator">&gt;</span>
 
-                                            {this.props.location.pathname == `/main/predictions/${this.props.match.params.childRoute}` ?
+                                            {this.props.location.pathname === `/main/predictions/${this.props.match.params.childRoute}` ?
                                                 <span className="title" >{this.props.Model ? this.props.Model.ModuleName : null }</span> :
                                                 <span className="title" >My Account</span>
                                             }
@@ -55,7 +54,7 @@ class Header extends Component {
                         </div>
                         <div className="collapse navbar-collapse" >
                             <ul className="nav navbar-nav navbar-right">
-                                {this.props.location.pathname == "/main/dashboard" ?
+                                {this.props.location.pathname === "/main/dashboard" ?
                                     <li className="create-model">
                                         <button type="button" className="btn btn-primary"
                                             onClick={() => {
@@ -84,7 +83,7 @@ class Header extends Component {
                                 </li>
 
                             </ul>
-                            {this.props.location.pathname == "/main/dashboard" ?
+                            {this.props.location.pathname === "/main/dashboard" ?
                                 <ul className="nav navbar-nav navigation-menu">
                                     <li className="active">
                                         <a href="/main/dashboard">Dashboard</a>

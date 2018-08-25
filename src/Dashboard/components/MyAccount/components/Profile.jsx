@@ -49,7 +49,7 @@ class Profile extends Component {
                                                     <input type="checkbox" className="form-control" name="send_email_notifications" id="user-profile-send-notifications" />
                                                     <span  >Send email notifications</span>
                                                 </label>
-                                                <span className="glyphicon glyphicon-question-sign question-sign-tooltip" style={{ display: 'none' }} data-original-title="" title=""></span>
+                                                <span className="glyphicon glyphicon-question-sign question-sign-tooltip" style={{ display: 'none' }}  title=""></span>
                                             </div>
                                             
 
@@ -64,7 +64,7 @@ class Profile extends Component {
                                 </span>
                                 <div className="pull-right">
 
-                                    <img src="https://mlproductionmedia.azureedge.net/static/img/ajax-loader.gif" style={{ display: 'none' }} />
+                                    <img src="https://mlproductionmedia.azureedge.net/static/img/ajax-loader.gif" alt="loader" style={{ display: 'none' }} />
                                     <span className="glyphicon glyphicon-ok" style={{ display: 'none' }}></span>
                                     <span className="glyphicon glyphicon-remove" style={{ display: 'none' }}></span>
 
@@ -81,7 +81,7 @@ class Profile extends Component {
                 <h2 className="small-heading small-heading-top">Change Profile Image</h2>
                 <div >
 
-                    <form role="form" >
+                    <form  >
 
                         <fieldset>
                             <legend style={{ display: 'none' }}>
@@ -120,7 +120,7 @@ class Profile extends Component {
                                 </span>
                                 <div className="pull-right">
 
-                                    <img src="https://mlproductionmedia.azureedge.net/static/img/ajax-loader.gif" style={{ display: 'none' }} />
+                                    <img src="https://mlproductionmedia.azureedge.net/static/img/ajax-loader.gif" alt="loader" style={{ display: 'none' }} />
                                     <span className="glyphicon glyphicon-ok" style={{ display: 'none' }}></span>
                                     <span className="glyphicon glyphicon-remove" style={{ display: 'none' }}></span>
 

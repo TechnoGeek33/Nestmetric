@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import ChooseFile from './components/ChooseFile'
 import Preview from './components/Preview'
-import { Services } from '../Service'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
@@ -42,7 +41,7 @@ class CreateModel extends Component {
         return <Preview />;
    
       default:
-        return <ChooseFile />
+        window.location.href = "/main/module-batch/wizard/choose-file"
     }
   }
 
@@ -87,7 +86,7 @@ class CreateModel extends Component {
                 <div className="modal-content">
                   <div className="modal-header">
                     <button type="button" onClick={this.onClocse} className="close">×</button>
-                    <h4 className="modal-title" id="myModalLabel" data-bind="text: modal_title">Stop Creation Wizard</h4>
+                    <h4 className="modal-title" id="myModalLabel" >Stop Creation Wizard</h4>
                   </div>
 
                   <div className="modal-body">
@@ -100,14 +99,14 @@ class CreateModel extends Component {
                   </div>
 
                   <div className="modal-footer">
-                    <button type="button" onClick={this.onClocse} className="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" onClick={this.onClocse} className="btn btn-default" >Cancel</button>
                     <button type="submit" onClick={ this.handleStop} className="btn btn-danger">Stop Creation Wizard</button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-          <div id="overlay" class="fade in"></div>
+          <div id="overlay" className="fade in"></div>
         </div>
         {/* Ends */}
 

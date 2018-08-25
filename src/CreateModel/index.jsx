@@ -57,7 +57,7 @@ class CreateModel extends Component {
       case 'congrats':
         return <Congrats />;
       default:
-        return <ModuleType />
+        window.location.href="/main/module-create/wizard/choose-module-type"
     }
   }
 
@@ -99,7 +99,7 @@ class CreateModel extends Component {
                 <div className="modal-content">
                   <div className="modal-header">
                     <button type="button" onClick={this.onClocse} className="close">×</button>
-                    <h4 className="modal-title" id="myModalLabel" data-bind="text: modal_title">Stop Creation Wizard</h4>
+                    <h4 className="modal-title" id="myModalLabel">Stop Creation Wizard</h4>
                   </div>
                   <div className="modal-body">
                     <div className="alert alert-danger">
@@ -111,7 +111,7 @@ class CreateModel extends Component {
                   </div>
 
                   <div className="modal-footer">
-                    <button type="button" onClick={this.onClocse} className="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" onClick={this.onClocse} className="btn btn-default" >Cancel</button>
                     <button type="submit" onClick={this.handleStop} className="btn btn-danger">Stop Creation Wizard</button>
                   </div>
                 </div>
