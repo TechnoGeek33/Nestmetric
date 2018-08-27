@@ -12,14 +12,9 @@ class Main extends Component {
 
     componentWillMount() {
         this.props.store.getAllModules();
-        
-           
     }
 
     renderSwitch() {
-     
-            
-        
 
         switch (this.props.location.pathname) {
 
@@ -31,20 +26,39 @@ class Main extends Component {
 
             case `/main/my-account/${this.props.match.params.childRoute}`:
                 return <Account Model={Model} />
-            
-            default : 
-                  window.location.href="/main/dashboard"
-                
+
+            default:
+                window.location.href = "/main/dashboard"
+
 
         }
     }
 
+    getModel () {
+        if(new URLSearchParams(this.props.location.search).get('id')) {
+           this.props.store.AllModules.find((d) => { 
+                return d._id === new URLSearchParams(this.props.location.search).get('id') 
+            
+            })
+        }
+
+        else {
+            return {};
+
+        }
+
+       
+
+       
+    }
+
     render() {
+      this.getModel()
         Model = this.props.store.AllModules.find((d) => { return d._id === new URLSearchParams(this.props.location.search).get('id') })
-  
+
         return (
             <Fragment>
-                <Header Model={Model}/>
+                <Header Model={Model} />
                 {this.renderSwitch()}
             </Fragment>
         )

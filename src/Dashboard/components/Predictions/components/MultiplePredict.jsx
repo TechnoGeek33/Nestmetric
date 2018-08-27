@@ -18,7 +18,7 @@ class MultiplePredict extends Component {
               onClick={
                 () => { this.props.history.push({
                   pathname : '/main/module-batch/wizard/choose-file'
-                })}
+                }, {id:new URLSearchParams(this.props.location.search).get('id')})}
               }
               >+ New batch</button>
             </div>

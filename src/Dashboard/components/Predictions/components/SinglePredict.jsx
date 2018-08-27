@@ -5,7 +5,7 @@ class SinglePredict extends Component {
 
     render () {
       
-
+// console.log(this.props.Model.length)
         return (
   <div className="col-md-10">
             <div className="panel-nav-stacked-no-border" >

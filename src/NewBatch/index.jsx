@@ -5,24 +5,25 @@ import Preview from './components/Preview'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
-class CreateModel extends Component {
+class NewBatch extends Component {
 
   state ={
     flag : true
   }
   CloseBtnCheck = () => {
-    if (this.props.match.params.childRoute === "name-your-module") {
-      document.getElementById("delete-project").style.display = "block"
-      document.getElementById("delete-project").className = "modal fade in"
-      document.getElementById("overlay").className = "modal-backdrop fade in"
-    }
-    else {
-      this.props.history.push({ pathname: "/main/predictions/multiple-predict" })
-    }
+   
+ 
+      this.props.history.push(
+        { 
+        pathname: "/main/predictions/multiple-predict",   
+        search : `id=${this.props.location.state.id}`
+       }
+      )
+      
+      }
 
-  }
 
-  onClocse =() => {
+  onClose =() => {
     document.getElementById("delete-project").style.display = "none"
     document.getElementById("delete-project").className = "modal fade"
     document.getElementById("overlay").className = "fade in"
@@ -71,39 +72,6 @@ class CreateModel extends Component {
           </div>
         </div> }
        
-        
-
-        {/* Error Dialog for hititng cross button */}
-        <div>
-          <div className="modal fade"  id="delete-project" style={{ display: "none", paddingLeft: "0px" }}>
-            <div className="modal-dialog" style={{ left: "0" }}>
-              <form id="delete-project-form">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <button type="button" onClick={this.onClocse} className="close">×</button>
-                    <h4 className="modal-title" id="myModalLabel" >Stop Creation Wizard</h4>
-                  </div>
-
-                  <div className="modal-body">
-                    <div className="alert alert-danger">
-                      <strong>Warning:</strong>
-                      <span >This will delete all your progress with this model.</span>
-                    </div>
-
-                    <p >Are you sure you want to stop the creation wizard?</p>
-                  </div>
-
-                  <div className="modal-footer">
-                    <button type="button" onClick={this.onClocse} className="btn btn-default" >Cancel</button>
-                    <button type="submit" onClick={ this.handleStop} className="btn btn-danger">Stop Creation Wizard</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div id="overlay" className="fade in"></div>
-        </div>
-        {/* Ends */}
 
       </div>
 
@@ -111,4 +79,4 @@ class CreateModel extends Component {
   }
 }
 
-export default withRouter(inject('store')(observer(CreateModel)))
+export default withRouter(inject('store')(observer(NewBatch)))

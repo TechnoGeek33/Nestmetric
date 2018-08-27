@@ -31,7 +31,7 @@ class MyModels extends Component {
     }
 
     hanlelModuleClick = (id) => {
-        this.props.history.push({ pathname: `/main/predictions/single-predict`, search: `id=${id}` })
+        this.props.history.push({ pathname: `/main/predictions/single-predict`, search: `id=${id}` }, {_id: id})
     }
 
     render() {

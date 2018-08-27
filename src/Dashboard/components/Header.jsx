@@ -38,7 +38,7 @@ class Header extends Component {
                                         }}
                                         href="/main/dashboard"> </a>
 
-                                    <breadcrumbs >
+                                 
                                         <div className="breadcrumbs">
                                             <span><a href="/main/dashboard">Dashboard</a></span>
                                             <span className="separator">&gt;</span>
@@ -48,7 +48,7 @@ class Header extends Component {
                                                 <span className="title" >My Account</span>
                                             }
                                         </div>
-                                    </breadcrumbs>
+                                
 
                                 </Fragment>}
                         </div>
