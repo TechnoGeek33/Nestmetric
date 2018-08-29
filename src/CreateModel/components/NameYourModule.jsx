@@ -32,9 +32,9 @@ class NameYourModule extends Component {
 
   handleFinish = () => {
     this.props.store.createModule().then((responce) => {
-      console.log(responce.data)
+  console.log(responce.data)
       this.props.store.ModelData = responce.data
-      this.props.history.push({ pathname: '/main/module-create/wizard/congrats/' })
+      this.props.history.push({ pathname: '/main/module-create/wizard/congrats/' }, {id : this.props.store.ModelData._id})
     }).catch((err) => {
       console.log(err)
     })
