@@ -34,27 +34,11 @@ class Main extends Component {
         }
     }
 
-    getModel () {
-        if(new URLSearchParams(this.props.location.search).get('id')) {
-           this.props.store.AllModules.find((d) => { 
-                return d._id === new URLSearchParams(this.props.location.search).get('id') 
-            
-            })
-        }
-
-        else {
-            return {};
-
-        }
-
-       
-
-       
-    }
 
     render() {
-      this.getModel()
-        Model = this.props.store.AllModules.find((d) => { return d._id === new URLSearchParams(this.props.location.search).get('id') })
+  
+        Model =  this.props.store.AllModules ? this.props.store.AllModules.find((d) => { 
+            return d._id === new URLSearchParams(this.props.location.search).get('id') }) : {}
 
         return (
             <Fragment>

@@ -7,6 +7,7 @@ import Dashboard from './Dashboard';
 import CreateModel from './CreateModel';
 import NewBatch from './NewBatch'
 import Error404 from './404'
+import UpgradeYourPlan from './commons/components/UpgradeYourPlan'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
+            <UpgradeYourPlan/>
             <Switch>
               <Route exact path="/main/predictions" render={() => { return <Redirect to="/main/predictions/single-predict" /> }} />
 

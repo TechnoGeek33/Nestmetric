@@ -9,31 +9,41 @@ class Preview extends Component {
     this.store = this.props.store;
 
     this.state = {
-      modalMsg : '',
-      progressWidth : 0
+      modalMsg: '',
+      progressWidth: 0
     }
   }
 
   componentWillMount() {
-    this.props.store.getExtractedData()
+  
+
     // To keep track of ProgressBar
     this.store.pageCount = 4;
 
   }
 
- 
- handleDownload () {
-    window.location = '/SampleCSVFile_11kb.csv'
-  
- }
+
+  handleDownload() {
+    if (this.props.store.AllModules.length >= 1) {
+      let modalDiv = document.getElementById('upgrade-your-plan-create-module')
+      modalDiv.style.display = "block"
+      modalDiv.className = "modal fade upgrade-modal in"
+    }
+    else {
+      window.location = '/SampleCSVFile_11kb.csv'
+
+    }
 
 
-  
+  }
+
+
+
   render() {
 
     return (
       <div >
-     
+
         <h5 className="wizard-category-subtitle">Preview</h5>
         <h1 className="wizard-category-title">
           Select Texts
@@ -44,7 +54,7 @@ class Preview extends Component {
             <div className="row input-fields">
               <div className="">
                 <div className="checkbox">
-                 
+
                 </div>
               </div>
             </div>
@@ -73,7 +83,7 @@ class Preview extends Component {
                 {this.props.store.ExtractedData.map((data, index) => {
 
                   return (<tr key={Math.random()}>
-                    <td  className="td-index">{index + 1}</td>
+                    <td className="td-index">{index + 1}</td>
                     {
                       Object.keys(this.props.store.ExtractedData[0]).map((header) => {
                         return (
@@ -98,7 +108,7 @@ class Preview extends Component {
             disabled="">Download</button>
         </div>
 
-       
+
       </div>
     )
   }

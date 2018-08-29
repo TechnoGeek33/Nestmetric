@@ -7,13 +7,14 @@ import { inject, observer } from 'mobx-react';
 class Dashboard extends Component {
 
     render() {
+        // console.log(this.props.store.getAllModules())
         return (
 
             <div className="container container-body">
                 <div className="container-wrapper">
                     <div className="main-content">
 
-                        {this.props.store.AllModules.length <= 0 ? <div className="tail-spinner" style={{ display: "block" }}></div> :
+                        {this.props.store.AllModules === undefined? <div className="tail-spinner" style={{ display: "block" }}></div> :
                             <Fragment>
                                 <RecentlyUsed />
                                 <div className="row underlined-row">

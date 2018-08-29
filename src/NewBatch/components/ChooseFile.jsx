@@ -3,7 +3,7 @@ import {
   withRouter
 } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import ProgressModal from '../../ProgressModal'
+import ProgressModal from '../../commons/components/ProgressModal'
 
 
 

@@ -10,6 +10,11 @@ class NewBatch extends Component {
   state ={
     flag : true
   }
+
+  componentWillMount () {
+    this.props.store.getExtractedData()
+    this.props.store.getAllModules()
+  }
   CloseBtnCheck = () => {
    
  

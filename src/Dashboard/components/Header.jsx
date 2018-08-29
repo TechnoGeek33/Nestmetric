@@ -14,8 +14,21 @@ class Header extends Component {
         }
     }
 
+    handleCreateModel (){
+        if(this.props.store.AllModules.length >= 1) {
+          let modalDiv=   document.getElementById('upgrade-your-plan-create-module')
+          modalDiv.style.display = "block"
+          modalDiv.className = "modal fade upgrade-modal in"
+        }
+        else {
+            this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
+
+        }
+    }
+
     render() {
         return (
+          
             <div id="header-wrapper">
                 <nav className="navbar navbar-default">
                     <div className="container-fluid">
@@ -58,7 +71,8 @@ class Header extends Component {
                                     <li className="create-model">
                                         <button type="button" className="btn btn-primary"
                                             onClick={() => {
-                                                this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
+                                                this.handleCreateModel()
+                                                
                                             }} >
                                             <span className="plus-white" style={{left: "14px"}} >+</span> Create Model
                                         </button>

@@ -4,12 +4,12 @@ import {
 import SampleData from './SampleData'
 import Features from './Features'
 import axios from 'axios';
-import { Services } from '../Service';
+import { Services } from '../commons/Service';
 
 class Store {
     pageCount = 0;
     ExtractedData = [];
-    AllModules = []
+    AllModules;
     SelectedModule = '';
 
     ModelData = {
@@ -77,8 +77,12 @@ class Store {
     getAllModules() {
         axios.get(`${Services.env}/api/getModule`).then((response) => {
             this.AllModules = response.data
+     
+            return true;
         }).catch((error) => {
             console.log(error)
+           
+            return false;
         })
     }
 

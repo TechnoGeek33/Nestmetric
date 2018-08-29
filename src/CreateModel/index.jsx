@@ -7,7 +7,7 @@ import SelectFeatures from './components/SelectFeatures'
 import SelectAlgorithm from './components/SelectAlgorithm'
 import NameYourModule from './components/NameYourModule'
 import Congrats from './components/Congrats'
-import { Services } from '../Service'
+import { Services } from '../commons/Service'
 import { withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 

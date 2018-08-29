@@ -1,9 +1,21 @@
 import React, {Component, Fragment} from 'react';
 import {withRouter} from 'react-router-dom'
+import { inject, observer } from 'mobx-react';
 
 
 class RecentlyUsed extends Component {
 
+    handleCreateModel = () => {
+        if(this.props.store.AllModules.length >= 1) {
+          let modalDiv=   document.getElementById('upgrade-your-plan-create-module')
+          modalDiv.style.display = "block"
+          modalDiv.className = "modal fade upgrade-modal in"
+        }
+        else {
+            this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" })
+
+        }
+    }
 
     render () {
         return (
@@ -27,8 +39,7 @@ class RecentlyUsed extends Component {
                                 <h3 style={{fontSize : "24px", textAlign:"center"}}>Create Model</h3>
                               <p className="description create-model" style={{textAlign:"center"}}>   
                               <button type="button" className="btn btn-primary" 
-                            onClick={() => {
-                                this.props.history.push({ pathname: "/main/module-create/wizard/choose-module-type" }) }} >
+                            onClick={this.handleCreateModel } >
                             <span className="plus-white" id="hello" >+</span> Create Model
                         </button> </p>
 
@@ -81,5 +92,5 @@ class RecentlyUsed extends Component {
         )
     }
 }
+export default withRouter(inject('store')(observer(RecentlyUsed)))
 
-export default withRouter(RecentlyUsed) ;

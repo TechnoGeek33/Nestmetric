@@ -12973,9 +12973,9 @@ h4.tree-template-name {
     text-align: center
 }
 
-/* .upgrade-modal .modal-content .modal-body.space-rocket {
-    background: transparent url(space_rocket_monkey-f60d01bb26ca3cc5e94c57786f6c4fb8.svg) top no-repeat
-} */
+.upgrade-modal .modal-content .modal-body.space-rocket {
+    background: transparent url('/images/space_rocket_nestmetric-f60d01bb26ca3cc5e94c57786f6c4fb8.svg') top no-repeat
+}
 
 .upgrade-modal .modal-content .modal-body.space-rocket .close {
     color: #4a6381
