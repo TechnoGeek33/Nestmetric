@@ -38,19 +38,28 @@ class Store {
 
     // Login Credentials check
     LoginCheck() {
-        const email = "admin";
-        const password = 'admin';
-        if (this.Login.Email === email) {
-            if (this.Login.Password === password) {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        else {
-            return false
-        }
+
+        return axios.get(`/api/vi-admin`).then(() => {
+        console.log("test")
+        })
+
+        
+
+
+
+        // const email = "admin";
+        // const password = 'admin';
+        // if (this.Login.Email === email) {
+        //     if (this.Login.Password === password) {
+        //         return true
+        //     }
+        //     else {
+        //         return false
+        //     }
+        // }
+        // else {
+        //     return false
+        // }
     }
 
     // Registration Proceedings
