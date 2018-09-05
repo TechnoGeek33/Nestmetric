@@ -6,7 +6,6 @@
     "npm": "6.1.0",
     "node": "10.6.0"
   },
-  "proxy": "https://www.vpninsights.com" ,
   "dependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.10",

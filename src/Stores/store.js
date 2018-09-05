@@ -38,28 +38,19 @@ class Store {
 
     // Login Credentials check
     LoginCheck() {
-
-        return axios.get(`/api/vi-admin`).then(() => {
-        console.log("test")
-        })
-
-        
-
-
-
-        // const email = "admin";
-        // const password = 'admin';
-        // if (this.Login.Email === email) {
-        //     if (this.Login.Password === password) {
-        //         return true
-        //     }
-        //     else {
-        //         return false
-        //     }
-        // }
-        // else {
-        //     return false
-        // }
+        const email = "admin";
+        const password = 'admin';
+        if (this.Login.Email === email) {
+            if (this.Login.Password === password) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        else {
+            return false
+        }
     }
 
     // Registration Proceedings
@@ -90,7 +81,6 @@ class Store {
             return true;
         }).catch((error) => {
             console.log(error)
-           
             return false;
         })
     }
@@ -101,7 +91,6 @@ class Store {
 
     DownloadDataFile () {
         var url = 'https://jsonplaceholder.typicode.com/todos/1';
-
        return  axios.get(url)
     }
 }
